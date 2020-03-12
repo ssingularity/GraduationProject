@@ -1,0 +1,32 @@
+server:
+  port: 8100
+
+spring:
+  application:
+    name: gateway
+  cloud:
+    config:
+      name: gateway
+      profile: ${PROFILE:dev}
+      label: ${LABEL:master}
+      discovery:
+        enabled: true
+        service-id: CONFIG-SERVER
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_SERVICE_URL:http://localhost:8080}/eureka/
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+
+

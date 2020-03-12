@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>cn.pipipan.springboot</groupId>
+    <artifactId>swagger-spring-boot</artifactId>
+    <version>1.0.1</version>
+    <parent>
+        <artifactId>graduation</artifactId>
+        <groupId>com.sjtu.project</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modules>
+        <module>swagger-spring-boot-starter</module>
+        <module>swagger-spring-boot-autoconfigure</module>
+    </modules>
+    <packaging>pom</packaging>
+    <name>Spring boot starter for Swagger</name>
+
+</project>
