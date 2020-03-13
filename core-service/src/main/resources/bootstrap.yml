@@ -1,0 +1,38 @@
+server:
+  port: 8000
+
+spring:
+  application:
+    name: core-service
+  cloud:
+    config:
+      name: core
+      profile: ${PROFILE:dev}
+      label: ${LABEL:master}
+      discovery:
+        enabled: true
+        service-id: CONFIG-SERVER
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_SERVICE_URL:http://localhost:8080}/eureka/
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+
+swagger:
+  project:
+    base-package: com.sjtu.project.coreservice.controller
+    version: version1.0
+    title: CoreService
+    description: CoreService
+
