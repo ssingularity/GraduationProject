@@ -1,4 +1,8 @@
 package com.sjtu.project.coreservice.domain;
 
-public interface DataSource {
+import lombok.Data;
+
+@Data
+public class DataSource {
+    String id;
 }

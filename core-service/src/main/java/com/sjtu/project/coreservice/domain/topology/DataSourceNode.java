@@ -1,8 +1,26 @@
 package com.sjtu.project.coreservice.domain.topology;
 
-public class DataSourceNode extends Topology{
+import com.sjtu.project.coreservice.domain.Constants;
+import com.sjtu.project.coreservice.domain.DataSourceService;
+import com.sjtu.project.coreservice.domain.InputChannel;
+import com.sjtu.project.coreservice.domain.Topology;
+import lombok.Data;
+
+@Data
+public class DataSourceNode extends Topology {
     @Override
-    void addInput(Topology topology) {
+    public void addInput(Topology topology) {
         throw new IllegalArgumentException("DataSource为叶节点,不能再有Input");
+    }
+
+    @Override
+    protected void selfRun() {
+
+    }
+
+    @Override
+    public void registerChannel(InputChannel inputChannel) {
+        DataSourceService dataSourceService = Constants.ctx.getBean(DataSourceService.class);
+        dataSourceService.register(id, inputChannel);
     }
 }

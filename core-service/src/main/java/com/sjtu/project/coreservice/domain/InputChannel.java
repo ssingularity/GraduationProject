@@ -1,7 +1,8 @@
 package com.sjtu.project.coreservice.domain;
 
-public class InputChannel implements Channel{
-    public void onNext(String text) {
+import lombok.Data;
 
-    }
+@Data
+public class InputChannel {
+    String id;
 }

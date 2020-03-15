@@ -1,10 +1,12 @@
-package com.sjtu.project.coreservice.domain.topology;
+package com.sjtu.project.coreservice.domain;
 
+import com.sjtu.project.coreservice.domain.topology.DataSourceNode;
+import com.sjtu.project.coreservice.domain.topology.ServiceNode;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 @RunWith(SpringRunner.class)
 public class TopologyTest {
