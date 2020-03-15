@@ -10,10 +10,8 @@ import java.util.List;
 import java.util.Set;
 
 @Data
-public class Topology {
+public abstract class Topology {
     Set<Topology> inputList = new HashSet<>();
-
-    Type type;
 
     String id;
 
@@ -23,14 +21,7 @@ public class Topology {
 
     List<TransformRule> transformRuleList = new ArrayList<>();
 
-    void addInput(Topology topology) {
-        if (type == Type.DataSource) {
-            throw new IllegalArgumentException("DataSource为叶节点不能再有Input");
-        }
-        else {
-            inputList.add(topology);
-        }
-    }
+    abstract void addInput(Topology topology);
 
     boolean isAccessorOf(Topology topology) {
         return getInputList().contains(topology);

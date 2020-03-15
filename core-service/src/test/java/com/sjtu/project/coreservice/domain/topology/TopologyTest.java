@@ -11,7 +11,7 @@ public class TopologyTest {
     @Test(expected = IllegalArgumentException.class)
     public void testIllegalTopology() {
         Topology dataSource = createDataSourceTopology("", "test");
-        dataSource.addInput(new Topology());
+        dataSource.addInput(createServiceTopology("", ""));
     }
 
     @Test
@@ -26,16 +26,14 @@ public class TopologyTest {
     }
 
     private Topology createDataSourceTopology(String id, String name) {
-        Topology topology = new Topology();
-        topology.setType(Type.DataSource);
+        Topology topology = new DataSourceNode();
         topology.setId(id);
         topology.setName(name);
         return topology;
     }
 
     private Topology createServiceTopology(String id, String name) {
-        Topology topology = new Topology();
-        topology.setType(Type.Service);
+        Topology topology = new ServiceNode();
         topology.setId(id);
         topology.setName(name);
         return topology;
