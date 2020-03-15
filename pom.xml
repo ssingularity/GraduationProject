@@ -15,6 +15,9 @@
         <module>gateway</module>
         <module>user-service</module>
         <module>core-service</module>
+        <module>channel-service</module>
+        <module>datasource-service</module>
+        <module>service-management</module>
     </modules>
     <packaging>pom</packaging>
 
