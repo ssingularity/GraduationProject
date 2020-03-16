@@ -36,7 +36,7 @@ public class ServiceNode extends Topology {
 
     @JsonIgnore
     public List<DataSource> getTargetDataSource() {
-        return Constants.ctx.getBean(DataSourceService.class)
+        return Constants.ctx.getBean(ServiceManagement.class)
                 .getDataSourceOf(id);
     }
 }
