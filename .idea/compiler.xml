@@ -6,14 +6,17 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="core-service" />
         <module name="gateway" />
         <module name="swagger-spring-boot-autoconfigure" />
         <module name="common" />
         <module name="register-server" />
         <module name="swagger-spring-boot-starter" />
+        <module name="service-management" />
         <module name="user-service" />
         <module name="config-server" />
-        <module name="core-service" />
+        <module name="channel-service" />
+        <module name="datasource-service" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="8" />

@@ -1,5 +1,6 @@
 package com.sjtu.project.coreservice.domain.topology;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sjtu.project.coreservice.domain.*;
 import lombok.Data;
 
@@ -29,7 +30,13 @@ public class ServiceNode extends Topology {
 
     @Override
     public void registerChannel(InputChannel inputChannel) {
-        DataSource ds = Constants.ctx.getBean(ServiceManagement.class).getTargetDataSource(id).get(0);
-        Constants.ctx.getBean(DataSourceService.class).register(ds.getId(), inputChannel);
+        getTargetDataSource().get(0)
+                .register(inputChannel);
+    }
+
+    @JsonIgnore
+    public List<DataSource> getTargetDataSource() {
+        return Constants.ctx.getBean(DataSourceService.class)
+                .getDataSourceOf(id);
     }
 }

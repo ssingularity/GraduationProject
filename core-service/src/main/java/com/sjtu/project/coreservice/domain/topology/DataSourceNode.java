@@ -20,7 +20,7 @@ public class DataSourceNode extends Topology {
 
     @Override
     public void registerChannel(InputChannel inputChannel) {
-        DataSourceService dataSourceService = Constants.ctx.getBean(DataSourceService.class);
-        dataSourceService.register(id, inputChannel);
+        Constants.ctx.getBean(DataSourceService.class)
+                .register(id, inputChannel);
     }
 }

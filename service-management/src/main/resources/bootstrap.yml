@@ -1,12 +1,12 @@
 server:
-  port: 8000
+  port: 7000
 
 spring:
   application:
-    name: core-service
+    name: service-management
   cloud:
     config:
-      name: core
+      name: service
       profile: ${PROFILE:dev}
       label: ${LABEL:master}
       discovery:
@@ -31,8 +31,8 @@ management:
 
 swagger:
   project:
-    base-package: com.sjtu.project.coreservice.adapter
+    base-package: com.sjtu.project.servicemanagement.adapter
     version: version1.0
-    title: CoreService
-    description: CoreService
+    title: ServiceManagement
+    description: ServiceManagement
 
