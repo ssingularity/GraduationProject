@@ -2,18 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="136b1ed8-7442-44cf-8689-14a2cc4ba95c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/datasource-service/src/main/java/com/sjtu/project/datasourceservice/DataSourceServiceApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/datasource-service/src/main/java/com/sjtu/project/datasourceservice/config/WebSecurityConfigure.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/datasource-service/src/main/java/com/sjtu/project/datasourceservice/domain/DataSource.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/datasource-service/src/main/resources/bootstrap.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/datasource-service/src/test/java/com/sjtu/project/datasourceservice/DataSourceServiceApplicationTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/datasource-service/src/main/java/com/sjtu/project/datasourceservice/domain/Constants.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/datasource-service/src/main/java/com/sjtu/project/datasourceservice/domain/DataSourceDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/datasource-service/src/main/java/com/sjtu/project/datasourceservice/domain/InputChannel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/java/com/sjtu/project/common/util/JsonUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/sjtu/project/common/util/JsonUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/datasource-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/datasource-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/swagger-spring-boot-starter/swagger-spring-boot-autoconfigure/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/swagger-spring-boot-starter/swagger-spring-boot-autoconfigure/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/swagger-spring-boot-starter/swagger-spring-boot-autoconfigure/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/swagger-spring-boot-starter/swagger-spring-boot-autoconfigure/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/datasource-service/src/main/java/com/sjtu/project/datasourceservice/domain/DataSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/datasource-service/src/main/java/com/sjtu/project/datasourceservice/domain/DataSource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datasource-service/src/test/java/com/sjtu/project/datasourceservice/DataSourceServiceApplicationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/datasource-service/src/test/java/com/sjtu/project/datasourceservice/DataSourceServiceApplicationTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -60,41 +55,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-test/2.1.9.RELEASE/spring-boot-test-2.1.9.RELEASE-sources.jar!/org/springframework/boot/test/context/SpringBootTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-379">
-              <caret line="78" column="18" selection-start-line="78" selection-start-column="18" selection-end-line="78" selection-end-column="18" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/datasource-service/src/main/java/com/sjtu/project/datasourceservice/DataSourceServiceApplication.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="7" column="21" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/datasource-service/src/test/java/com/sjtu/project/datasourceservice/DataSourceServiceApplicationTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="23" column="105" selection-start-line="23" selection-start-column="105" selection-end-line="23" selection-end-column="105" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/common/src/main/java/com/sjtu/project/common/util/JsonUtil.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="12" selection-start-line="12" selection-end-line="12" />
+            <state relative-caret-position="960">
+              <caret line="58" column="62" selection-start-line="58" selection-start-column="62" selection-end-line="58" selection-end-column="62" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -103,75 +68,21 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="jar://$MAVEN_REPOSITORY$/com/fasterxml/jackson/core/jackson-databind/2.9.9.3/jackson-databind-2.9.9.3-sources.jar!/com/fasterxml/jackson/databind/ObjectMapper.java">
+        <entry file="jar://$MAVEN_REPOSITORY$/org/apache/kafka/kafka-clients/2.0.1/kafka-clients-2.0.1-sources.jar!/org/apache/kafka/clients/producer/KafkaProducer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-41">
-              <caret line="3001" column="17" selection-start-line="3001" selection-start-column="17" selection-end-line="3001" selection-end-column="17" />
+            <state relative-caret-position="-1065">
+              <caret line="799" column="34" selection-start-line="799" selection-start-column="34" selection-end-line="799" selection-end-column="34" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/datasource-service/src/main/java/com/sjtu/project/datasourceservice/config/WebSecurityConfigure.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="17" selection-start-line="17" selection-end-line="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/datasource-service/src/main/java/com/sjtu/project/datasourceservice/domain/DataSource.java">
+        <entry file="file://$PROJECT_DIR$/datasource-service/src/main/java/com/sjtu/project/datasourceservice/domain/Constants.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="160">
-              <caret line="8" selection-start-line="8" selection-end-line="8" />
+              <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://$MAVEN_REPOSITORY$/com/fasterxml/jackson/core/jackson-databind/2.9.9.3/jackson-databind-2.9.9.3-sources.jar!/com/fasterxml/jackson/databind/JsonSerializer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="237">
-              <caret line="52" column="22" selection-start-line="52" selection-start-column="22" selection-end-line="52" selection-end-column="22" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-redis/2.1.11.RELEASE/spring-data-redis-2.1.11.RELEASE-sources.jar!/org/springframework/data/redis/core/RedisTemplate.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="248">
-              <caret line="87" selection-start-line="87" selection-end-line="87" />
-              <folding>
-                <element signature="e#17494#17495#0" expanded="true" />
-                <element signature="e#17536#17537#0" expanded="true" />
-                <element signature="e#20107#20108#0" expanded="true" />
-                <element signature="e#20154#20155#0" expanded="true" />
-                <element signature="e#37897#37898#0" expanded="true" />
-                <element signature="e#37921#37922#0" expanded="true" />
-                <element signature="e#38075#38076#0" expanded="true" />
-                <element signature="e#38095#38096#0" expanded="true" />
-                <element signature="e#38279#38280#0" expanded="true" />
-                <element signature="e#38335#38336#0" expanded="true" />
-                <element signature="e#38989#38990#0" expanded="true" />
-                <element signature="e#39009#39010#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-redis/2.1.11.RELEASE/spring-data-redis-2.1.11.RELEASE-sources.jar!/org/springframework/data/redis/serializer/RedisSerializer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="38" selection-start-line="38" selection-end-line="38" />
-              <folding>
-                <element signature="e#3207#3208#0" expanded="true" />
-                <element signature="e#3248#3249#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -183,8 +94,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
-        <option value="Class" />
         <option value="JUnit4 Test Class" />
+        <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -203,9 +115,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/core-service/src/main/java/com/sjtu/project/coreservice/domain/topology/Type.java" />
-        <option value="$PROJECT_DIR$/core-service/src/main/java/com/sjtu/project/coreservice/domain/topology/Topology.java" />
-        <option value="$PROJECT_DIR$/core-service/src/test/java/com/sjtu/project/coreservice/domain/topology/TopologyTest.java" />
         <option value="$PROJECT_DIR$/core-service/src/main/java/com/sjtu/project/coreservice/domain/Channel.java" />
         <option value="$PROJECT_DIR$/core-service/src/main/java/com/sjtu/project/coreservice/domain/OutputChannel.java" />
         <option value="$PROJECT_DIR$/core-service/src/main/java/com/sjtu/project/coreservice/domain/Message.java" />
@@ -215,7 +124,6 @@
         <option value="$PROJECT_DIR$/core-service/src/main/java/com/sjtu/project/coreservice/domain/Constants.java" />
         <option value="$PROJECT_DIR$/core-service/src/main/java/com/sjtu/project/coreservice/domain/ChannelService.java" />
         <option value="$PROJECT_DIR$/core-service/src/main/java/com/sjtu/project/coreservice/domain/InputChannel.java" />
-        <option value="$PROJECT_DIR$/core-service/src/main/java/com/sjtu/project/coreservice/domain/Topology.java" />
         <option value="$PROJECT_DIR$/core-service/src/main/java/com/sjtu/project/coreservice/config/WebSecurityConfigure.java" />
         <option value="$PROJECT_DIR$/service-management/pom.xml" />
         <option value="$PROJECT_DIR$/channel-service/pom.xml" />
@@ -245,15 +153,19 @@
         <option value="$PROJECT_DIR$/service-management/src/main/java/com/sjtu/project/servicemanagement/domain/ServiceDao.java" />
         <option value="$PROJECT_DIR$/datasource-service/src/main/java/com/sjtu/project/datasourceservice/DataSourceServiceApplication.java" />
         <option value="$PROJECT_DIR$/datasource-service/src/main/resources/bootstrap.yml" />
-        <option value="$PROJECT_DIR$/datasource-service/pom.xml" />
         <option value="$PROJECT_DIR$/swagger-spring-boot-starter/swagger-spring-boot-autoconfigure/pom.xml" />
         <option value="$PROJECT_DIR$/datasource-service/src/main/java/com/sjtu/project/datasourceservice/config/Test.java" />
         <option value="$PROJECT_DIR$/datasource-service/src/main/java/com/sjtu/project/datasourceservice/config/RedisConfigure.java" />
-        <option value="$PROJECT_DIR$/datasource-service/src/main/java/com/sjtu/project/datasourceservice/domain/DataSource.java" />
         <option value="$PROJECT_DIR$/datasource-service/src/test/java/com/sjtu/project/datasourceservice/config/RedisConfigureTest.java" />
         <option value="$PROJECT_DIR$/datasource-service/src/main/java/com/sjtu/project/datasourceservice/config/WebSecurityConfigure.java" />
-        <option value="$PROJECT_DIR$/datasource-service/src/test/java/com/sjtu/project/datasourceservice/DataSourceServiceApplicationTest.java" />
         <option value="$PROJECT_DIR$/common/src/main/java/com/sjtu/project/common/util/JsonUtil.java" />
+        <option value="$PROJECT_DIR$/core-service/src/main/java/com/sjtu/project/coreservice/domain/Topology.java" />
+        <option value="$PROJECT_DIR$/datasource-service/src/main/java/com/sjtu/project/datasourceservice/domain/InputChannel.java" />
+        <option value="$PROJECT_DIR$/datasource-service/src/main/java/com/sjtu/project/datasourceservice/domain/DataSource.java" />
+        <option value="$PROJECT_DIR$/datasource-service/src/main/java/com/sjtu/project/datasourceservice/domain/DataSourceDao.java" />
+        <option value="$PROJECT_DIR$/datasource-service/pom.xml" />
+        <option value="$PROJECT_DIR$/datasource-service/src/main/java/com/sjtu/project/datasourceservice/domain/Constants.java" />
+        <option value="$PROJECT_DIR$/datasource-service/src/test/java/com/sjtu/project/datasourceservice/DataSourceServiceApplicationTest.java" />
       </list>
     </option>
   </component>
@@ -269,11 +181,11 @@
       <expand>
         <path>
           <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
-          <item name="swagger-spring-boot-autoconfigure" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="datasource-service" type="9519ce18:MavenProjectsStructure$ProjectNode" />
         </path>
         <path>
           <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
-          <item name="swagger-spring-boot-autoconfigure" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="datasource-service" type="9519ce18:MavenProjectsStructure$ProjectNode" />
           <item name="Dependencies" type="f4be9f2a:MavenProjectsStructure$DependenciesNode" />
         </path>
       </expand>
@@ -304,47 +216,47 @@
             <path>
               <item name="graduation" type="b2602c69:ProjectViewProjectNode" />
               <item name="graduation" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
+              <item name="core-service" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="graduation" type="b2602c69:ProjectViewProjectNode" />
               <item name="graduation" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
+              <item name="core-service" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="graduation" type="b2602c69:ProjectViewProjectNode" />
               <item name="graduation" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="graduation" type="b2602c69:ProjectViewProjectNode" />
-              <item name="graduation" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
+              <item name="core-service" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="graduation" type="b2602c69:ProjectViewProjectNode" />
               <item name="graduation" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
+              <item name="core-service" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="graduation" type="b2602c69:ProjectViewProjectNode" />
               <item name="graduation" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
+              <item name="core-service" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
-              <item name="util" type="462c0819:PsiDirectoryNode" />
+              <item name="coreservice" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="graduation" type="b2602c69:ProjectViewProjectNode" />
+              <item name="graduation" type="462c0819:PsiDirectoryNode" />
+              <item name="core-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="coreservice" type="462c0819:PsiDirectoryNode" />
+              <item name="domain" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="graduation" type="b2602c69:ProjectViewProjectNode" />
@@ -427,49 +339,11 @@
             <path>
               <item name="graduation" type="b2602c69:ProjectViewProjectNode" />
               <item name="graduation" type="462c0819:PsiDirectoryNode" />
-              <item name="swagger-spring-boot-starter" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="graduation" type="b2602c69:ProjectViewProjectNode" />
-              <item name="graduation" type="462c0819:PsiDirectoryNode" />
-              <item name="swagger-spring-boot-starter" type="462c0819:PsiDirectoryNode" />
-              <item name="swagger-spring-boot-autoconfigure" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="graduation" type="b2602c69:ProjectViewProjectNode" />
-              <item name="graduation" type="462c0819:PsiDirectoryNode" />
-              <item name="swagger-spring-boot-starter" type="462c0819:PsiDirectoryNode" />
-              <item name="swagger-spring-boot-starter" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="graduation" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-            </path>
-            <path>
-              <item name="graduation" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="Maven: org.springframework.data:spring-data-redis:2.1.11.RELEASE" type="70bed36:NamedLibraryElementNode" />
-            </path>
-            <path>
-              <item name="graduation" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="Maven: org.springframework.data:spring-data-redis:2.1.11.RELEASE" type="70bed36:NamedLibraryElementNode" />
-              <item name="spring-data-redis-2.1.11.RELEASE.jar" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="graduation" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="Maven: org.springframework.data:spring-data-redis:2.1.11.RELEASE" type="70bed36:NamedLibraryElementNode" />
-              <item name="spring-data-redis-2.1.11.RELEASE.jar" type="462c0819:PsiDirectoryNode" />
-              <item name="redis" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="graduation" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="Maven: org.springframework.data:spring-data-redis:2.1.11.RELEASE" type="70bed36:NamedLibraryElementNode" />
-              <item name="spring-data-redis-2.1.11.RELEASE.jar" type="462c0819:PsiDirectoryNode" />
-              <item name="redis" type="462c0819:PsiDirectoryNode" />
-              <item name="serializer" type="462c0819:PsiDirectoryNode" />
+              <item name="datasource-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="datasourceservice" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -536,7 +410,23 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.DataSourceServiceApplicationTest.testRedisTemplate">
+  <component name="RunManager" selected="JUnit.DataSourceServiceApplicationTest.testKafka">
+    <configuration name="DataSourceServiceApplicationTest.testKafka" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="datasource-service" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.sjtu.project.datasourceservice.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.sjtu.project.datasourceservice" />
+      <option name="MAIN_CLASS_NAME" value="com.sjtu.project.datasourceservice.DataSourceServiceApplicationTest" />
+      <option name="METHOD_NAME" value="testKafka" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="DataSourceServiceApplicationTest.testRedisTemplate" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="datasource-service" />
       <extension name="coverage">
@@ -599,22 +489,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TopologyTest.testTopology" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="core-service" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.sjtu.project.coreservice.domain.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.sjtu.project.coreservice.domain" />
-      <option name="MAIN_CLASS_NAME" value="com.sjtu.project.coreservice.domain.TopologyTest" />
-      <option name="METHOD_NAME" value="testTopology" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="ConfigServerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="config-server" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.sjtu.project.configserver.ConfigServerApplication" />
@@ -669,7 +543,6 @@
     </configuration>
     <list>
       <item itemvalue="JUnit.TopologyTest" />
-      <item itemvalue="JUnit.TopologyTest.testTopology" />
       <item itemvalue="Spring Boot.ConfigServerApplication" />
       <item itemvalue="Spring Boot.ServiceManagement" />
       <item itemvalue="Spring Boot.CoreServiceApplication" />
@@ -680,14 +553,15 @@
       <item itemvalue="JUnit.RedisConfigureTest" />
       <item itemvalue="JUnit.RedisConfigureTest.testRedis" />
       <item itemvalue="JUnit.DataSourceServiceApplicationTest.testRedisTemplate" />
+      <item itemvalue="JUnit.DataSourceServiceApplicationTest.testKafka" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.DataSourceServiceApplicationTest.testKafka" />
         <item itemvalue="JUnit.DataSourceServiceApplicationTest.testRedisTemplate" />
         <item itemvalue="JUnit.RedisConfigureTest.testRedis" />
         <item itemvalue="JUnit.RedisConfigureTest" />
         <item itemvalue="JUnit.TopologyTest" />
-        <item itemvalue="JUnit.TopologyTest.testTopology" />
       </list>
     </recent_temporary>
   </component>
@@ -706,23 +580,11 @@
       <workItem from="1584076812724" duration="8828000" />
       <workItem from="1584250575396" duration="9153000" />
       <workItem from="1584339990298" duration="10724000" />
-      <workItem from="1584422091901" duration="10964000" />
+      <workItem from="1584422091901" duration="18167000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="TopologyTest_testIllegalTopology - 2020.03.13 at 16h 49m 22s.xml">
-      <configuration name="TopologyTest.testIllegalTopology" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TopologyTest_testTopology - 2020.03.13 at 16h 52m 51s.xml">
-      <configuration name="TopologyTest.testTopology" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TopologyTest - 2020.03.13 at 16h 55m 00s.xml">
-      <configuration name="TopologyTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TopologyTest - 2020.03.15 at 14h 00m 06s.xml">
-      <configuration name="TopologyTest" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="RedisConfigureTest - 2020.03.17 at 15h 58m 09s.xml">
       <configuration name="RedisConfigureTest" configurationId="JUnit" />
     </history-entry>
@@ -738,15 +600,30 @@
     <history-entry file="DataSourceServiceApplicationTest_testRedisTemplate - 2020.03.17 at 16h 14m 10s.xml">
       <configuration name="DataSourceServiceApplicationTest.testRedisTemplate" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="DataSourceServiceApplicationTest_testKafka - 2020.03.18 at 20h 41m 18s.xml">
+      <configuration name="DataSourceServiceApplicationTest.testKafka" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DataSourceServiceApplicationTest_testKafka - 2020.03.18 at 20h 45m 26s.xml">
+      <configuration name="DataSourceServiceApplicationTest.testKafka" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DataSourceServiceApplicationTest_testKafka - 2020.03.18 at 20h 48m 04s.xml">
+      <configuration name="DataSourceServiceApplicationTest.testKafka" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DataSourceServiceApplicationTest_testKafka - 2020.03.18 at 20h 50m 23s.xml">
+      <configuration name="DataSourceServiceApplicationTest.testKafka" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DataSourceServiceApplicationTest_testKafka - 2020.03.18 at 20h 51m 30s.xml">
+      <configuration name="DataSourceServiceApplicationTest.testKafka" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="48867000" />
+    <option name="totallyTimeSpent" value="56070000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
+    <frame x="-8" y="-8" width="1616" height="876" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4989899" visible="true" weight="0.2966538" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4989899" visible="true" weight="0.22715573" />
       <window_info id="Structure" order="1" sideWeight="0.5010101" side_tool="true" weight="0.40669242" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -756,7 +633,7 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3292683" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.4688347" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.41192412" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.49864498" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -785,41 +662,43 @@
       <window_info anchor="right" id="Bean Validation" order="11" weight="0.32947233" />
     </layout>
     <layout-to-restore>
-      <window_info id="Web" order="0" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.24979724" />
-      <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
-      <window_info id="Designer" order="3" />
-      <window_info id="Image Layers" order="4" />
-      <window_info id="Capture Tool" order="5" />
-      <window_info id="UI Designer" order="6" />
-      <window_info id="Favorites" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Spring" order="0" />
-      <window_info anchor="bottom" id="Java Enterprise" order="1" />
-      <window_info anchor="bottom" id="Message" order="2" />
-      <window_info anchor="bottom" id="Find" order="3" />
-      <window_info anchor="bottom" id="Run" order="4" />
-      <window_info anchor="bottom" id="Debug" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="6" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="7" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="8" />
-      <window_info anchor="bottom" id="SBT Console" order="9" />
-      <window_info anchor="bottom" id="Terminal" order="10" weight="0.32616487" />
-      <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" />
-      <window_info anchor="bottom" id="Database Changes" order="13" />
-      <window_info anchor="bottom" id="Version Control" order="14" />
-      <window_info anchor="right" id="Bean Validation" order="0" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4989899" visible="true" weight="0.35971686" />
+      <window_info id="Structure" order="1" sideWeight="0.5010101" side_tool="true" weight="0.40669242" />
+      <window_info id="Designer" order="2" />
+      <window_info id="Image Layers" order="3" />
+      <window_info id="Capture Tool" order="4" />
+      <window_info id="UI Designer" order="5" />
+      <window_info id="Favorites" order="6" sideWeight="0.5010101" side_tool="true" weight="0.27348778" />
+      <window_info id="Web" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3292683" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.4688347" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.49864498" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="SBT Console" order="7" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.31707317" />
+      <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Database Changes" order="11" />
+      <window_info anchor="bottom" id="Version Control" order="12" weight="0.3292683" />
+      <window_info anchor="bottom" id="Spring" order="13" />
+      <window_info anchor="bottom" id="Java Enterprise" order="14" />
+      <window_info anchor="bottom" id="Messages" order="15" weight="0.3292683" />
+      <window_info anchor="right" x="92" y="92" width="1416" height="676" id="DSM" order="0" type="FLOATING" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="1" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
-      <window_info anchor="right" id="Maven" order="4" />
+      <window_info anchor="right" id="Maven" order="4" weight="0.32947233" />
       <window_info anchor="right" id="Palette" order="5" />
       <window_info anchor="right" id="Capture Analysis" order="6" />
-      <window_info anchor="right" id="Mongo Explorer" order="7" />
+      <window_info anchor="right" id="Mongo Explorer" order="7" weight="0.32882884" />
       <window_info anchor="right" id="SciView" order="8" />
-      <window_info anchor="right" id="Database" order="9" />
+      <window_info anchor="right" id="Database" order="9" weight="0.32947233" />
       <window_info anchor="right" id="Palette&#9;" order="10" />
       <window_info anchor="right" id="Theme Preview" order="11" />
+      <window_info anchor="right" id="Bean Validation" order="12" weight="0.32947233" />
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -866,110 +745,6 @@
     </option>
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-autoconfigure/2.1.9.RELEASE/spring-boot-autoconfigure-2.1.9.RELEASE-sources.jar!/org/springframework/boot/autoconfigure/data/redis/JedisConnectionConfiguration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="47" column="6" selection-start-line="47" selection-start-column="6" selection-end-line="47" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/io/lettuce/lettuce-core/5.1.8.RELEASE/lettuce-core-5.1.8.RELEASE.jar!/io/lettuce/core/RedisClient.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="36" column="13" selection-start-line="36" selection-start-column="13" selection-end-line="36" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/io/lettuce/lettuce-core/5.1.8.RELEASE/lettuce-core-5.1.8.RELEASE-sources.jar!/io/lettuce/core/RedisClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-179">
-          <caret line="78" column="13" selection-start-line="78" selection-start-column="13" selection-end-line="78" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-autoconfigure/2.1.9.RELEASE/spring-boot-autoconfigure-2.1.9.RELEASE-sources.jar!/org/springframework/boot/autoconfigure/condition/ConditionalOnClass.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="421">
-          <caret line="42" column="18" selection-start-line="42" selection-start-column="18" selection-end-line="42" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-starter-data-redis/2.1.9.RELEASE/spring-boot-starter-data-redis-2.1.9.RELEASE.jar!/META-INF/MANIFEST.MF">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="8" selection-start-line="8" selection-end-line="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-autoconfigure/2.1.9.RELEASE/spring-boot-autoconfigure-2.1.9.RELEASE.jar!/META-INF/spring.factories">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2483" />
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-redis/2.1.11.RELEASE/spring-data-redis-2.1.11.RELEASE-sources.jar!/org/springframework/data/redis/core/RedisOperations.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="41" column="17" selection-start-line="41" selection-start-column="17" selection-end-line="41" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/datasource-service/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="29" column="43" selection-start-line="29" selection-start-column="43" selection-end-line="29" selection-end-column="43" />
-        </state>
-      </provider>
-      <provider editor-type-id="MavenHelperPluginDependencyAnalyzer" />
-    </entry>
-    <entry file="file://$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-starter-data-redis/2.1.9.RELEASE/spring-boot-starter-data-redis-2.1.9.RELEASE.pom">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="217">
-          <caret line="47" column="19" selection-start-line="47" selection-start-column="19" selection-end-line="47" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/swagger-spring-boot-starter/pom.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-      <provider editor-type-id="MavenHelperPluginDependencyAnalyzer" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/swagger-spring-boot-starter/swagger-spring-boot-starter/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="419">
-          <caret line="27" column="26" selection-start-line="27" selection-start-column="26" selection-end-line="27" selection-end-column="26" />
-        </state>
-      </provider>
-      <provider editor-type-id="MavenHelperPluginDependencyAnalyzer" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
-          <caret line="21" selection-start-line="21" selection-end-line="21" />
-        </state>
-      </provider>
-      <provider editor-type-id="MavenHelperPluginDependencyAnalyzer" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/swagger-spring-boot-starter/swagger-spring-boot-autoconfigure/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="47" column="10" selection-start-line="47" selection-start-column="10" selection-end-line="47" selection-end-column="10" />
-        </state>
-      </provider>
-      <provider editor-type-id="MavenHelperPluginDependencyAnalyzer" />
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-autoconfigure/2.1.9.RELEASE/spring-boot-autoconfigure-2.1.9.RELEASE-sources.jar!/org/springframework/boot/autoconfigure/data/redis/RedisRepositoriesAutoConfiguration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="263">
-          <caret line="47" column="13" selection-start-line="47" selection-start-column="13" selection-end-line="47" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-autoconfigure/2.1.9.RELEASE/spring-boot-autoconfigure-2.1.9.RELEASE-sources.jar!/org/springframework/boot/autoconfigure/data/redis/LettuceClientConfigurationBuilderCustomizer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="143">
-          <caret line="31" column="17" selection-start-line="31" selection-start-column="17" selection-end-line="31" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot/2.1.9.RELEASE/spring-boot-2.1.9.RELEASE.jar!/org/springframework/boot/context/properties/ConfigurationProperties.class">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -1182,16 +957,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/datasource-service/src/main/java/com/sjtu/project/datasourceservice/domain/DataSource.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="8" selection-start-line="8" selection-end-line="8" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-test/2.1.9.RELEASE/spring-boot-test-2.1.9.RELEASE.jar!/org/springframework/boot/test/context/SpringBootTest.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="140">
@@ -1251,20 +1016,150 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/datasource-service/src/test/java/com/sjtu/project/datasourceservice/DataSourceServiceApplicationTest.java">
+    <entry file="file://$PROJECT_DIR$/common/src/main/java/com/sjtu/project/common/util/JsonUtil.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="23" column="105" selection-start-line="23" selection-start-column="105" selection-end-line="23" selection-end-column="105" />
+        <state relative-caret-position="220">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/common/src/main/java/com/sjtu/project/common/util/JsonUtil.java">
+    <entry file="file://$PROJECT_DIR$/core-service/src/main/java/com/sjtu/project/coreservice/domain/Topology.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="12" selection-start-line="12" selection-end-line="12" />
+        <state relative-caret-position="66">
+          <caret line="14" column="65" selection-start-line="14" selection-start-column="65" selection-end-line="14" selection-end-column="65" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/datasource-service/src/main/java/com/sjtu/project/datasourceservice/domain/DataSource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="22" selection-start-line="22" selection-end-line="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/datasource-service/src/main/java/com/sjtu/project/datasourceservice/domain/InputChannel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/kafka/spring-kafka/2.1.2.RELEASE/spring-kafka-2.1.2.RELEASE.jar!/org/springframework/kafka/support/ProducerListener.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/kafka/spring-kafka/2.1.2.RELEASE/spring-kafka-2.1.2.RELEASE.jar!/org/springframework/kafka/core/KafkaTemplate.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="34" column="13" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-autoconfigure/2.1.9.RELEASE/spring-boot-autoconfigure-2.1.9.RELEASE-sources.jar!/org/springframework/boot/autoconfigure/kafka/KafkaProperties.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="719" column="8" selection-start-line="719" selection-start-column="8" selection-end-line="719" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/kafka/spring-kafka/2.1.2.RELEASE/spring-kafka-2.1.2.RELEASE-sources.jar!/org/springframework/kafka/core/KafkaTemplate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="58" column="13" selection-start-line="58" selection-start-column="13" selection-end-line="58" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-autoconfigure/2.1.9.RELEASE/spring-boot-autoconfigure-2.1.9.RELEASE-sources.jar!/org/springframework/boot/autoconfigure/kafka/KafkaAutoConfiguration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="68" column="20" selection-start-line="68" selection-start-column="20" selection-end-line="68" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/kafka/kafka-clients/2.0.1/kafka-clients-2.0.1.jar!/org/apache/kafka/clients/consumer/KafkaConsumer.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="237">
+          <caret line="346" column="33" selection-start-line="346" selection-start-column="33" selection-end-line="346" selection-end-column="33" />
+          <folding>
+            <element signature="e#17465#17466#0" expanded="true" />
+            <element signature="e#17513#17514#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/kafka/kafka-clients/2.0.1/kafka-clients-2.0.1-sources.jar!/org/apache/kafka/clients/consumer/KafkaConsumer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="277">
+          <caret line="1152" column="48" selection-start-line="1152" selection-start-column="48" selection-end-line="1152" selection-end-column="48" />
+          <folding>
+            <element signature="e#69448#69449#0" expanded="true" />
+            <element signature="e#69501#69502#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_171/src.zip!/java/time/Duration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1263">
+          <caret line="132" column="19" selection-start-line="132" selection-start-column="19" selection-end-line="132" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/datasource-service/src/main/java/com/sjtu/project/datasourceservice/domain/DataSourceDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/datasource-service/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="40" column="20" selection-start-line="40" selection-start-column="20" selection-end-line="40" selection-end-column="20" />
+        </state>
+      </provider>
+      <provider editor-type-id="MavenHelperPluginDependencyAnalyzer" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core-service/src/main/java/com/sjtu/project/coreservice/domain/Constants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/datasource-service/src/main/java/com/sjtu/project/datasourceservice/domain/Constants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/kafka/kafka-clients/2.0.1/kafka-clients-2.0.1-sources.jar!/org/apache/kafka/clients/producer/KafkaProducer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1065">
+          <caret line="799" column="34" selection-start-line="799" selection-start-column="34" selection-end-line="799" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/datasource-service/src/test/java/com/sjtu/project/datasourceservice/DataSourceServiceApplicationTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="960">
+          <caret line="58" column="62" selection-start-line="58" selection-start-column="62" selection-end-line="58" selection-end-column="62" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

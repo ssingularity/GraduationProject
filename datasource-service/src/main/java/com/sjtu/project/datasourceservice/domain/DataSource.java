@@ -1,10 +1,23 @@
 package com.sjtu.project.datasourceservice.domain;
 
+import com.sjtu.project.common.domain.Descriptor;
 import lombok.Data;
-import org.springframework.stereotype.Service;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+import java.util.List;
 
 @Data
-@Service
+@Document
 public class DataSource {
-    String id = "a";
+    @Id
+    String id;
+
+    String name;
+
+    String topic;
+
+    String description;
+
+    List<Descriptor> dataDescriptor;
 }
