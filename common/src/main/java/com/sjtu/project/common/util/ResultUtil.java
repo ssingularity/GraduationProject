@@ -7,8 +7,6 @@ import com.sjtu.project.common.response.ResultCode;
 import static com.sjtu.project.common.response.ResultCode.SUCCESS;
 
 public class ResultUtil {
-    public static String SPLITTER = "%";
-
     public static <T> Result<T> success(T data) {
         Result<T> result = new Result<T>();
         result.setData(data);
@@ -26,7 +24,7 @@ public class ResultUtil {
     }
 
     public static <T> Result<T> failure(String message, int code) {
-        Result<T> result = new Result<T>();
+        Result<T> result = new Result<>();
         result.setMessage(message);
         result.setCode(code);
         return result;
