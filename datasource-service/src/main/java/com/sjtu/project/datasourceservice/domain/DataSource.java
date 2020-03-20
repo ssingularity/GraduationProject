@@ -9,6 +9,7 @@ import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.redis.core.StringRedisTemplate;
 
 import java.time.Duration;
 import java.util.Collections;
@@ -36,7 +37,8 @@ public class DataSource {
     }
 
     public void registerChannel(InputChannel inputChannel) {
-
+        StringRedisTemplate redisTemplate = Constants.ctx.getBean(StringRedisTemplate.class);
+        redisTemplate.boundSetOps(id).add(inputChannel.id);
     }
 
     public void startWithListener(DataSourceListener listener) {

@@ -16,17 +16,17 @@ public class DataSourceController {
     @Autowired
     DataSourceDao dataSourceDao;
 
-    @GetMapping("DataSource")
+    @GetMapping("datasource")
     public Result<List<DataSource>> getAll() {
         return ResultUtil.success(dataSourceDao.findAllByVisibleIsTrue());
     }
 
-    @PostMapping("DataSource")
+    @PostMapping("datasource")
     public Result<DataSource> addDataSource(@RequestBody DataSource dataSource) {
         return ResultUtil.success(dataSourceDao.save(DataSourceFactory.create(dataSource)));
     }
 
-    @PostMapping("DataSource/{id}/Channel")
+    @PostMapping("datasource/{id}/channel")
     public Result registerChannel(@PathVariable(name = "id") String id, @RequestBody InputChannel channel) {
         DataSource ds = dataSourceDao.queryById(id);
         ds.registerChannel(channel);
