@@ -2,14 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="136b1ed8-7442-44cf-8689-14a2cc4ba95c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/channel-service/src/main/java/com/sjtu/project/channelservice/ChannelServiceApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/channel-service/src/main/java/com/sjtu/project/channelservice/adapter/Controller.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/channel-service/src/main/java/com/sjtu/project/channelservice/config/WebSecurityConfigure.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/channel-service/src/main/resources/bootstrap.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/src/main/java/com/sjtu/project/common/domain/Message.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/datasource-service/src/main/java/com/sjtu/project/datasourceservice/domain/ChannelService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/channel-service/src/main/java/com/sjtu/project/channelservice/daoImpl/InputChannelDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/channel-service/src/main/java/com/sjtu/project/channelservice/domain/CustomInputChannelDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/channel-service/src/main/java/com/sjtu/project/channelservice/domain/FusionRule.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/channel-service/src/main/java/com/sjtu/project/channelservice/domain/InputChannel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/channel-service/src/main/java/com/sjtu/project/channelservice/domain/InputChannelDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/channel-service/src/main/java/com/sjtu/project/channelservice/domain/OutputChannel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/channel-service/src/main/java/com/sjtu/project/channelservice/domain/TransformRule.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/datasource-service/src/main/java/com/sjtu/project/datasourceservice/adapter/DataSourceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/datasource-service/src/main/java/com/sjtu/project/datasourceservice/adapter/DataSourceController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/channel-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/channel-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/channel-service/src/main/java/com/sjtu/project/channelservice/adapter/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/channel-service/src/main/java/com/sjtu/project/channelservice/adapter/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/com/sjtu/project/common/util/JsonUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/sjtu/project/common/util/JsonUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datasource-service/src/main/java/com/sjtu/project/datasourceservice/domain/ChannelService.java" beforeDir="false" afterPath="$PROJECT_DIR$/datasource-service/src/main/java/com/sjtu/project/datasourceservice/domain/ChannelService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datasource-service/src/main/java/com/sjtu/project/datasourceservice/domain/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/datasource-service/src/main/java/com/sjtu/project/datasourceservice/domain/Constants.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/datasource-service/src/main/java/com/sjtu/project/datasourceservice/domain/DataSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/datasource-service/src/main/java/com/sjtu/project/datasourceservice/domain/DataSource.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/datasource-service/src/main/java/com/sjtu/project/datasourceservice/listenerImpl/DataSourceListenerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/datasource-service/src/main/java/com/sjtu/project/datasourceservice/listenerImpl/DataSourceListenerImpl.java" afterDir="false" />
     </list>
@@ -59,10 +64,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/channel-service/src/main/java/com/sjtu/project/channelservice/adapter/Controller.java">
+        <entry file="file://$PROJECT_DIR$/datasource-service/src/main/java/com/sjtu/project/datasourceservice/listenerImpl/DataSourceListenerImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="320">
-              <caret line="16" selection-start-line="16" selection-end-line="16" />
+            <state relative-caret-position="302">
+              <caret line="27" column="36" selection-start-line="27" selection-start-column="36" selection-end-line="27" selection-end-column="36" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -70,22 +75,9 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core-service/src/main/java/com/sjtu/project/coreservice/config/WebSecurityConfigure.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-100">
-              <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/channel-service/src/main/java/com/sjtu/project/channelservice/config/WebSecurityConfigure.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="21" column="36" selection-start-line="21" selection-start-column="36" selection-end-line="21" selection-end-column="36" />
-            </state>
-          </provider>
+        <entry file="mongo://Graduation/graduation/inputChannel">
+          <provider selected="true" editor-type-id="MongoData" />
         </entry>
       </file>
     </leaf>
@@ -115,13 +107,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/core-service/src/main/java/com/sjtu/project/coreservice/domain/topology/DataSourceNode.java" />
-        <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/core-service/src/main/java/com/sjtu/project/coreservice/domain/DataSourceService.java" />
-        <option value="$PROJECT_DIR$/core-service/src/main/java/com/sjtu/project/coreservice/domain/ServiceManagement.java" />
-        <option value="$PROJECT_DIR$/core-service/src/main/java/com/sjtu/project/coreservice/domain/topology/ServiceNode.java" />
-        <option value="$PROJECT_DIR$/service-management/src/main/java/com/sjtu/project/servicemanagement/domain/DataSource.java" />
-        <option value="$PROJECT_DIR$/common/src/main/java/com/sjtu/project/common/domain/Descriptor.java" />
         <option value="$PROJECT_DIR$/service-management/src/main/java/com/sjtu/project/servicemanagement/domain/ServiceFactory.java" />
         <option value="$PROJECT_DIR$/service-management/src/main/java/com/sjtu/project/servicemanagement/domain/Service.java" />
         <option value="$PROJECT_DIR$/common/src/main/java/com/sjtu/project/common/domain/Type.java" />
@@ -138,10 +123,8 @@
         <option value="$PROJECT_DIR$/datasource-service/src/main/java/com/sjtu/project/datasourceservice/config/RedisConfigure.java" />
         <option value="$PROJECT_DIR$/datasource-service/src/test/java/com/sjtu/project/datasourceservice/config/RedisConfigureTest.java" />
         <option value="$PROJECT_DIR$/datasource-service/src/main/java/com/sjtu/project/datasourceservice/config/WebSecurityConfigure.java" />
-        <option value="$PROJECT_DIR$/common/src/main/java/com/sjtu/project/common/util/JsonUtil.java" />
         <option value="$PROJECT_DIR$/core-service/src/main/java/com/sjtu/project/coreservice/domain/Topology.java" />
         <option value="$PROJECT_DIR$/datasource-service/src/main/java/com/sjtu/project/datasourceservice/domain/InputChannel.java" />
-        <option value="$PROJECT_DIR$/datasource-service/src/main/java/com/sjtu/project/datasourceservice/domain/Constants.java" />
         <option value="$PROJECT_DIR$/datasource-service/src/test/java/com/sjtu/project/datasourceservice/DataSourceServiceApplicationTest.java" />
         <option value="$PROJECT_DIR$/common/src/main/java/com/sjtu/project/common/util/ResultUtil.java" />
         <option value="$PROJECT_DIR$/datasource-service/src/main/java/com/sjtu/project/datasourceservice/domain/CustomDataSourceDao.java" />
@@ -153,19 +136,28 @@
         <option value="$PROJECT_DIR$/datasource-service/src/main/java/com/sjtu/project/datasourceservice/scheduler/WakeUpDeadDataSource.java" />
         <option value="$PROJECT_DIR$/datasource-service/src/main/java/com/sjtu/project/datasourceservice/domain/DataSourceFactory.java" />
         <option value="$PROJECT_DIR$/datasource-service/src/main/java/com/sjtu/project/datasourceservice/adapter/DataSourceController.java" />
-        <option value="$PROJECT_DIR$/datasource-service/src/main/java/com/sjtu/project/datasourceservice/domain/DataSource.java" />
         <option value="$PROJECT_DIR$/common/src/main/java/com/sjtu/project/common/domain/Message.java" />
-        <option value="$PROJECT_DIR$/datasource-service/src/main/java/com/sjtu/project/datasourceservice/listenerImpl/DataSourceListenerImpl.java" />
         <option value="$PROJECT_DIR$/common/src/main/java/com/sjtu/project/common/domain/ChannelService.java" />
         <option value="$PROJECT_DIR$/datasource-service/pom.xml" />
         <option value="$PROJECT_DIR$/common/pom.xml" />
         <option value="$PROJECT_DIR$/common/src/main/java/com/sjtu/project/common/annotation/GraduationApplication.java" />
         <option value="$PROJECT_DIR$/datasource-service/src/main/java/com/sjtu/project/datasourceservice/DataSourceServiceApplication.java" />
-        <option value="$PROJECT_DIR$/datasource-service/src/main/java/com/sjtu/project/datasourceservice/domain/ChannelService.java" />
         <option value="$PROJECT_DIR$/channel-service/src/main/java/com/sjtu/project/channelservice/ChannelServiceApplication.java" />
         <option value="$PROJECT_DIR$/channel-service/src/main/resources/bootstrap.yml" />
-        <option value="$PROJECT_DIR$/channel-service/src/main/java/com/sjtu/project/channelservice/adapter/Controller.java" />
         <option value="$PROJECT_DIR$/channel-service/src/main/java/com/sjtu/project/channelservice/config/WebSecurityConfigure.java" />
+        <option value="$PROJECT_DIR$/datasource-service/src/main/java/com/sjtu/project/datasourceservice/domain/Constants.java" />
+        <option value="$PROJECT_DIR$/datasource-service/src/main/java/com/sjtu/project/datasourceservice/domain/DataSource.java" />
+        <option value="$PROJECT_DIR$/channel-service/src/main/java/com/sjtu/project/channelservice/domain/FusionRule.java" />
+        <option value="$PROJECT_DIR$/channel-service/src/main/java/com/sjtu/project/channelservice/domain/TransformRule.java" />
+        <option value="$PROJECT_DIR$/channel-service/src/main/java/com/sjtu/project/channelservice/domain/CustomInputChannelDao.java" />
+        <option value="$PROJECT_DIR$/channel-service/src/main/java/com/sjtu/project/channelservice/domain/InputChannelDao.java" />
+        <option value="$PROJECT_DIR$/channel-service/src/main/java/com/sjtu/project/channelservice/daoImpl/InputChannelDaoImpl.java" />
+        <option value="$PROJECT_DIR$/channel-service/pom.xml" />
+        <option value="$PROJECT_DIR$/channel-service/src/main/java/com/sjtu/project/channelservice/domain/InputChannel.java" />
+        <option value="$PROJECT_DIR$/common/src/main/java/com/sjtu/project/common/util/JsonUtil.java" />
+        <option value="$PROJECT_DIR$/datasource-service/src/main/java/com/sjtu/project/datasourceservice/domain/ChannelService.java" />
+        <option value="$PROJECT_DIR$/datasource-service/src/main/java/com/sjtu/project/datasourceservice/listenerImpl/DataSourceListenerImpl.java" />
+        <option value="$PROJECT_DIR$/channel-service/src/main/java/com/sjtu/project/channelservice/adapter/Controller.java" />
       </list>
     </option>
   </component>
@@ -192,7 +184,7 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1616" />
@@ -216,125 +208,6 @@
             <path>
               <item name="graduation" type="b2602c69:ProjectViewProjectNode" />
               <item name="graduation" type="462c0819:PsiDirectoryNode" />
-              <item name="channel-service" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="graduation" type="b2602c69:ProjectViewProjectNode" />
-              <item name="graduation" type="462c0819:PsiDirectoryNode" />
-              <item name="channel-service" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="graduation" type="b2602c69:ProjectViewProjectNode" />
-              <item name="graduation" type="462c0819:PsiDirectoryNode" />
-              <item name="channel-service" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="graduation" type="b2602c69:ProjectViewProjectNode" />
-              <item name="graduation" type="462c0819:PsiDirectoryNode" />
-              <item name="channel-service" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="graduation" type="b2602c69:ProjectViewProjectNode" />
-              <item name="graduation" type="462c0819:PsiDirectoryNode" />
-              <item name="channel-service" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="channelservice" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="graduation" type="b2602c69:ProjectViewProjectNode" />
-              <item name="graduation" type="462c0819:PsiDirectoryNode" />
-              <item name="channel-service" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="channelservice" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="graduation" type="b2602c69:ProjectViewProjectNode" />
-              <item name="graduation" type="462c0819:PsiDirectoryNode" />
-              <item name="channel-service" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="graduation" type="b2602c69:ProjectViewProjectNode" />
-              <item name="graduation" type="462c0819:PsiDirectoryNode" />
-              <item name="core-service" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="graduation" type="b2602c69:ProjectViewProjectNode" />
-              <item name="graduation" type="462c0819:PsiDirectoryNode" />
-              <item name="core-service" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="graduation" type="b2602c69:ProjectViewProjectNode" />
-              <item name="graduation" type="462c0819:PsiDirectoryNode" />
-              <item name="core-service" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="graduation" type="b2602c69:ProjectViewProjectNode" />
-              <item name="graduation" type="462c0819:PsiDirectoryNode" />
-              <item name="core-service" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="graduation" type="b2602c69:ProjectViewProjectNode" />
-              <item name="graduation" type="462c0819:PsiDirectoryNode" />
-              <item name="core-service" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="coreservice" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="graduation" type="b2602c69:ProjectViewProjectNode" />
-              <item name="graduation" type="462c0819:PsiDirectoryNode" />
-              <item name="core-service" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="coreservice" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="graduation" type="b2602c69:ProjectViewProjectNode" />
-              <item name="graduation" type="462c0819:PsiDirectoryNode" />
-              <item name="core-service" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="coreservice" type="462c0819:PsiDirectoryNode" />
-              <item name="domain" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="graduation" type="b2602c69:ProjectViewProjectNode" />
-              <item name="graduation" type="462c0819:PsiDirectoryNode" />
-              <item name="core-service" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="coreservice" type="462c0819:PsiDirectoryNode" />
-              <item name="domain" type="462c0819:PsiDirectoryNode" />
-              <item name="topology" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="graduation" type="b2602c69:ProjectViewProjectNode" />
-              <item name="graduation" type="462c0819:PsiDirectoryNode" />
               <item name="datasource-service" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -366,26 +239,6 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="datasourceservice" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="graduation" type="b2602c69:ProjectViewProjectNode" />
-              <item name="graduation" type="462c0819:PsiDirectoryNode" />
-              <item name="datasource-service" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="datasourceservice" type="462c0819:PsiDirectoryNode" />
-              <item name="adapter" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="graduation" type="b2602c69:ProjectViewProjectNode" />
-              <item name="graduation" type="462c0819:PsiDirectoryNode" />
-              <item name="datasource-service" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="datasourceservice" type="462c0819:PsiDirectoryNode" />
-              <item name="domain" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="graduation" type="b2602c69:ProjectViewProjectNode" />
@@ -396,38 +249,6 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="datasourceservice" type="462c0819:PsiDirectoryNode" />
               <item name="listenerImpl" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="graduation" type="b2602c69:ProjectViewProjectNode" />
-              <item name="graduation" type="462c0819:PsiDirectoryNode" />
-              <item name="datasource-service" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="graduation" type="b2602c69:ProjectViewProjectNode" />
-              <item name="graduation" type="462c0819:PsiDirectoryNode" />
-              <item name="datasource-service" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="graduation" type="b2602c69:ProjectViewProjectNode" />
-              <item name="graduation" type="462c0819:PsiDirectoryNode" />
-              <item name="datasource-service" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="graduation" type="b2602c69:ProjectViewProjectNode" />
-              <item name="graduation" type="462c0819:PsiDirectoryNode" />
-              <item name="datasource-service" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="datasourceservice" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -494,7 +315,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.ChannelServiceApplication">
+  <component name="RunManager" selected="Spring Boot.DataSourceServiceApplication">
     <configuration name="DataSourceServiceApplicationTest.testKafka" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="datasource-service" />
       <extension name="coverage">
@@ -588,7 +409,6 @@
     <configuration name="DataSourceServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="datasource-service" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.sjtu.project.datasourceservice.DataSourceServiceApplication" />
-      <option name="DEBUG_MODE" value="true" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -624,6 +444,10 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="JUnit.RedisConfigureTest" />
+      <item itemvalue="JUnit.RedisConfigureTest.testRedis" />
+      <item itemvalue="JUnit.DataSourceServiceApplicationTest.testRedisTemplate" />
+      <item itemvalue="JUnit.DataSourceServiceApplicationTest.testKafka" />
       <item itemvalue="Spring Boot.ConfigServerApplication" />
       <item itemvalue="Spring Boot.ServiceManagement" />
       <item itemvalue="Spring Boot.CoreServiceApplication" />
@@ -631,10 +455,6 @@
       <item itemvalue="Spring Boot.RegisterServerApplication" />
       <item itemvalue="Spring Boot.UserServiceApplication" />
       <item itemvalue="Spring Boot.DataSourceServiceApplication" />
-      <item itemvalue="JUnit.RedisConfigureTest" />
-      <item itemvalue="JUnit.RedisConfigureTest.testRedis" />
-      <item itemvalue="JUnit.DataSourceServiceApplicationTest.testRedisTemplate" />
-      <item itemvalue="JUnit.DataSourceServiceApplicationTest.testKafka" />
       <item itemvalue="Spring Boot.ChannelServiceApplication" />
     </list>
     <recent_temporary>
@@ -662,7 +482,7 @@
       <workItem from="1584076812724" duration="8828000" />
       <workItem from="1584250575396" duration="9153000" />
       <workItem from="1584339990298" duration="10724000" />
-      <workItem from="1584422091901" duration="30010000" />
+      <workItem from="1584422091901" duration="37502000" />
     </task>
     <servers />
   </component>
@@ -699,13 +519,13 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="67913000" />
+    <option name="totallyTimeSpent" value="75405000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4989899" visible="true" weight="0.22715573" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4989899" visible="true" weight="0.22715573" />
       <window_info id="Structure" order="1" sideWeight="0.5010101" side_tool="true" weight="0.40669242" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -715,46 +535,7 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3292683" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.38346884" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.49864498" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="SBT Console" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.31707317" />
-      <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Database Changes" order="11" />
-      <window_info anchor="bottom" id="Version Control" order="12" weight="0.3292683" />
-      <window_info anchor="bottom" id="Spring" order="13" />
-      <window_info anchor="bottom" id="Java Enterprise" order="14" />
-      <window_info anchor="bottom" id="Messages" order="15" weight="0.3292683" />
-      <window_info anchor="right" x="92" y="92" width="1416" height="676" id="DSM" type="FLOATING" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Maven" order="3" weight="0.32947233" />
-      <window_info anchor="right" id="Palette" order="4" />
-      <window_info anchor="right" id="Capture Analysis" order="5" />
-      <window_info anchor="right" id="Mongo Explorer" order="6" weight="0.32882884" />
-      <window_info anchor="right" id="SciView" order="7" />
-      <window_info anchor="right" id="Database" order="8" weight="0.32947233" />
-      <window_info anchor="right" id="Palette&#9;" order="9" />
-      <window_info anchor="right" id="Theme Preview" order="10" />
-      <window_info anchor="right" id="Bean Validation" order="11" weight="0.32947233" />
-    </layout>
-    <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4989899" visible="true" weight="0.35971686" />
-      <window_info id="Structure" order="1" sideWeight="0.5010101" side_tool="true" weight="0.40669242" />
-      <window_info id="Designer" order="2" />
-      <window_info id="Image Layers" order="3" />
-      <window_info id="Capture Tool" order="4" />
-      <window_info id="UI Designer" order="5" />
-      <window_info id="Favorites" order="6" sideWeight="0.5010101" side_tool="true" weight="0.27348778" />
-      <window_info id="Web" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.3292683" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.4688347" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3306233" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.49864498" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -781,7 +562,7 @@
       <window_info anchor="right" id="Palette&#9;" order="10" />
       <window_info anchor="right" id="Theme Preview" order="11" />
       <window_info anchor="right" id="Bean Validation" order="12" weight="0.32947233" />
-    </layout-to-restore>
+    </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -827,131 +608,6 @@
     </option>
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-redis/2.1.11.RELEASE/spring-data-redis-2.1.11.RELEASE-sources.jar!/org/springframework/data/redis/serializer/StringRedisSerializer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
-          <caret line="35" column="13" selection-start-line="35" selection-start-column="13" selection-end-line="35" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-redis/2.1.11.RELEASE/spring-data-redis-2.1.11.RELEASE-sources.jar!/org/springframework/data/redis/serializer/RedisSerializer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="38" selection-start-line="38" selection-end-line="38" />
-          <folding>
-            <element signature="e#3207#3208#0" expanded="true" />
-            <element signature="e#3248#3249#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-redis/2.1.11.RELEASE/spring-data-redis-2.1.11.RELEASE-sources.jar!/org/springframework/data/redis/core/RedisTemplate.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="248">
-          <caret line="87" selection-start-line="87" selection-end-line="87" />
-          <folding>
-            <element signature="e#17494#17495#0" expanded="true" />
-            <element signature="e#17536#17537#0" expanded="true" />
-            <element signature="e#20107#20108#0" expanded="true" />
-            <element signature="e#20154#20155#0" expanded="true" />
-            <element signature="e#37897#37898#0" expanded="true" />
-            <element signature="e#37921#37922#0" expanded="true" />
-            <element signature="e#38075#38076#0" expanded="true" />
-            <element signature="e#38095#38096#0" expanded="true" />
-            <element signature="e#38279#38280#0" expanded="true" />
-            <element signature="e#38335#38336#0" expanded="true" />
-            <element signature="e#38989#38990#0" expanded="true" />
-            <element signature="e#39009#39010#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-test/2.1.9.RELEASE/spring-boot-test-2.1.9.RELEASE.jar!/org/springframework/boot/test/context/SpringBootTest.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="24" column="18" selection-start-line="24" selection-start-column="18" selection-end-line="24" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-autoconfigure/2.1.9.RELEASE/spring-boot-autoconfigure-2.1.9.RELEASE.jar!/org/springframework/boot/autoconfigure/data/redis/LettuceConnectionConfiguration.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="620">
-          <caret line="56" column="76" selection-start-line="56" selection-start-column="76" selection-end-line="56" selection-end-column="76" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/datasource-service/src/test/java/com/sjtu/project/datasourceservice/config/RedisConfigureTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="24" selection-start-line="24" selection-end-line="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/datasource-service/src/main/java/com/sjtu/project/datasourceservice/config/RedisConfigure.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="16" selection-start-line="16" selection-end-line="32" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/datasource-service/src/main/java/com/sjtu/project/datasourceservice/config/WebSecurityConfigure.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="17" selection-start-line="17" selection-end-line="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/com/fasterxml/jackson/core/jackson-databind/2.9.9.3/jackson-databind-2.9.9.3-sources.jar!/com/fasterxml/jackson/databind/ObjectMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-41">
-          <caret line="3001" column="17" selection-start-line="3001" selection-start-column="17" selection-end-line="3001" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-test/2.1.9.RELEASE/spring-boot-test-2.1.9.RELEASE-sources.jar!/org/springframework/boot/test/context/SpringBootTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-379">
-          <caret line="78" column="18" selection-start-line="78" selection-start-column="18" selection-end-line="78" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/common/src/main/java/com/sjtu/project/common/util/JsonUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="12" selection-start-line="12" selection-end-line="12" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core-service/src/main/java/com/sjtu/project/coreservice/domain/Topology.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="14" column="65" selection-start-line="14" selection-start-column="65" selection-end-line="14" selection-end-column="65" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/kafka/spring-kafka/2.1.2.RELEASE/spring-kafka-2.1.2.RELEASE.jar!/org/springframework/kafka/support/ProducerListener.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/kafka/spring-kafka/2.1.2.RELEASE/spring-kafka-2.1.2.RELEASE.jar!/org/springframework/kafka/core/KafkaTemplate.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="34" column="13" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-autoconfigure/2.1.9.RELEASE/spring-boot-autoconfigure-2.1.9.RELEASE-sources.jar!/org/springframework/boot/autoconfigure/kafka/KafkaProperties.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="260">
@@ -984,17 +640,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/kafka/kafka-clients/2.0.1/kafka-clients-2.0.1-sources.jar!/org/apache/kafka/clients/consumer/KafkaConsumer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="277">
-          <caret line="1152" column="48" selection-start-line="1152" selection-start-column="48" selection-end-line="1152" selection-end-column="48" />
-          <folding>
-            <element signature="e#69448#69449#0" expanded="true" />
-            <element signature="e#69501#69502#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_171/src.zip!/java/time/Duration.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1263">
@@ -1013,16 +658,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1065">
           <caret line="799" column="34" selection-start-line="799" selection-start-column="34" selection-end-line="799" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/datasource-service/src/main/java/com/sjtu/project/datasourceservice/domain/Constants.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1094,28 +729,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/datasource-service/src/main/java/com/sjtu/project/datasourceservice/adapter/DataSourceController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="486">
-          <caret line="31" column="20" selection-start-line="31" selection-start-column="20" selection-end-line="31" selection-end-column="20" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#651#652#0" expanded="true" />
-            <element signature="e#717#718#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/datasource-service/src/main/java/com/sjtu/project/datasourceservice/domain/DataSource.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="54" column="58" selection-start-line="54" selection-start-column="58" selection-end-line="54" selection-end-column="58" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/datasource-service/src/main/java/com/sjtu/project/datasourceservice/domain/InputChannel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -1123,27 +736,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/datasource-service/src/main/java/com/sjtu/project/datasourceservice/domain/DataSourceFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="13" column="25" selection-start-line="13" selection-start-column="25" selection-end-line="13" selection-end-column="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/datasource-service/src/main/java/com/sjtu/project/datasourceservice/domain/CustomDataSourceDao.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="40">
           <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/datasource-service/src/main/java/com/sjtu/project/datasourceservice/domain/DataSourceListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="3" column="47" selection-start-line="3" selection-start-column="47" selection-end-line="3" selection-end-column="47" />
         </state>
       </provider>
     </entry>
@@ -1159,21 +755,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/core-service/pom.xml">
       <provider selected="true" editor-type-id="text-editor" />
-      <provider editor-type-id="MavenHelperPluginDependencyAnalyzer" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/datasource-service/src/main/resources/bootstrap.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
-          <caret line="1" column="12" selection-start-line="1" selection-start-column="12" selection-end-line="1" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/datasource-service/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="181">
-          <caret line="31" selection-start-line="31" selection-end-line="31" />
-        </state>
-      </provider>
       <provider editor-type-id="MavenHelperPluginDependencyAnalyzer" />
     </entry>
     <entry file="file://$PROJECT_DIR$/common/pom.xml">
@@ -1205,52 +786,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/datasource-service/src/main/java/com/sjtu/project/datasourceservice/listenerImpl/DataSourceListenerImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="303">
-          <caret line="27" column="22" selection-start-line="27" selection-start-column="22" selection-end-line="27" selection-end-column="22" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/datasource-service/src/main/java/com/sjtu/project/datasourceservice/domain/ChannelService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="11" column="81" selection-start-line="11" selection-start-column="81" selection-end-line="11" selection-end-column="81" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/channel-service/src/main/java/com/sjtu/project/channelservice/ChannelServiceApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="8" column="68" selection-start-line="8" selection-start-column="68" selection-end-line="8" selection-end-column="68" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#215#216#0" expanded="true" />
-            <element signature="e#233#234#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/channel-service/src/main/resources/bootstrap.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="243">
           <caret line="36" column="30" selection-start-line="36" selection-start-column="30" selection-end-line="36" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/channel-service/src/main/java/com/sjtu/project/channelservice/adapter/Controller.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="16" selection-start-line="16" selection-end-line="16" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1263,8 +802,237 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/channel-service/src/main/java/com/sjtu/project/channelservice/config/WebSecurityConfigure.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="21" column="36" selection-start-line="21" selection-start-column="36" selection-end-line="21" selection-end-column="36" />
+        <state relative-caret-position="120">
+          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/channel-service/src/main/java/com/sjtu/project/channelservice/ChannelServiceApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="8" column="68" selection-start-line="8" selection-start-column="68" selection-end-line="8" selection-end-column="68" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-redis/2.1.11.RELEASE/spring-data-redis-2.1.11.RELEASE-sources.jar!/org/springframework/data/redis/core/BoundSetOperations.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3">
+          <caret line="204" column="6" selection-start-line="204" selection-start-column="6" selection-end-line="204" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-redis/2.1.11.RELEASE/spring-data-redis-2.1.11.RELEASE-sources.jar!/org/springframework/data/redis/core/DefaultBoundSetOperations.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="163">
+          <caret line="151" column="24" selection-start-line="151" selection-start-column="24" selection-end-line="151" selection-end-column="24" />
+          <folding>
+            <element signature="e#3983#3984#0" expanded="true" />
+            <element signature="e#4018#4019#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-redis/2.1.11.RELEASE/spring-data-redis-2.1.11.RELEASE-sources.jar!/org/springframework/data/redis/core/DefaultSetOperations.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="146" column="25" selection-start-line="146" selection-start-column="25" selection-end-line="146" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core-service/src/main/java/com/sjtu/project/coreservice/domain/Topology.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="91">
+          <caret line="14" column="65" selection-start-line="14" selection-start-column="65" selection-end-line="14" selection-end-column="65" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/datasource-service/src/main/java/com/sjtu/project/datasourceservice/adapter/DataSourceController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="25" column="75" selection-start-line="25" selection-start-column="75" selection-end-line="25" selection-end-column="75" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/datasource-service/src/main/java/com/sjtu/project/datasourceservice/domain/DataSourceFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="19" column="30" selection-start-line="19" selection-start-column="30" selection-end-line="19" selection-end-column="30" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/datasource-service/src/main/java/com/sjtu/project/datasourceservice/domain/Constants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="16" column="67" selection-start-line="16" selection-start-column="67" selection-end-line="16" selection-end-column="67" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_171/src.zip!/java/lang/Thread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="537">
+          <caret line="962" column="19" selection-start-line="962" selection-start-column="19" selection-end-line="962" selection-end-column="19" />
+          <folding>
+            <element signature="e#37304#37305#0" expanded="true" />
+            <element signature="e#37347#37348#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/kafka/kafka-clients/2.0.1/kafka-clients-2.0.1-sources.jar!/org/apache/kafka/clients/consumer/KafkaConsumer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2112">
+          <caret line="2221" column="17" selection-start-line="2221" selection-start-column="17" selection-end-line="2221" selection-end-column="17" />
+          <folding>
+            <element signature="e#69448#69449#0" expanded="true" />
+            <element signature="e#69501#69502#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/channel-service/src/main/java/com/sjtu/project/channelservice/domain/OutputChannel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="40">
+          <caret line="2" column="26" selection-start-line="2" selection-start-column="26" selection-end-line="2" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/channel-service/src/main/java/com/sjtu/project/channelservice/domain/CustomInputChannelDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="3" column="40" selection-start-line="3" selection-start-column="40" selection-end-line="3" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/channel-service/src/main/java/com/sjtu/project/channelservice/domain/InputChannelDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/channel-service/src/main/java/com/sjtu/project/channelservice/daoImpl/InputChannelDaoImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="20">
+          <caret line="22" column="35" selection-start-line="22" selection-start-column="35" selection-end-line="22" selection-end-column="35" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/datasource-service/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="81">
+          <caret line="31" selection-start-line="31" selection-end-line="31" />
+        </state>
+      </provider>
+      <provider editor-type-id="MavenHelperPluginDependencyAnalyzer" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/channel-service/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="680">
+          <caret line="34" column="25" selection-start-line="34" selection-start-column="25" selection-end-line="34" selection-end-column="25" />
+        </state>
+      </provider>
+      <provider editor-type-id="MavenHelperPluginDependencyAnalyzer" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/src/main/java/com/sjtu/project/common/util/JsonUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="12" column="79" selection-start-line="12" selection-start-column="79" selection-end-line="12" selection-end-column="79" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/channel-service/src/main/java/com/sjtu/project/channelservice/domain/TransformRule.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/channel-service/src/main/java/com/sjtu/project/channelservice/domain/FusionRule.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/channel-service/src/main/java/com/sjtu/project/channelservice/domain/InputChannel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="11" column="8" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="8" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/datasource-service/src/main/resources/bootstrap.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-180">
+          <caret line="1" column="12" selection-start-line="1" selection-start-column="12" selection-end-line="1" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/datasource-service/src/main/java/com/sjtu/project/datasourceservice/domain/ChannelService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="9" column="34" selection-start-line="9" selection-start-column="34" selection-end-line="9" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/datasource-service/src/main/java/com/sjtu/project/datasourceservice/domain/DataSource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="57" column="42" selection-start-line="57" selection-start-column="42" selection-end-line="57" selection-end-column="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/datasource-service/src/main/java/com/sjtu/project/datasourceservice/domain/DataSourceListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="3" column="15" selection-start-line="3" selection-start-column="15" selection-end-line="3" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/channel-service/src/main/java/com/sjtu/project/channelservice/adapter/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="146">
+          <caret line="18" column="35" selection-start-line="18" selection-start-column="35" selection-end-line="18" selection-end-column="35" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/datasource-service/src/main/java/com/sjtu/project/datasourceservice/listenerImpl/DataSourceListenerImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="302">
+          <caret line="27" column="36" selection-start-line="27" selection-start-column="36" selection-end-line="27" selection-end-column="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

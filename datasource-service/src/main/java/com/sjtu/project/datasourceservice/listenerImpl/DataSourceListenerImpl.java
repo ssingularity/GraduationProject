@@ -25,7 +25,7 @@ public class DataSourceListenerImpl implements DataSourceListener {
         Set<String> registerChannelIds = template.boundSetOps(dsId).members();
         if (registerChannelIds != null) {
             for (String channelId : registerChannelIds) {
-                log.info("分发给id为{}的通道Id", channelId);
+                log.info("分发给id为{}的通道", channelId);
                 channelService.dispatchMessage(channelId, new Message(dsId, message));
             }
         }
