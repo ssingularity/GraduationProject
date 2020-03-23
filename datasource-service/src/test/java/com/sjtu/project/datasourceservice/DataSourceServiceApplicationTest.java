@@ -34,7 +34,7 @@ public class DataSourceServiceApplicationTest {
         String value = JsonUtil.writeValueAsString(new DataSource());
         redisTemplate.opsForValue().set("test", value);
         Assert.assertEquals(value, redisTemplate.opsForValue().get("test"));
-        Assert.assertNotNull(JsonUtil.readVaules(redisTemplate.opsForValue().get("test"), DataSource.class));
+        Assert.assertNotNull(JsonUtil.readValues(redisTemplate.opsForValue().get("test"), DataSource.class));
     }
 
     @Test

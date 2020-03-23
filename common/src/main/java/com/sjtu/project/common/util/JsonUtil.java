@@ -3,6 +3,10 @@ package com.sjtu.project.common.util;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+
+import java.io.IOException;
+import java.util.List;
 
 public class JsonUtil {
     private static ObjectMapper objectMapper = new ObjectMapper();
@@ -23,7 +27,7 @@ public class JsonUtil {
         }
     }
 
-    public static <T> T readVaules(String json, Class<T> clazz) {
+    public static <T> T readValues(String json, Class<T> clazz) {
         try{
             return objectMapper.readValue(json, clazz);
         }
@@ -31,5 +35,26 @@ public class JsonUtil {
             e.printStackTrace();
             return null;
         }
+    }
+
+    public static ObjectNode readTree(String json) {
+        try {
+            return (ObjectNode) objectMapper.readTree(json);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public static ObjectNode contact(List<ObjectNode> objectNodes) {
+        ObjectNode res = objectMapper.createObjectNode();
+        for (ObjectNode objectNode : objectNodes) {
+            res.setAll(objectNode);
+        }
+        return res;
+    }
+
+    public static ObjectNode createObjectNode() {
+        return objectMapper.createObjectNode();
     }
 }

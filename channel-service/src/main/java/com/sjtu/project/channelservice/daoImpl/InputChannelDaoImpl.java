@@ -35,7 +35,7 @@ public class InputChannelDaoImpl implements CustomInputChannelDao {
             }
         }
         else {
-            return JsonUtil.readVaules(json, InputChannel.class);
+            return JsonUtil.readValues(json, InputChannel.class);
         }
     }
 }

@@ -1,6 +1,6 @@
 package com.sjtu.project.servicemanagement.domain;
 
-import com.sjtu.project.common.domain.Descriptor;
+import com.sjtu.project.common.domain.RootDescriptor;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.annotation.Id;
@@ -18,9 +18,9 @@ public class Service {
 
     String name;
 
-    List<Descriptor> input;
+    RootDescriptor input;
 
-    List<Descriptor> output;
+    RootDescriptor output;
 
     List<DataSource> targetDataSource;
 
