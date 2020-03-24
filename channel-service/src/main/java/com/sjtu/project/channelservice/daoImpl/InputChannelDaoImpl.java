@@ -21,7 +21,7 @@ public class InputChannelDaoImpl implements CustomInputChannelDao {
 
     @Override
     public InputChannel queryOneById(String id) {
-        String json = redisTemplate.boundValueOps(id).get();
+        String json = redisTemplate.boundValueOps(generateRedisKey(id)).get();
         if (json == null) {
             Query query = new Query();
             query.addCriteria(Criteria.where("id").is(id));
@@ -30,12 +30,16 @@ public class InputChannelDaoImpl implements CustomInputChannelDao {
                 throw new ObjectNotFoundException("InputChannel");
             }
             else {
-                redisTemplate.boundValueOps(id).set(JsonUtil.writeValueAsString(inputChannel));
+                redisTemplate.boundValueOps(generateRedisKey(id)).set(JsonUtil.writeValueAsString(inputChannel));
                 return inputChannel;
             }
         }
         else {
             return JsonUtil.readValues(json, InputChannel.class);
         }
+    }
+
+    private String generateRedisKey(String id) {
+        return "Channel:" + id;
     }
 }
