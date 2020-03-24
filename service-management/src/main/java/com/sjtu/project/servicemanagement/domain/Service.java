@@ -44,4 +44,8 @@ public class Service {
         // TODO
         log.info("生成OutputChannel");
     }
+
+    public void callWithMessage(String message) {
+        
+    }
 }

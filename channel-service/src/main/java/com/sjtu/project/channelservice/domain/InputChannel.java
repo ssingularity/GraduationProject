@@ -24,5 +24,7 @@ public class InputChannel {
 
     public void onMessage(Message message) {
         log.info("分发来自 {} 的消息 {}", message.getDatasourceId(), message.getContent());
+        //TODO 融合以及转换
+        Constants.ctx.getBean(ServiceManagement.class).call(targetServiceId, message.getContent());
     }
 }

@@ -1,5 +1,6 @@
 package com.sjtu.project.datasourceservice.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sjtu.project.common.domain.Descriptor;
 import lombok.Data;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
@@ -16,6 +17,7 @@ import java.time.Duration;
 import java.util.Collections;
 import java.util.List;
 import java.util.Properties;
+import java.util.Set;
 
 @Data
 @Document
@@ -39,7 +41,17 @@ public class DataSource {
 
     public void registerChannel(InputChannel inputChannel) {
         StringRedisTemplate redisTemplate = Constants.ctx.getBean(StringRedisTemplate.class);
-        redisTemplate.boundSetOps(id).add(inputChannel.id);
+        redisTemplate.boundSetOps(generateRedisKey()).add(inputChannel.id);
+    }
+
+    @JsonIgnore
+    public Set<String> registeredChannels() {
+        StringRedisTemplate redisTemplate = Constants.ctx.getBean(StringRedisTemplate.class);
+        return redisTemplate.boundSetOps(generateRedisKey()).members();
+    }
+
+    private String generateRedisKey() {
+        return "DataSource:" + id;
     }
 
     public void startWithListener(DataSourceListener listener) {
@@ -55,7 +67,7 @@ public class DataSource {
                         try {
                             ConsumerRecords<String, String> res = kafkaConsumer.poll(Duration.ofMillis(200));
                             for (ConsumerRecord<String, String> record : res) {
-                                listener.onMessage(id, record.value());
+                                listener.onMessage(this, record.value());
                             }
                         }
                         catch (InterruptException e) {

@@ -2,6 +2,7 @@ package com.sjtu.project.datasourceservice.listenerImpl;
 
 import com.sjtu.project.datasourceservice.domain.ChannelService;
 import com.sjtu.project.common.domain.Message;
+import com.sjtu.project.datasourceservice.domain.DataSource;
 import com.sjtu.project.datasourceservice.domain.DataSourceListener;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,13 +21,12 @@ public class DataSourceListenerImpl implements DataSourceListener {
     ChannelService channelService;
 
     @Override
-    public void onMessage(String dsId, String message) {
-        log.info("id为{}的数据源接收到了数据{}", dsId, message);
-        Set<String> registerChannelIds = template.boundSetOps(dsId).members();
+    public void onMessage(DataSource ds, String message) {
+        Set<String> registerChannelIds = ds.registeredChannels();
         if (registerChannelIds != null) {
             for (String channelId : registerChannelIds) {
                 log.info("分发给id为{}的通道", channelId);
-                channelService.dispatchMessage(channelId, new Message(dsId, message));
+                channelService.dispatchMessage(channelId, new Message(ds.getId(), message));
             }
         }
     }

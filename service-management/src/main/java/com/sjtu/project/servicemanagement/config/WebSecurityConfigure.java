@@ -21,6 +21,7 @@ public class WebSecurityConfigure extends BasicJWTWebSecurityConfiguration {
         super.configure(http);
         http.authorizeRequests()
             .antMatchers("/actuator/**").permitAll()
+            .antMatchers("/service/**/message").permitAll()
             .anyRequest().authenticated()
             .and()
             .exceptionHandling()

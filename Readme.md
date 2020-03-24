@@ -1,5 +1,5 @@
 ### TODO LIST
-- [ ] Service输入输出定义
+- [x] Service输入输出定义
 - [ ] InputChannel调用Service
 - [ ] TransformRule
 - [ ] FusionRule

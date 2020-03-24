@@ -6,12 +6,14 @@ import com.sjtu.project.servicemanagement.domain.DataSource;
 import com.sjtu.project.servicemanagement.domain.Service;
 import com.sjtu.project.servicemanagement.domain.ServiceDao;
 import com.sjtu.project.servicemanagement.domain.ServiceFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@Slf4j
 public class ServiceController {
     @Autowired
     ServiceDao serviceDao;
@@ -30,5 +32,11 @@ public class ServiceController {
     public Result<List<DataSource>> getDataSource(@PathVariable(name = "id") String id) {
         Service service = serviceDao.queryById(id);
         return ResultUtil.success(service.getTargetDataSource());
+    }
+
+    @PostMapping("service/{id}/message")
+    public void call(@PathVariable(name = "id") String id, @RequestBody String message) {
+        Service service = serviceDao.queryById(id);
+        service.callWithMessage(message);
     }
 }
