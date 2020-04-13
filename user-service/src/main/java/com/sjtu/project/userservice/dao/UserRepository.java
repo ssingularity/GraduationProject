@@ -16,5 +16,6 @@ public interface UserRepository extends MongoRepository<User, String> {
 
     boolean existsByPhoneNumber(String phoneNumber);
 
+    @Override
     Optional<User> findById(String id);
 }

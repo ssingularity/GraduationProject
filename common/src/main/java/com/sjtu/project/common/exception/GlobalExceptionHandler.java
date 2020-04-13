@@ -18,6 +18,12 @@ public class GlobalExceptionHandler {
         return generateFailResponseEntity(ResultCode.OBJECT_NOT_FOUND, HttpStatus.NOT_FOUND, e.getMessage());
     }
 
+    @ExceptionHandler()
+    @ResponseBody
+    ResponseEntity handle(ServiceException e) {
+        Result result = ResultUtil.failure(e.resultCode.getMessage(), e.resultCode.getCode());
+        return new ResponseEntity(result, HttpStatus.OK);
+    }
 
     private ResponseEntity generateFailResponseEntity(ResultCode resultCode, HttpStatus ok, String... message) {
         String unformattedMessage = resultCode.getMessage();

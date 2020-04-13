@@ -1,7 +1,12 @@
 package com.sjtu.project.channelservice.domain;
 
-import lombok.Data;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 
-@Data
-public class TransformRule {
+/**
+ * @author thinkpad
+ */
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.EXTERNAL_PROPERTY, property = "type")
+public interface TransformRule {
+    ObjectNode doTransform(ObjectNode input);
 }

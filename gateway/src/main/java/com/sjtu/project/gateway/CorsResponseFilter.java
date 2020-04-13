@@ -30,7 +30,7 @@ public class CorsResponseFilter implements GlobalFilter, Ordered {
                             || kv.getKey().equals(HttpHeaders.ACCESS_CONTROL_ALLOW_CREDENTIALS)))
                     .forEach(kv -> {
                         kv.setValue(new ArrayList<String>() {{
-                            add(kv.getValue().get(0).equals("*") ? kv.getValue().get(1) : kv.getValue().get(0));
+                            add("*".equals(kv.getValue().get(0)) ? kv.getValue().get(1) : kv.getValue().get(0));
                         }});
                     });
 

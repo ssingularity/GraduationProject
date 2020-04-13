@@ -4,10 +4,12 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
 import java.util.List;
 
+@Slf4j
 public class JsonUtil {
     private static ObjectMapper objectMapper = new ObjectMapper();
 
@@ -17,11 +19,14 @@ public class JsonUtil {
         objectMapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
     }
 
+    public static ObjectMapper getObjectMapper() {
+        return objectMapper;
+    }
+
     public static String writeValueAsString(Object object) {
         try {
             return objectMapper.writeValueAsString(object);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
             return "";
         }
@@ -30,8 +35,7 @@ public class JsonUtil {
     public static <T> T readValues(String json, Class<T> clazz) {
         try{
             return objectMapper.readValue(json, clazz);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
@@ -56,5 +60,10 @@ public class JsonUtil {
 
     public static ObjectNode createObjectNode() {
         return objectMapper.createObjectNode();
+    }
+
+    public static void register(Class clazz) {
+        log.info("注册了class: {}", clazz);
+        objectMapper.registerSubtypes(clazz);
     }
 }
