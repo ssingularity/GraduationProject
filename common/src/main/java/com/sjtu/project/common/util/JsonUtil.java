@@ -3,6 +3,7 @@ package com.sjtu.project.common.util;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import lombok.extern.slf4j.Slf4j;
 
@@ -60,6 +61,10 @@ public class JsonUtil {
 
     public static ObjectNode createObjectNode() {
         return objectMapper.createObjectNode();
+    }
+
+    public static ArrayNode createArrayNode() {
+        return objectMapper.createArrayNode();
     }
 
     public static void register(Class clazz) {

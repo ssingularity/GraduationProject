@@ -15,7 +15,6 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 
 import java.time.Duration;
 import java.util.Collections;
-import java.util.List;
 import java.util.Properties;
 import java.util.Set;
 
@@ -33,7 +32,7 @@ public class DataSource {
 
     boolean visible = true;
 
-    List<Descriptor> dataDescriptor;
+    Descriptor schema;
 
     public void verifySelf() {
         //TODO 检验参数可靠性

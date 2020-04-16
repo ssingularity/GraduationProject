@@ -1,28 +1,40 @@
 package com.sjtu.project.common.domain;
 
-import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.databind.node.ObjectNode;
+import com.fasterxml.jackson.databind.JsonNode;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
 
+/**
+ * @author thinkpad
+ */
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.EXTERNAL_PROPERTY, property = "type")
-@JsonSubTypes({
-        @JsonSubTypes.Type(value = IntegerDescriptor.class, name = "Integer"),
-        @JsonSubTypes.Type(value = StringDescriptor.class, name = "String"),
-        @JsonSubTypes.Type(value = ObjectDescriptor.class, name = "Object")
-})
 @Data
 @NoArgsConstructor
 public abstract class Descriptor<T> {
-    @NonNull
     String keyName;
 
-    @NonNull
     T defaultValue;
 
     String description;
 
-    abstract ObjectNode generateDataFromJson(ObjectNode json);
+    /**
+     * 输入Json格式的JsonNode获得符合Descriptor描述的Json
+     *
+     * @param json
+     * @return JsonNode
+     */
+    public abstract JsonNode generateJsonNodeFromJson(JsonNode json);
+
+    /**
+     * 输入Json格式的JsonNode获得符合Descriptor描述的对应的值
+     *
+     * @param json
+     * @return T
+     */
+    public abstract T getValueFromJson(JsonNode json);
+
+    protected JsonNode getTargetJsonNode(JsonNode jsonNode) {
+        return jsonNode.get(keyName);
+    }
 }

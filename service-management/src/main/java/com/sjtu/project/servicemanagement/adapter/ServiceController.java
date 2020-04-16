@@ -37,6 +37,6 @@ public class ServiceController {
     @PostMapping("service/{id}/message")
     public void call(@PathVariable(name = "id") String id, @RequestBody String message) {
         Service service = serviceDao.queryById(id);
-        service.callWithMessage(message);
+        service.invokeWith(message);
     }
 }

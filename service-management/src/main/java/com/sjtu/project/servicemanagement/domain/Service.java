@@ -1,22 +1,18 @@
 package com.sjtu.project.servicemanagement.domain;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.node.ObjectNode;
-import com.sjtu.project.common.domain.RootDescriptor;
+import com.sjtu.project.common.domain.Descriptor;
 import com.sjtu.project.common.util.JsonUtil;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.Iterator;
+import javax.validation.constraints.NotBlank;
 import java.util.List;
-import java.util.Map;
+import java.util.stream.Collectors;
 
 @Document
 @Data
@@ -27,17 +23,26 @@ public class Service {
 
     String name;
 
-    RootDescriptor input;
+    @NotBlank
+    String ip;
 
-    RootDescriptor output;
+    @NotBlank
+    Integer port;
+
+    Descriptor requestBody;
+
+    Descriptor response;
+
+    List<Parameter> parameters;
 
     List<DataSource> targetDataSource;
 
-    String uri;
+    @NotBlank
+    String path;
 
+    @NotBlank
     HttpMethod method;
 
-    //TODO 监控Service存活情况
     String healthEndPoint;
 
     public boolean verifySelf() {
@@ -54,35 +59,58 @@ public class Service {
         log.info("生成OutputChannel");
     }
 
-    public void callWithMessage(String message) {
-        RestTemplate restTemplate = Constants.ctx.getBean(RestTemplate.class);
-        HttpHeaders httpHeaders = new HttpHeaders();
-        httpHeaders.set(HttpHeaders.CONTENT_TYPE, "application/json");
-        String inputJson = input.generateOutputFromJson(message);
-        ResponseEntity<String> res = null;
-        if (method == HttpMethod.POST) {
-            HttpEntity<String> httpEntity = new HttpEntity<>(inputJson, httpHeaders);
-            res = restTemplate.exchange(uri, HttpMethod.POST, httpEntity, String.class);
+    public String invokeWith(String message) {
+        JsonNode content = JsonUtil.readTree(message);
+        String invokeAddress = createAddress();
+        String parameterList = createParameterList(content);
+        String generatedPath = createPath(content);
+        String url = invokeAddress + generatedPath + parameterList;
+        log.info("Request Url: {}", url);
+        String request = requestBody.generateJsonNodeFromJson(content).toString();
+        return doInvoke(url, request);
+    }
+
+    private String createAddress() {
+        return "http://" + ip + ":" + port;
+    }
+
+    String createPath(JsonNode json) {
+        String res = path;
+        List<Parameter> inPathParameters = parameters
+                .stream()
+                .filter(parameter -> parameter.getIn().equals(ParamIn.PATH))
+                .collect(Collectors.toList());
+        for (Parameter parameter : inPathParameters) {
+            Descriptor schema = parameter.getSchema();
+            String value = schema.getValueFromJson(json).toString();
+            res = res.replace("{" + schema.getKeyName() + "}", value);
         }
-        else if (method == HttpMethod.GET) {
-            ObjectNode objectNode = JsonUtil.readTree(inputJson);
-            Iterator<Map.Entry<String, JsonNode>> it = objectNode.fields();
-            StringBuilder sb = new StringBuilder();
-            sb.append("?");
-            while (it.hasNext()) {
-                Map.Entry<String, JsonNode> entry = it.next();
-                sb.append(entry.getKey());
-                sb.append("=");
-                sb.append(entry.getValue().asText());
-                if (it.hasNext()) {
+        return res;
+    }
+
+    String createParameterList(JsonNode json) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("?");
+        parameters.stream()
+                .filter(parameter -> parameter.getIn().equals(ParamIn.QUERY))
+                .forEach(parameter -> {
+                    Descriptor schema = parameter.getSchema();
+                    String value = schema.getValueFromJson(json).toString();
+                    sb.append(schema.getKeyName());
+                    sb.append("=");
+                    sb.append(value);
                     sb.append("&");
-                }
-            }
-            String url = uri + sb.toString();
-            log.info("url 为 {}", url);
-            res = restTemplate.exchange(url, HttpMethod.GET, new HttpEntity<>(httpHeaders), String.class);
-        }
-        String resOutput = output.generateOutputFromJson(res.getBody());
-        // TODO 发送resOutput给OutputChannel
+                });
+        String res = sb.toString();
+        return res.substring(0, res.length() - 1);
+    }
+
+    String doInvoke(String url, String request) {
+        HttpHeaders httpHeaders = new HttpHeaders();
+        HttpEntity<String> httpEntity = new HttpEntity<>(request, httpHeaders);
+        httpHeaders.setContentType(MediaType.APPLICATION_JSON);
+        ResponseEntity<String> res = Constants.ctx.getBean(RestTemplate.class)
+                .exchange(url, method, httpEntity, String.class);
+        return res.getBody();
     }
 }
