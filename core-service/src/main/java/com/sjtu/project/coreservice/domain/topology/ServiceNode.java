@@ -2,6 +2,9 @@ package com.sjtu.project.coreservice.domain.topology;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sjtu.project.coreservice.domain.*;
+import com.sjtu.project.coreservice.domain.fusionRule.FusionRule;
+import com.sjtu.project.coreservice.domain.transformRule.TransformRule;
+import com.sjtu.project.coreservice.util.ContextUtils;
 import lombok.Data;
 
 import java.util.ArrayList;
@@ -20,7 +23,7 @@ public class ServiceNode extends Topology {
 
     @Override
     protected void selfRun() {
-        InputChannel inputChannel = Constants.ctx.getBean(ChannelService.class)
+        InputChannel inputChannel = ContextUtils.ctx.getBean(ChannelService.class)
                 .createInputChannel(fusionRule, transformRuleList, id);
         for (Topology input : inputList) {
             input.registerChannel(inputChannel);
@@ -36,7 +39,7 @@ public class ServiceNode extends Topology {
 
     @JsonIgnore
     public List<DataSource> getTargetDataSource() {
-        return Constants.ctx.getBean(ServiceManagement.class)
+        return ContextUtils.ctx.getBean(ServiceManagement.class)
                 .getDataSourceOf(id);
     }
 }

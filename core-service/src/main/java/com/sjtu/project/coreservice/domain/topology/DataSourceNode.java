@@ -1,6 +1,6 @@
 package com.sjtu.project.coreservice.domain.topology;
 
-import com.sjtu.project.coreservice.domain.Constants;
+import com.sjtu.project.coreservice.util.ContextUtils;
 import com.sjtu.project.coreservice.domain.DataSourceService;
 import com.sjtu.project.coreservice.domain.InputChannel;
 import com.sjtu.project.coreservice.domain.Topology;
@@ -20,7 +20,7 @@ public class DataSourceNode extends Topology {
 
     @Override
     public void registerChannel(InputChannel inputChannel) {
-        Constants.ctx.getBean(DataSourceService.class)
+        ContextUtils.ctx.getBean(DataSourceService.class)
                 .register(id, inputChannel);
     }
 }
