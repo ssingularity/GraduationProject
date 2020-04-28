@@ -1,6 +1,8 @@
 package com.sjtu.project.datasourceservice.config;
 
 import org.apache.kafka.clients.CommonClientConfigs;
+import org.apache.kafka.clients.admin.Admin;
+import org.apache.kafka.clients.admin.AdminClientConfig;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.apache.kafka.common.config.SaslConfigs;
@@ -46,5 +48,14 @@ public class KafkaConfig {
         props.put(CommonClientConfigs.SECURITY_PROTOCOL_CONFIG, "SASL_PLAINTEXT");
         props.put(SaslConfigs.SASL_MECHANISM, "PLAIN");
         return new KafkaConsumer<>(props);
+    }
+
+    @Bean
+    public Admin adminClient(@Value("${custom.kafka.url}") String url) {
+        Properties properties = new Properties();
+        properties.put(AdminClientConfig.BOOTSTRAP_SERVERS_CONFIG, url);
+        properties.put(AdminClientConfig.SECURITY_PROTOCOL_CONFIG, "SASL_PLAINTEXT");
+        properties.put(SaslConfigs.SASL_MECHANISM, "PLAIN");
+        return Admin.create(properties);
     }
 }
