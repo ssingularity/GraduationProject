@@ -18,6 +18,7 @@
         <module>channel-service</module>
         <module>datasource-service</module>
         <module>service-management</module>
+        <module>kafka-auth</module>
     </modules>
     <packaging>pom</packaging>
 
