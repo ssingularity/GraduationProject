@@ -19,6 +19,7 @@
         <module>datasource-service</module>
         <module>service-management</module>
         <module>kafka-auth</module>
+        <module>log-service</module>
     </modules>
     <packaging>pom</packaging>
 

@@ -10,6 +10,7 @@
         <module name="gateway" />
         <module name="swagger-spring-boot-autoconfigure" />
         <module name="common" />
+        <module name="log-service" />
         <module name="register-server" />
         <module name="swagger-spring-boot-starter" />
         <module name="kafka-auth" />
