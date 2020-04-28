@@ -4,7 +4,7 @@ import com.sjtu.project.common.response.Result;
 import com.sjtu.project.common.util.ResultUtil;
 import com.sjtu.project.datasourceservice.domain.DataSource;
 import com.sjtu.project.datasourceservice.domain.DataSourceDao;
-import com.sjtu.project.datasourceservice.domain.DataSourceFactory;
+import com.sjtu.project.datasourceservice.domain.DataSourceService;
 import com.sjtu.project.datasourceservice.domain.InputChannel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +16,9 @@ public class DataSourceController {
     @Autowired
     DataSourceDao dataSourceDao;
 
+    @Autowired
+    DataSourceService dataSourceService;
+
     @GetMapping("datasource")
     public Result<List<DataSource>> getAll() {
         return ResultUtil.success(dataSourceDao.findAllByVisibleIsTrue());
@@ -23,7 +26,7 @@ public class DataSourceController {
 
     @PostMapping("datasource")
     public Result<DataSource> addDataSource(@RequestBody DataSource dataSource) {
-        return ResultUtil.success(dataSourceDao.save(DataSourceFactory.create(dataSource)));
+        return ResultUtil.success(dataSourceDao.save(dataSourceService.create(dataSource)));
     }
 
     @PostMapping("datasource/{id}/channel")
