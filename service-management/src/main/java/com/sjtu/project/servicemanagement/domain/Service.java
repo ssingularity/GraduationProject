@@ -2,6 +2,7 @@ package com.sjtu.project.servicemanagement.domain;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.sjtu.project.common.domain.Descriptor;
+import com.sjtu.project.common.util.ContextUtil;
 import com.sjtu.project.common.util.JsonUtil;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
@@ -35,7 +36,7 @@ public class Service {
 
     List<Parameter> parameters;
 
-    List<DataSource> targetDataSource;
+    DataSource targetDataSource;
 
     @NotBlank
     String path;
@@ -45,18 +46,20 @@ public class Service {
 
     String healthEndPoint;
 
-    public boolean verifySelf() {
-        return true;
+    void verifySelf() {
     }
 
-    public void generateDataSource() {
-        // TODO
+    void generateDataSource() {
         log.info("生成DataSource");
+        DataSource ds = createRelatedDataSource();
+        targetDataSource = ContextUtil.ctx.getBean(DataSourceClient.class).createDataSource(ds).getData();
     }
 
-    public void generateOutputChannel() {
-        // TODO
-        log.info("生成OutputChannel");
+    private DataSource createRelatedDataSource() {
+        DataSource dataSource = new DataSource();
+        dataSource.setTopic(name + "-topic");
+        dataSource.setVisible(false);
+        return dataSource;
     }
 
     public String invokeWith(String message) {
@@ -109,7 +112,7 @@ public class Service {
         HttpHeaders httpHeaders = new HttpHeaders();
         HttpEntity<String> httpEntity = new HttpEntity<>(request, httpHeaders);
         httpHeaders.setContentType(MediaType.APPLICATION_JSON);
-        ResponseEntity<String> res = Constants.ctx.getBean(RestTemplate.class)
+        ResponseEntity<String> res = ContextUtil.ctx.getBean(RestTemplate.class)
                 .exchange(url, method, httpEntity, String.class);
         return res.getBody();
     }

@@ -1,7 +1,7 @@
 package com.sjtu.project.coreservice.domain;
 
-import com.sjtu.project.coreservice.domain.topology.DataSourceNode;
-import com.sjtu.project.coreservice.domain.topology.ServiceNode;
+import com.sjtu.project.coreservice.domain.topologyImpl.DataSourceNode;
+import com.sjtu.project.coreservice.domain.topologyImpl.ServiceNode;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.junit4.SpringRunner;

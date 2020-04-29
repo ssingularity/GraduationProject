@@ -18,25 +18,25 @@ public class ServiceController {
     @Autowired
     ServiceDao serviceDao;
 
-    @GetMapping("service")
+    @GetMapping("/service")
     public Result<List<Service>> getAll() {
         return ResultUtil.success(serviceDao.findAll());
     }
 
-    @PostMapping("service")
+    @PostMapping("/service")
     public Result<Service> addService(@RequestBody Service service) {
         return ResultUtil.success(serviceDao.save(ServiceFactory.createService(service)));
     }
 
-    @GetMapping("service/{id}/datasource")
-    public Result<List<DataSource>> getDataSource(@PathVariable(name = "id") String id) {
+    @GetMapping("/service/{id}/datasource")
+    public Result<DataSource> getDataSource(@PathVariable(name = "id") String id) {
         Service service = serviceDao.queryById(id);
         return ResultUtil.success(service.getTargetDataSource());
     }
 
-    @PostMapping("service/{id}/message")
-    public void call(@PathVariable(name = "id") String id, @RequestBody String message) {
+    @PostMapping("/service/{id}/message")
+    public Result<String> call(@PathVariable(name = "id") String id, @RequestBody String message) {
         Service service = serviceDao.queryById(id);
-        service.invokeWith(message);
+        return ResultUtil.success(service.invokeWith(message));
     }
 }

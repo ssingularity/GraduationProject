@@ -1,4 +1,4 @@
-package com.sjtu.project.coreservice.domain.transformRule;
+package com.sjtu.project.coreservice.domain.topologyImpl.transformRuleImpl;
 
 import lombok.Data;
 
@@ -8,7 +8,5 @@ import lombok.Data;
  */
 @Data
 public class Path {
-    final private static String SPLITTER = "\\.";
-
     private String targetKey;
 }

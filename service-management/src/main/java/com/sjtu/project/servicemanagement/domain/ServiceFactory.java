@@ -7,8 +7,6 @@ public class ServiceFactory {
         service.verifySelf();
         service.setId(UUID.randomUUID().toString());
         service.generateDataSource();
-        service.generateOutputChannel();
         return service;
     }
-
 }

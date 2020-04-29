@@ -1,6 +1,6 @@
 package com.sjtu.project.coreservice.domain;
 
-import com.sjtu.project.coreservice.util.ContextUtils;
+import com.sjtu.project.common.util.ContextUtil;
 import lombok.Data;
 
 @Data
@@ -8,7 +8,7 @@ public class DataSource {
     String id;
 
     public void register(InputChannel inputChannel) {
-        ContextUtils.ctx.getBean(DataSourceService.class)
+        ContextUtil.ctx.getBean(DataSourceServiceClient.class)
                 .register(id, inputChannel);
     }
 }

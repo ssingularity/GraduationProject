@@ -19,18 +19,18 @@ public class DataSourceController {
     @Autowired
     AclService aclService;
 
-    @GetMapping("datasource")
+    @GetMapping("/datasource")
     public Result<List<DataSource>> getAll() {
         return ResultUtil.success(dataSourceDao.findAllByVisibleIsTrue());
     }
 
-    @PostMapping("datasource")
+    @PostMapping("/datasource")
     public Result<DataSource> addDataSource(@RequestBody DataSource dataSource) {
         return ResultUtil.success(dataSourceDao.save(dataSourceService.create(dataSource)));
     }
 
-    @PostMapping("datasource/{id}/channel")
-    public Result registerChannel(@PathVariable(name = "id") String id, @RequestBody InputChannel channel) {
+    @PostMapping("/datasource/{id}/channel")
+    public Result<String> registerChannel(@PathVariable(name = "id") String id, @RequestBody InputChannel channel) {
         DataSource ds = dataSourceDao.queryById(id);
         ds.registerChannel(channel);
         return ResultUtil.success();

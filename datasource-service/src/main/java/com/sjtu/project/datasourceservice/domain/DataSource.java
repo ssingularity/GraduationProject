@@ -2,6 +2,7 @@ package com.sjtu.project.datasourceservice.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sjtu.project.common.domain.Descriptor;
+import com.sjtu.project.common.util.ContextUtil;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -31,13 +32,13 @@ public class DataSource {
     }
 
     public void registerChannel(InputChannel inputChannel) {
-        StringRedisTemplate redisTemplate = Constants.ctx.getBean(StringRedisTemplate.class);
+        StringRedisTemplate redisTemplate = ContextUtil.ctx.getBean(StringRedisTemplate.class);
         redisTemplate.boundSetOps(generateRedisKey()).add(inputChannel.id);
     }
 
     @JsonIgnore
     public Set<String> registeredChannels() {
-        StringRedisTemplate redisTemplate = Constants.ctx.getBean(StringRedisTemplate.class);
+        StringRedisTemplate redisTemplate = ContextUtil.ctx.getBean(StringRedisTemplate.class);
         return redisTemplate.boundSetOps(generateRedisKey()).members();
     }
 

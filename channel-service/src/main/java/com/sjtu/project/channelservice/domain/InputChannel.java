@@ -2,6 +2,7 @@ package com.sjtu.project.channelservice.domain;
 
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.sjtu.project.common.domain.Message;
+import com.sjtu.project.common.util.ContextUtil;
 import com.sjtu.project.common.util.JsonUtil;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
@@ -18,6 +19,8 @@ public class InputChannel {
     @Id
     String id;
 
+    String processId;
+
     List<TransformRule> transformRules = new ArrayList<>();
 
     FusionRule fusionRule;
@@ -31,6 +34,6 @@ public class InputChannel {
         for (TransformRule transformRule : transformRules) {
             input = transformRule.doTransform(input);
         }
-        Constants.ctx.getBean(ServiceManagement.class).call(targetServiceId, JsonUtil.writeValueAsString(input));
+        ContextUtil.ctx.getBean(ServiceManagement.class).call(targetServiceId, JsonUtil.writeValueAsString(input));
     }
 }
