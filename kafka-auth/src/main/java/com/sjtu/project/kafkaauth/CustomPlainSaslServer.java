@@ -91,15 +91,17 @@ public class CustomPlainSaslServer implements SaslServer {
 
     private boolean authenticateWithServer(String username, String password) {
         RestTemplate restTemplate = RestTemplateFactory.getInstance();
-        LoginDTO loginDTO = LoginDTO.builder()
-                .userId(username)
-                .password(password)
-                .build();
         HttpHeaders httpHeaders = new HttpHeaders();
-        httpHeaders.setContentType(MediaType.APPLICATION_JSON);
-        HttpEntity<LoginDTO> httpEntity = new HttpEntity<>(loginDTO, httpHeaders);
-        //TODO 修改为自己的鉴权服务器
-        ResponseEntity<String> res = restTemplate.exchange(Constants.AUTHENTICATION_SERVER, HttpMethod.POST, httpEntity, String.class);
+        httpHeaders.setContentType(MediaType.MULTIPART_FORM_DATA);
+        HttpEntity httpEntity = new HttpEntity<>(httpHeaders);
+        StringBuilder urlStringBuilder = new StringBuilder(Constants.AUTHENTICATION_SERVER);
+        urlStringBuilder.append("?")
+                        .append("username=")
+                        .append(username)
+                        .append("&")
+                        .append("password=")
+                        .append(password);
+        ResponseEntity<String> res = restTemplate.exchange(urlStringBuilder.toString(), HttpMethod.POST, httpEntity, String.class);
         return res.getStatusCode() == HttpStatus.OK;
     }
 
