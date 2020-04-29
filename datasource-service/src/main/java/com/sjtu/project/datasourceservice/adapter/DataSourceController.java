@@ -6,6 +6,7 @@ import com.sjtu.project.datasourceservice.domain.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -25,7 +26,7 @@ public class DataSourceController {
     }
 
     @PostMapping("/datasource")
-    public Result<DataSource> addDataSource(@RequestBody DataSource dataSource) {
+    public Result<DataSource> addDataSource(@Valid @RequestBody DataSource dataSource) {
         return ResultUtil.success(dataSourceDao.save(dataSourceService.create(dataSource)));
     }
 
@@ -33,6 +34,14 @@ public class DataSourceController {
     public Result<String> registerChannel(@PathVariable(name = "id") String id, @RequestBody InputChannel channel) {
         DataSource ds = dataSourceDao.queryById(id);
         ds.registerChannel(channel);
+        return ResultUtil.success();
+    }
+
+
+    @PostMapping("/datasource/{id}/message")
+    public Result<String> sendMessage(@PathVariable("id") String datasourceId, @RequestBody String message) {
+        DataSource ds = dataSourceDao.queryById(datasourceId);
+        ds.sendMessage(message);
         return ResultUtil.success();
     }
 

@@ -6,7 +6,6 @@ public class ServiceFactory {
     public static Service createService(Service service) {
         service.verifySelf();
         service.setId(UUID.randomUUID().toString());
-        service.generateDataSource();
         return service;
     }
 }

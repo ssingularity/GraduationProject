@@ -1,13 +1,19 @@
 package com.sjtu.project.datasourceservice.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.sjtu.project.common.domain.Descriptor;
 import com.sjtu.project.common.util.ContextUtil;
+import com.sjtu.project.common.util.JsonUtil;
 import lombok.Data;
+import org.apache.kafka.clients.producer.KafkaProducer;
+import org.apache.kafka.clients.producer.ProducerRecord;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.redis.core.StringRedisTemplate;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 import java.util.Set;
 
@@ -19,12 +25,14 @@ public class DataSource {
 
     String name;
 
+    @NotBlank
     String topic;
 
     String description;
 
     boolean visible = true;
 
+    @NotNull
     Descriptor schema;
 
     public void verifySelf() {
@@ -50,5 +58,12 @@ public class DataSource {
         for (String value : values) {
             listener.onMessage(this, value);
         }
+    }
+
+    public void sendMessage(String data) {
+        JsonNode node = JsonUtil.readTree(data);
+        String sendData = schema.generateJsonNodeFromJson(node).toString();
+        ProducerRecord<String, String> record = new ProducerRecord<>(topic, sendData);
+        ContextUtil.ctx.getBean(KafkaProducer.class).send(record);
     }
 }

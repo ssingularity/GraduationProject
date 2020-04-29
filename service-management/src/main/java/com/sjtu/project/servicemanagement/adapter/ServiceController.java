@@ -28,10 +28,11 @@ public class ServiceController {
         return ResultUtil.success(serviceDao.save(ServiceFactory.createService(service)));
     }
 
-    @GetMapping("/service/{id}/datasource")
-    public Result<DataSource> getDataSource(@PathVariable(name = "id") String id) {
+    @PostMapping("/service/{id}/datasource")
+    public Result<DataSource> createDataSource(@PathVariable(name = "id") String id) {
+        //TODO 创建DataSource
         Service service = serviceDao.queryById(id);
-        return ResultUtil.success(service.getTargetDataSource());
+        return ResultUtil.success(service.generateDataSource());
     }
 
     @PostMapping("/service/{id}/message")

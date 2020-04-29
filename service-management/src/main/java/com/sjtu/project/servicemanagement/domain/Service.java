@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.sjtu.project.common.domain.Descriptor;
 import com.sjtu.project.common.util.ContextUtil;
 import com.sjtu.project.common.util.JsonUtil;
+import com.sjtu.project.common.util.UUIDUtils;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.annotation.Id;
@@ -36,8 +37,6 @@ public class Service {
 
     List<Parameter> parameters;
 
-    DataSource targetDataSource;
-
     @NotBlank
     String path;
 
@@ -49,15 +48,15 @@ public class Service {
     void verifySelf() {
     }
 
-    void generateDataSource() {
-        log.info("生成DataSource");
+    public DataSource generateDataSource() {
         DataSource ds = createRelatedDataSource();
-        targetDataSource = ContextUtil.ctx.getBean(DataSourceClient.class).createDataSource(ds).getData();
+        return ContextUtil.ctx.getBean(DataSourceClient.class).createDataSource(ds).getData();
     }
 
     private DataSource createRelatedDataSource() {
         DataSource dataSource = new DataSource();
-        dataSource.setTopic(name + "-topic");
+        dataSource.setTopic(name + "-" + UUIDUtils.generateUUID(8) + "-topic");
+        log.info("生成topic为 {}", dataSource.getTopic());
         dataSource.setVisible(false);
         return dataSource;
     }

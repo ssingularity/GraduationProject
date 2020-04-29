@@ -14,7 +14,7 @@
         <module>register-server</module>
         <module>gateway</module>
         <module>user-service</module>
-        <module>core-service</module>
+        <module>process-service</module>
         <module>channel-service</module>
         <module>datasource-service</module>
         <module>service-management</module>

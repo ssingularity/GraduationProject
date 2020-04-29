@@ -6,8 +6,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-@FeignClient(name = "service-management")
-public interface ServiceManagement {
-    @PostMapping("service/{id}/message")
-    Result<String> call(@PathVariable(name = "id") String id, @RequestBody String message);
+/**
+ * @Author: ssingualrity
+ * @Date: 2020/4/30 0:01
+ */
+@FeignClient(name = "datasource-service")
+public interface DataSourceClient {
+    @PostMapping("/datasource/{id}/message")
+    Result<String> sendMessage(@PathVariable("id") String datasourceId, @RequestBody String message);
 }
