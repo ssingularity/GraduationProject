@@ -36,3 +36,6 @@ swagger:
     title: LogService
     description: LogService
 
+websocket:
+  prefix: /topic/log
+

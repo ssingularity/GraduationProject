@@ -37,7 +37,12 @@ public class InputChannel {
         for (TransformRule transformRule : transformRules) {
             input = transformRule.doTransform(input);
         }
-        Result<String> res = ContextUtil.ctx.getBean(ServiceManagement.class).call(targetServiceId, JsonUtil.writeValueAsString(input));
+        //TODO 背压控制
+        doDispatch(JsonUtil.writeValueAsString(input));
+    }
+
+    public void doDispatch(String content) {
+        Result<String> res = ContextUtil.ctx.getBean(ServiceManagement.class).call(targetServiceId, content);
         String serviceRes = res.getData();
         ContextUtil.ctx.getBean(DataSourceClient.class).sendMessage(targetDataSourceId, serviceRes);
     }
