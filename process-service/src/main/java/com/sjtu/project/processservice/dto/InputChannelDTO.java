@@ -1,14 +1,20 @@
-package com.sjtu.project.processservice.domain;
+package com.sjtu.project.processservice.dto;
 
 import com.sjtu.project.processservice.domain.topologyImpl.FusionRule;
 import com.sjtu.project.processservice.domain.topologyImpl.TransformRule;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Data
-public class InputChannel {
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+public class InputChannelDTO {
     String id;
 
     String processId;

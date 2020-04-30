@@ -30,7 +30,6 @@ public class ServiceController {
 
     @PostMapping("/service/{id}/datasource")
     public Result<DataSource> createDataSource(@PathVariable(name = "id") String id) {
-        //TODO 创建DataSource
         Service service = serviceDao.queryById(id);
         return ResultUtil.success(service.generateDataSource());
     }

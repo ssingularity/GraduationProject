@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.sjtu.project.common.domain.Descriptor;
 import com.sjtu.project.common.util.ContextUtil;
 import com.sjtu.project.common.util.JsonUtil;
+import com.sjtu.project.datasourceservice.dto.InputChannelDTO;
 import lombok.Data;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;
@@ -39,9 +40,9 @@ public class DataSource {
         //TODO 检验参数可靠性
     }
 
-    public void registerChannel(InputChannel inputChannel) {
+    public void registerChannel(InputChannelDTO inputChannelDTO) {
         StringRedisTemplate redisTemplate = ContextUtil.ctx.getBean(StringRedisTemplate.class);
-        redisTemplate.boundSetOps(generateRedisKey()).add(inputChannel.id);
+        redisTemplate.boundSetOps(generateRedisKey()).add(inputChannelDTO.getId());
     }
 
     @JsonIgnore

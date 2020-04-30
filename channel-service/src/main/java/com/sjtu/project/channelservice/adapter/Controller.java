@@ -15,16 +15,18 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @Slf4j
 public class Controller {
+    //TODO AOP作日志切面
+
     @Autowired
     InputChannelDao inputChannelDao;
 
-    @PostMapping("inputchannel/{id}/message")
+    @PostMapping("/inputchannel/{id}/message")
     public void dispatchMessage(@PathVariable(name = "id") String id, @RequestBody Message message) {
         InputChannel inputChannel = inputChannelDao.queryOneById(id);
         inputChannel.onMessage(message);
     }
 
-    @PostMapping("inputchannel")
+    @PostMapping("/inputchannel")
     public Result<InputChannel> addInputChannel(@RequestBody InputChannel inputChannel) {
         return ResultUtil.success(inputChannelDao.save(inputChannel));
     }

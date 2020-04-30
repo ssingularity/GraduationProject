@@ -3,6 +3,7 @@ package com.sjtu.project.datasourceservice.adapter;
 import com.sjtu.project.common.response.Result;
 import com.sjtu.project.common.util.ResultUtil;
 import com.sjtu.project.datasourceservice.domain.*;
+import com.sjtu.project.datasourceservice.dto.InputChannelDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,7 +32,7 @@ public class DataSourceController {
     }
 
     @PostMapping("/datasource/{id}/channel")
-    public Result<String> registerChannel(@PathVariable(name = "id") String id, @RequestBody InputChannel channel) {
+    public Result<String> registerChannel(@PathVariable(name = "id") String id, @RequestBody InputChannelDTO channel) {
         DataSource ds = dataSourceDao.queryById(id);
         ds.registerChannel(channel);
         return ResultUtil.success();

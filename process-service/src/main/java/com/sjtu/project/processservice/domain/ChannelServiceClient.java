@@ -1,13 +1,14 @@
 package com.sjtu.project.processservice.domain;
 
-import com.sjtu.project.processservice.domain.topologyImpl.FusionRule;
-import com.sjtu.project.processservice.domain.topologyImpl.TransformRule;
+import com.sjtu.project.common.response.Result;
+import com.sjtu.project.processservice.dto.InputChannelDTO;
 import org.springframework.cloud.openfeign.FeignClient;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @FeignClient(name = "channel-service")
 public interface ChannelServiceClient {
 
-    InputChannel createInputChannel(FusionRule fusionRule, List<TransformRule> transformRules, String targetServiceId);
+    @PostMapping("/inputchannel")
+    Result<InputChannelDTO> createInputChannel(@RequestBody InputChannelDTO channelDTO);
 }

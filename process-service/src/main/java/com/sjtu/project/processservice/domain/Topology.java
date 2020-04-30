@@ -2,6 +2,7 @@ package com.sjtu.project.processservice.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.sjtu.project.processservice.dto.DataSourceDTO;
 import lombok.Data;
 
 import java.util.HashSet;
@@ -19,7 +20,7 @@ public abstract class Topology {
     public abstract void addInput(Topology topology);
 
     @JsonIgnore
-    public abstract DataSource getTargetDataSource();
+    public abstract DataSourceDTO getTargetDataSource();
 
     protected abstract void selfStart(String processId);
 
