@@ -53,4 +53,15 @@ public class DataSourceController {
         aclService.authorize(username, ds);
         return ResultUtil.success();
     }
+
+    @DeleteMapping("/datasource/{dsId}/channel/{channelId}")
+    public Result<String> unregisterChannel(@PathVariable(name = "dsIs") String dsId,
+                                           @PathVariable(name = "channelId") String channelId) {
+        DataSource ds = dataSourceDao.queryById(dsId);
+        ds.unregisterChannel(channelId);
+        if (ds.registeredChannels().size() == 0 && !ds.isVisible()) {
+            dataSourceService.delete(ds);
+        }
+        return ResultUtil.success();
+    }
 }

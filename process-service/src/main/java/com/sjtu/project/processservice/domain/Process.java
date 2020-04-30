@@ -28,4 +28,9 @@ public class Process {
         topology.startWithProcessId(id);
         this.status = ProcessStatus.RUNNING;
     }
+
+    public void stop() {
+        topology.stop();
+        this.status = ProcessStatus.STOPPED;
+    }
 }

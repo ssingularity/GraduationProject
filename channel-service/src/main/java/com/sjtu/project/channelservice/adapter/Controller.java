@@ -7,10 +7,7 @@ import com.sjtu.project.common.response.Result;
 import com.sjtu.project.common.util.ResultUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @Slf4j
@@ -29,5 +26,11 @@ public class Controller {
     @PostMapping("/inputchannel")
     public Result<InputChannel> addInputChannel(@RequestBody InputChannel inputChannel) {
         return ResultUtil.success(inputChannelDao.save(inputChannel));
+    }
+
+    @DeleteMapping("/inputchannel/{id}")
+    public Result<String> deleteInputChannel(@PathVariable String id) {
+        inputChannelDao.deleteById(id);
+        return ResultUtil.success();
     }
 }

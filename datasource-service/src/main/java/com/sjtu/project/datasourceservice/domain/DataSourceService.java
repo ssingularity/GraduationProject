@@ -24,4 +24,9 @@ public class DataSourceService {
         kafkaConsumerSingleton.subscribe(ds);
         return ds;
     }
+
+    public void delete(DataSource ds) {
+        kafkaConsumerSingleton.unsubscribe(ds);
+        dataSourceDao.delete(ds);
+    }
 }

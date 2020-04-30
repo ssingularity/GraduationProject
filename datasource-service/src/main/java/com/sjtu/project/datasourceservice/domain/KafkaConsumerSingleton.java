@@ -39,7 +39,7 @@ public class KafkaConsumerSingleton {
             try {
                 while (true) {
                     if (!canPoll()) {
-                        Thread.sleep(2000);
+                        Thread.sleep(1000);
                         continue;
                     }
                     ConsumerRecords<String, String> msgList = kafkaConsumer.poll(1000);
@@ -93,12 +93,29 @@ public class KafkaConsumerSingleton {
         this.subscribe(Arrays.asList(ds.getTopic()));
     }
 
-
     private void subscribe(List<String> newTopics) {
         boolean refreshed = false;
         for (String t : newTopics) {
             if (!topics.contains(t)) {
                 topics.add(t);
+                refreshed = true;
+            }
+        }
+        if (refreshed) {
+            kafkaConsumer.subscribe(topics);
+        }
+    }
+
+    synchronized public void unsubscribe(DataSource ds) {
+        topic2DataSource.remove(ds.getId());
+        this.unsubscribe(Arrays.asList(ds.getTopic()));
+    }
+
+    private void unsubscribe(List<String> deletedTopics) {
+        boolean refreshed = false;
+        for (String t : deletedTopics) {
+            if (topics.contains(t)) {
+                topics.remove(t);
                 refreshed = true;
             }
         }

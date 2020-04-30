@@ -6,6 +6,7 @@ import com.sjtu.project.common.exception.ServiceException;
 import com.sjtu.project.common.response.ResultCode;
 import com.sjtu.project.common.util.ContextUtil;
 import com.sjtu.project.processservice.domain.ChannelServiceClient;
+import com.sjtu.project.processservice.domain.DataSource;
 import com.sjtu.project.processservice.dto.DataSourceDTO;
 import com.sjtu.project.processservice.dto.InputChannelDTO;
 import com.sjtu.project.processservice.domain.ServiceManagementClient;
@@ -38,25 +39,43 @@ public class ServiceNode extends Topology {
 
     @Override
     @JsonIgnore
-    public DataSourceDTO getTargetDataSource() {
-        Assert.notNull( targetDataSourceId, "流程创建过程中，服务的目标数据源应该在被Get前就创建好");
-        return new DataSourceDTO(targetDataSourceId);
+    public DataSource getTargetDataSource() {
+        Assert.notNull(targetDataSourceId, "流程开始与结束过程中，服务的目标数据源应该在被Get前就创建好");
+        return new DataSource(targetDataSourceId);
+    }
+
+    @Override
+    protected void selfStop() {
+        log.info("停止Service节点");
+        if (targetDataSourceId == null || channelId == null) {
+            throw new ServiceException(ResultCode.WRONG_STATE);
+        }
+        this.targetDataSourceId = null;
+        unregisterChannel();
+        deleteChannel();
+    }
+
+    private void unregisterChannel() {
+        for (Topology topology : inputList) {
+            topology.getTargetDataSource().unregister(channelId);
+        }
+    }
+
+    private void deleteChannel() {
+        ContextUtil.ctx.getBean(ChannelServiceClient.class).deleteInputChannel(channelId);
+        this.channelId = null;
     }
 
     @Override
     protected void selfStart(String processId) {
         log.info("启动Service节点");
-        verifySelf();
+        if (targetDataSourceId != null || channelId != null) {
+            throw new ServiceException(ResultCode.WRONG_STATE);
+        }
         this.processId = processId;
         this.targetDataSourceId = createTargetDataSource().getId();
         this.channelId = createChannel().getId();
         registerChannel2InputList();
-    }
-
-    private void verifySelf() {
-        if (targetDataSourceId != null || channelId != null) {
-            throw new ServiceException(ResultCode.WRONG_STATE);
-        }
     }
 
     private DataSourceDTO createTargetDataSource() {

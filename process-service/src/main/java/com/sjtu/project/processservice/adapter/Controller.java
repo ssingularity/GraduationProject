@@ -43,4 +43,12 @@ public class Controller {
         dao.save(process);
         return ResultUtil.success();
     }
+
+    @PostMapping("/process/{id}/stop")
+    public Result<String> startProcess(@PathVariable(name = "id") String id) {
+        Process process = dao.findOneById(id);
+        process.stop();
+        dao.save(process);
+        return ResultUtil.success();
+    }
 }

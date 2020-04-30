@@ -67,4 +67,9 @@ public class DataSource {
         ProducerRecord<String, String> record = new ProducerRecord<>(topic, sendData);
         ContextUtil.ctx.getBean(KafkaProducer.class).send(record);
     }
+
+    public void unregisterChannel(String channelId) {
+        StringRedisTemplate redisTemplate = ContextUtil.ctx.getBean(StringRedisTemplate.class);
+        redisTemplate.boundSetOps(generateRedisKey()).remove(channelId);
+    }
 }
