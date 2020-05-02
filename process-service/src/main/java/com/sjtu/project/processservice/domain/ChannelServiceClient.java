@@ -15,5 +15,5 @@ public interface ChannelServiceClient {
     Result<InputChannelDTO> createInputChannel(@RequestBody InputChannelDTO channelDTO);
 
     @DeleteMapping("/inputchannel/{id}")
-    Result<String> deleteInputChannel(@PathVariable String id);
+    Result<String> deleteInputChannel(@PathVariable(name = "id") String id);
 }

@@ -6,8 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author thinkpad
@@ -17,5 +17,5 @@ import java.util.Map;
 @AllArgsConstructor
 @JsonTypeName(value = "map")
 public class MapTransformRule implements TransformRule {
-    Map<Path, Path> mapRule = new HashMap<>();
+    List<PathPair> mapRule = new ArrayList<>();
 }

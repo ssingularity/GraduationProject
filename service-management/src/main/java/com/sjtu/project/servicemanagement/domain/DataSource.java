@@ -11,5 +11,5 @@ public class DataSource {
 
     Descriptor schema;
 
-    Boolean visible;
+    boolean visible;
 }

@@ -56,9 +56,10 @@ public class Service {
 
     private DataSource createRelatedDataSource() {
         DataSource dataSource = new DataSource();
-        dataSource.setTopic(name + "-" + UUIDUtils.generateUUID(8) + "-topic");
+        dataSource.setTopic("Invisible-" + UUIDUtils.generateUUID(8) + "-topic");
         log.info("生成topic为 {}", dataSource.getTopic());
         dataSource.setVisible(false);
+        dataSource.setSchema(response);
         return dataSource;
     }
 

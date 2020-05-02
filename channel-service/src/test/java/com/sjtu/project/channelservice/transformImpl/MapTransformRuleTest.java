@@ -31,8 +31,9 @@ public class MapTransformRuleTest {
         source.setTargetKey("a");
         Path target = new Path();
         target.setTargetKey("b.a");
+        PathPair pathPair = new PathPair(source, target);
         MapTransformRule mapTransformRule = new MapTransformRule();
-        mapTransformRule.getMapRule().put(source, target);
+        mapTransformRule.getMapRule().add(pathPair);
         ObjectNode res = mapTransformRule.doTransform(objectNode);
         Assert.assertNull(res.get("a"));
         Assert.assertEquals("1", res.get("b").get("a").asText());

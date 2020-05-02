@@ -5,6 +5,7 @@ import com.sjtu.project.common.util.ResultUtil;
 import com.sjtu.project.common.util.UserUtil;
 import com.sjtu.project.processservice.dao.ProcessDao;
 import com.sjtu.project.processservice.domain.Process;
+import com.sjtu.project.processservice.domain.ProcessStatus;
 import com.sjtu.project.processservice.dto.ProcessDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -22,6 +23,8 @@ public class Controller {
 
     @PostMapping("/process")
     public Result<Process> createProcess(@RequestBody Process process) {
+        process.setOwner(UserUtil.getUsername());
+        process.setStatus(ProcessStatus.STOPPED);
         return ResultUtil.success(dao.save(process));
     }
 

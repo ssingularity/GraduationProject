@@ -5,12 +5,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.sjtu.project.common.exception.ServiceException;
 import com.sjtu.project.common.response.ResultCode;
 import com.sjtu.project.common.util.ContextUtil;
-import com.sjtu.project.processservice.domain.ChannelServiceClient;
-import com.sjtu.project.processservice.domain.DataSource;
+import com.sjtu.project.processservice.domain.*;
 import com.sjtu.project.processservice.dto.DataSourceDTO;
 import com.sjtu.project.processservice.dto.InputChannelDTO;
-import com.sjtu.project.processservice.domain.ServiceManagementClient;
-import com.sjtu.project.processservice.domain.Topology;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.Assert;
@@ -19,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Data
-@JsonTypeName(value = "service")
+@JsonTypeName(value = "Service")
 @Slf4j
 public class ServiceNode extends Topology {
     protected FusionRule fusionRule;
@@ -50,9 +47,9 @@ public class ServiceNode extends Topology {
         if (targetDataSourceId == null || channelId == null) {
             throw new ServiceException(ResultCode.WRONG_STATE);
         }
-        this.targetDataSourceId = null;
         unregisterChannel();
         deleteChannel();
+        deleteTargetDataSource();
     }
 
     private void unregisterChannel() {
@@ -64,6 +61,11 @@ public class ServiceNode extends Topology {
     private void deleteChannel() {
         ContextUtil.ctx.getBean(ChannelServiceClient.class).deleteInputChannel(channelId);
         this.channelId = null;
+    }
+
+    private void deleteTargetDataSource() {
+        ContextUtil.ctx.getBean(DataSourceServiceClient.class).deleteDataSource(targetDataSourceId);
+        this.targetDataSourceId = null;
     }
 
     @Override

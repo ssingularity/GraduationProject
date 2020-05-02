@@ -14,5 +14,8 @@ public interface DataSourceServiceClient {
     Result<String> registerChannel(@PathVariable(name = "id") String id, @RequestBody InputChannelDTO channel);
 
     @DeleteMapping("/datasource/{dsId}/channel/{channelId}")
-    Result<String> unregisterChannel(@PathVariable(name = "dsIs") String dsId, @PathVariable(name = "channelId") String channelId);
+    Result<String> unregisterChannel(@PathVariable(name = "dsId") String dsId, @PathVariable(name = "channelId") String channelId);
+
+    @DeleteMapping("/datasource/{dsId}")
+    Result<String> deleteDataSource(@PathVariable(name = "dsId") String dsId);
 }

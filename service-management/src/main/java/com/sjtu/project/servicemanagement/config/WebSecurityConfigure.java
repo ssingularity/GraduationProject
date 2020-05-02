@@ -22,7 +22,7 @@ public class WebSecurityConfigure extends BasicJWTWebSecurityConfiguration {
         http.authorizeRequests()
             .antMatchers("/actuator/**").permitAll()
             .antMatchers("/service/**/message").permitAll()
-            .anyRequest().authenticated()
+            .anyRequest().permitAll()
             .and()
             .exceptionHandling()
             .authenticationEntryPoint(authenticationEntryPoint)

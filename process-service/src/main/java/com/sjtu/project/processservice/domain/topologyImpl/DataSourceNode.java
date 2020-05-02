@@ -9,7 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Data
 @Slf4j
-@JsonTypeName(value = "dataSource")
+@JsonTypeName(value = "DataSource")
 public class DataSourceNode extends Topology {
     @Override
     public void addInput(Topology topology) {
