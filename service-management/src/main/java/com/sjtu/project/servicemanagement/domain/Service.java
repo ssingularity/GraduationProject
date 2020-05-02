@@ -13,6 +13,7 @@ import org.springframework.http.*;
 import org.springframework.web.client.RestTemplate;
 
 import javax.validation.constraints.NotBlank;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -35,7 +36,7 @@ public class Service {
 
     Descriptor response;
 
-    List<Parameter> parameters;
+    List<Parameter> parameters = new ArrayList<>();
 
     @NotBlank
     String path;
@@ -68,7 +69,10 @@ public class Service {
         String generatedPath = createPath(content);
         String url = invokeAddress + generatedPath + parameterList;
         log.info("Request Url: {}", url);
-        String request = requestBody.generateJsonNodeFromJson(content).toString();
+        String request = null;
+        if (requestBody != null) {
+            request = requestBody.generateJsonNodeFromJson(content).toString();
+        }
         return doInvoke(url, request);
     }
 
@@ -109,10 +113,11 @@ public class Service {
 
     String doInvoke(String url, String request) {
         HttpHeaders httpHeaders = new HttpHeaders();
-        HttpEntity<String> httpEntity = new HttpEntity<>(request, httpHeaders);
         httpHeaders.setContentType(MediaType.APPLICATION_JSON);
+        HttpEntity<String> httpEntity = new HttpEntity<>(request, httpHeaders);
         ResponseEntity<String> res = ContextUtil.ctx.getBean(RestTemplate.class)
                 .exchange(url, method, httpEntity, String.class);
+        //TODO 修改为Map
         return res.getBody();
     }
 }
