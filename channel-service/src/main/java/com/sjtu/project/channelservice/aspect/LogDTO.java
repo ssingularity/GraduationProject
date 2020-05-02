@@ -29,6 +29,4 @@ public class LogDTO {
     private String datasourceId;
 
     private String serviceId;
-
-    private String apiId;
 }

@@ -1,0 +1,5 @@
+<aspectj>
+    <aspects>
+        <aspect name="com.sjtu.project.channelservice.aspect.LogAspect"/>
+    </aspects>
+</aspectj>

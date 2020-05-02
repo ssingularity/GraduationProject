@@ -67,7 +67,10 @@ public class DataSourceController {
 
     @DeleteMapping("/datasource/{dsId}")
     public Result<String> deleteDataSource(@PathVariable(name = "dsId") String dsId) {
-        dataSourceDao.deleteById(dsId);
+        DataSource ds = dataSourceDao.findOneById(dsId);
+        if (ds != null) {
+            dataSourceService.delete(ds);
+        }
         return ResultUtil.success();
     }
 }

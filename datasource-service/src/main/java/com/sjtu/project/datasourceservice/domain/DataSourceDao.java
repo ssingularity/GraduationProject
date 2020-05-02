@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface DataSourceDao extends MongoRepository<DataSource, String>, CustomDataSourceDao{
     List<DataSource> findAllByVisibleIsTrue();
+
+    DataSource findOneById(String id);
 }

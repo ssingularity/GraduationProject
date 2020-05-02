@@ -2,30 +2,27 @@ package com.sjtu.project.channelservice.aspect;
 
 import com.sjtu.project.channelservice.domain.InputChannel;
 import com.sjtu.project.common.domain.Message;
+import com.sjtu.project.common.util.ContextUtil;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+
+import java.util.Date;
 
 /**
  * @Author: ssingualrity
  * @Date: 2020/4/30 21:53
  */
 @Aspect
-@Component
 public class LogAspect {
-    @Autowired
-    LogServiceClient logServiceClient;
-
-    @Pointcut("execution(public * com.sjtu.project.channelservice.domain.InputChannel.onMessage())")
+    @Pointcut("execution(public * com.sjtu.project.channelservice.domain.InputChannel.onMessage(..))")
     public void dataSourceInvoke() {}
 
-    @Pointcut("execution(public * com.sjtu.project.channelservice.domain.InputChannel.doDispatch())")
+    @Pointcut("execution(public * com.sjtu.project.channelservice.domain.InputChannel.doDispatch(..))")
     public void serviceInvoke() {}
 
-    @Before("dataSourceInvoke()")
+    @Before(value = "dataSourceInvoke()")
     public void dataSourceLog(JoinPoint joinPoint) {
         InputChannel inputChannel = (InputChannel) joinPoint.getTarget();
         Object[] args = joinPoint.getArgs();
@@ -33,10 +30,11 @@ public class LogAspect {
         LogDTO logDTO = LogDTO.builder()
                             .type("DataSource")
                             .content(message.getContent())
-                            .processId(inputChannel.getProcessId())
                             .datasourceId(message.getDatasourceId())
+                            .processId(inputChannel.getProcessId())
+                            .timestamp(new Date())
                             .build();
-        logServiceClient.createLog(logDTO);
+        ContextUtil.ctx.getBean(LogServiceClient.class).createLog(logDTO);
     }
 
     @Before("serviceInvoke()")
@@ -47,10 +45,11 @@ public class LogAspect {
         LogDTO logDTO = LogDTO.builder()
                 .type("Service")
                 .content(content)
-                .processId(inputChannel.getProcessId())
                 .serviceId(inputChannel.getTargetServiceId())
+                .processId(inputChannel.getProcessId())
+                .timestamp(new Date())
                 .build();
-        logServiceClient.createLog(logDTO);
+        ContextUtil.ctx.getBean(LogServiceClient.class).createLog(logDTO);
     }
 
 }
