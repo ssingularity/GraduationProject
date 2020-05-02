@@ -1,5 +1,6 @@
 package com.sjtu.project.datasourceservice.domain;
 
+import com.sjtu.project.common.util.UserUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +14,9 @@ public class DataSourceService {
     @Autowired
     DataSourceDao dataSourceDao;
 
+    @Autowired
+    AclService aclService;
+
     @PostConstruct
     public void wakeUpDeadDataSource() {
         dataSourceDao.findAll().forEach(kafkaConsumerSingleton::subscribe);
@@ -22,6 +26,7 @@ public class DataSourceService {
         ds.verifySelf();
         dataSourceDao.save(ds);
         kafkaConsumerSingleton.subscribe(ds);
+        aclService.authorize(UserUtil.getUsername(), ds);
         return ds;
     }
 

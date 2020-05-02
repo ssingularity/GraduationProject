@@ -42,7 +42,10 @@ public class KafkaConsumerSingleton {
                         Thread.sleep(1000);
                         continue;
                     }
-                    ConsumerRecords<String, String> msgList = kafkaConsumer.poll(1000);
+                    ConsumerRecords<String, String> msgList = null;
+                    synchronized (kafkaConsumer) {
+                        msgList = kafkaConsumer.poll(1000);
+                    }
                     if (null != msgList && msgList.count() > 0) {
                         Map<String, List<String>> topic2MessageList = new HashMap<>();
                         for (ConsumerRecord<String, String> record : msgList) {
@@ -88,9 +91,11 @@ public class KafkaConsumerSingleton {
         }
     }
 
-    synchronized public void subscribe(DataSource ds) {
-        topic2DataSource.put(ds.getTopic(), ds);
-        this.subscribe(Arrays.asList(ds.getTopic()));
+    public void subscribe(DataSource ds) {
+        synchronized (kafkaConsumer) {
+            topic2DataSource.put(ds.getTopic(), ds);
+            this.subscribe(Arrays.asList(ds.getTopic()));
+        }
     }
 
     private void subscribe(List<String> newTopics) {
@@ -102,13 +107,16 @@ public class KafkaConsumerSingleton {
             }
         }
         if (refreshed) {
+            kafkaConsumer.unsubscribe();
             kafkaConsumer.subscribe(topics);
         }
     }
 
     synchronized public void unsubscribe(DataSource ds) {
-        topic2DataSource.remove(ds.getId());
-        this.unsubscribe(Arrays.asList(ds.getTopic()));
+        synchronized (kafkaConsumer) {
+            topic2DataSource.remove(ds.getId());
+            this.unsubscribe(Arrays.asList(ds.getTopic()));
+        }
     }
 
     private void unsubscribe(List<String> deletedTopics) {
@@ -120,6 +128,7 @@ public class KafkaConsumerSingleton {
             }
         }
         if (refreshed) {
+            kafkaConsumer.unsubscribe();
             kafkaConsumer.subscribe(topics);
         }
     }

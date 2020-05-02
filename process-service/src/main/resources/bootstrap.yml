@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: core-service
+    name: process-service
   cloud:
     config:
       name: core
@@ -31,8 +31,8 @@ management:
 
 swagger:
   project:
-    base-package: com.sjtu.project.coreservice.adapter
+    base-package: com.sjtu.project.processservice.adapter
     version: version1.0
-    title: CoreService
-    description: CoreService
+    title: ProcessService
+    description: ProcessService
 
