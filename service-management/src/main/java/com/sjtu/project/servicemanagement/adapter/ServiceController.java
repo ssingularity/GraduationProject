@@ -43,7 +43,7 @@ public class ServiceController {
 
     @PostMapping("/service/{id}/message")
     public Mono<Result<String>> call(@PathVariable(name = "id") String id, @RequestBody String message) {
-        return reactiveServiceDao.findOneById(id)
+        return reactiveServiceDao.findById(id)
                 .flatMap(service -> service.invokeWith(message))
                 .map(ResultUtil::success);
     }
