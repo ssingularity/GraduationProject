@@ -5,12 +5,16 @@ import com.sjtu.project.common.domain.Descriptor;
 import com.sjtu.project.common.util.ContextUtil;
 import com.sjtu.project.common.util.JsonUtil;
 import com.sjtu.project.common.util.UUIDUtils;
+import com.sjtu.project.servicemanagement.dto.ServiceDTO;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.BeanUtils;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.http.*;
-import org.springframework.web.client.RestTemplate;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
+import org.springframework.web.reactive.function.client.WebClient;
+import reactor.core.publisher.Mono;
 
 import javax.validation.constraints.NotBlank;
 import java.util.ArrayList;
@@ -25,6 +29,8 @@ public class Service {
     String id;
 
     String name;
+
+    String description;
 
     @NotBlank
     String ip;
@@ -44,8 +50,6 @@ public class Service {
     @NotBlank
     HttpMethod method;
 
-    String healthEndPoint;
-
     void verifySelf() {
     }
 
@@ -63,7 +67,7 @@ public class Service {
         return dataSource;
     }
 
-    public String invokeWith(String message) {
+    public Mono<String> invokeWith(String message) {
         JsonNode content = JsonUtil.readTree(message);
         String invokeAddress = createAddress();
         String parameterList = createParameterList(content);
@@ -112,13 +116,19 @@ public class Service {
         return res.substring(0, res.length() - 1);
     }
 
-    String doInvoke(String url, String request) {
-        HttpHeaders httpHeaders = new HttpHeaders();
-        httpHeaders.setContentType(MediaType.APPLICATION_JSON);
-        HttpEntity<String> httpEntity = new HttpEntity<>(request, httpHeaders);
-        ResponseEntity<String> res = ContextUtil.ctx.getBean(RestTemplate.class)
-                .exchange(url, method, httpEntity, String.class);
-        //TODO 修改为Map
-        return res.getBody();
+    Mono<String> doInvoke(String url, String request) {
+        return WebClient.create()
+                .method(this.method)
+                .uri(url)
+                .contentType(MediaType.APPLICATION_JSON)
+                .syncBody(request)
+                .retrieve()
+                .bodyToMono(String.class);
+    }
+
+    public ServiceDTO convert2DTO() {
+        ServiceDTO res = new ServiceDTO();
+        BeanUtils.copyProperties(this, res);
+        return res;
     }
 }
