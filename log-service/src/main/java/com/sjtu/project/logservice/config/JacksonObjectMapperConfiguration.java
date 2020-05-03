@@ -1,4 +1,4 @@
-package com.sjtu.project.common.configure;
+package com.sjtu.project.logservice.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sjtu.project.common.util.JsonUtil;

@@ -1,6 +1,7 @@
 package com.sjtu.project.servicemanagement.domain;
 
 import com.sjtu.project.common.response.Result;
+import com.sjtu.project.servicemanagement.dto.DataSourceDTO;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -12,5 +13,5 @@ import org.springframework.web.bind.annotation.RequestBody;
 @FeignClient(name = "datasource-service")
 public interface DataSourceClient {
     @PostMapping("/datasource")
-    Result<DataSource> createDataSource(@RequestBody DataSource dataSource);
+    Result<DataSourceDTO> createDataSource(@RequestBody DataSource dataSource);
 }

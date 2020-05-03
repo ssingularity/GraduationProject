@@ -3,6 +3,7 @@ package com.sjtu.project.servicemanagement.adapter;
 import com.sjtu.project.common.response.Result;
 import com.sjtu.project.common.util.ResultUtil;
 import com.sjtu.project.servicemanagement.domain.*;
+import com.sjtu.project.servicemanagement.dto.DataSourceDTO;
 import com.sjtu.project.servicemanagement.dto.ServiceDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +37,7 @@ public class ServiceController {
     }
 
     @PostMapping("/service/{id}/datasource")
-    public Result<DataSource> createDataSource(@PathVariable(name = "id") String id) {
+    public Result<DataSourceDTO> createDataSource(@PathVariable(name = "id") String id) {
         Service service = serviceDao.queryById(id);
         return ResultUtil.success(service.generateDataSource());
     }

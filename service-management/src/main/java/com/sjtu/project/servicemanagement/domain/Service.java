@@ -5,6 +5,7 @@ import com.sjtu.project.common.domain.Descriptor;
 import com.sjtu.project.common.util.ContextUtil;
 import com.sjtu.project.common.util.JsonUtil;
 import com.sjtu.project.common.util.UUIDUtils;
+import com.sjtu.project.servicemanagement.dto.DataSourceDTO;
 import com.sjtu.project.servicemanagement.dto.ServiceDTO;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
@@ -53,7 +54,7 @@ public class Service {
     void verifySelf() {
     }
 
-    public DataSource generateDataSource() {
+    public DataSourceDTO generateDataSource() {
         DataSource ds = createRelatedDataSource();
         return ContextUtil.ctx.getBean(DataSourceClient.class).createDataSource(ds).getData();
     }
@@ -73,7 +74,6 @@ public class Service {
         String parameterList = createParameterList(content);
         String generatedPath = createPath(content);
         String url = invokeAddress + generatedPath + parameterList;
-        log.info("Request Url: {}", url);
         String request = null;
         if (requestBody != null) {
             request = requestBody.generateJsonNodeFromJson(content).toString();

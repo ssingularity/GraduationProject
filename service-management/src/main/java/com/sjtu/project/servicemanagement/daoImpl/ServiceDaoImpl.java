@@ -4,15 +4,12 @@ import com.sjtu.project.common.exception.ObjectNotFoundException;
 import com.sjtu.project.common.util.JsonUtil;
 import com.sjtu.project.servicemanagement.domain.CustomServiceDao;
 import com.sjtu.project.servicemanagement.domain.Service;
-import com.sjtu.project.servicemanagement.dto.ServiceDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Repository;
-
-import java.util.List;
 
 @Repository
 public class ServiceDaoImpl implements CustomServiceDao {

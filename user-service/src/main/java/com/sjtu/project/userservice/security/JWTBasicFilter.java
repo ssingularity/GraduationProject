@@ -1,8 +1,8 @@
 package com.sjtu.project.userservice.security;
 
 import com.sjtu.project.userservice.util.JWTUtil;
-import com.google.common.net.HttpHeaders;
 import io.jsonwebtoken.Claims;
+import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.GrantedAuthority;

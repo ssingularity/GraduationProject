@@ -2,13 +2,13 @@ package com.sjtu.project.channelservice.domain;
 
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.sjtu.project.common.domain.Message;
-import com.sjtu.project.common.response.Result;
 import com.sjtu.project.common.util.ContextUtil;
 import com.sjtu.project.common.util.JsonUtil;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import reactor.core.publisher.Mono;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +30,7 @@ public class InputChannel {
 
     String targetServiceId;
 
-    public void onMessage(Message message) {
+    public Mono<Void> onMessage(Message message) {
         log.info("分发来自 {} 的消息 {}", message.getDatasourceId(), message.getContent());
         //TODO 融合
         ObjectNode input = JsonUtil.readTree(message.getContent());
@@ -38,12 +38,13 @@ public class InputChannel {
             input = transformRule.doTransform(input);
         }
         //TODO 背压控制
-        doDispatch(JsonUtil.writeValueAsString(input));
+        return doDispatch(JsonUtil.writeValueAsString(input));
     }
 
-    public void doDispatch(String content) {
-        Result<String> res = ContextUtil.ctx.getBean(ServiceManagement.class).call(targetServiceId, content);
-        String serviceRes = res.getData();
-        ContextUtil.ctx.getBean(DataSourceClient.class).sendMessage(targetDataSourceId, serviceRes);
+    public Mono<Void> doDispatch(String content) {
+        ServiceManagement serviceManagement = ContextUtil.ctx.getBean(ServiceManagement.class);
+        DataSourceClient dataSourceClient = ContextUtil.ctx.getBean(DataSourceClient.class);
+        return serviceManagement.call(targetServiceId, content)
+                .flatMap(message -> dataSourceClient.sendMessage(targetDataSourceId, message));
     }
 }

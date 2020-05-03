@@ -1,10 +1,10 @@
 package com.sjtu.project.userservice.handler;
 
-import com.google.common.net.HttpHeaders;
 import com.sjtu.project.common.response.ResultCode;
-import com.sjtu.project.userservice.util.JWTUtil;
 import com.sjtu.project.common.util.JsonUtil;
+import com.sjtu.project.userservice.util.JWTUtil;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpHeaders;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
