@@ -7,7 +7,6 @@ import com.sjtu.project.common.util.JsonUtil;
 import lombok.Data;
 
 @Data
-@JsonTypeName(value = "Integer")
 public class IntegerDescriptor extends Descriptor<Integer> {
 
     @Override

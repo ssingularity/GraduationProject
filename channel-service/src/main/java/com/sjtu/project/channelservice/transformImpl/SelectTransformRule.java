@@ -1,7 +1,6 @@
 package com.sjtu.project.channelservice.transformImpl;
 
 
-import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.sjtu.project.channelservice.domain.TransformRule;
 import com.sjtu.project.common.util.JsonUtil;
@@ -18,7 +17,6 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@JsonTypeName(value = "select")
 public class SelectTransformRule implements TransformRule {
     List<Path> expectedKeys = new ArrayList<>();
 

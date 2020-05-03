@@ -66,9 +66,4 @@ public class JsonUtil {
     public static ArrayNode createArrayNode() {
         return objectMapper.createArrayNode();
     }
-
-    public static void register(Class clazz) {
-        log.info("注册了class: {}", clazz);
-        objectMapper.registerSubtypes(clazz);
-    }
 }

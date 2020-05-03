@@ -1,13 +1,11 @@
 package com.sjtu.project.common.domain;
 
-import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.sjtu.project.common.util.JsonUtil;
 import lombok.Data;
 
 @Data
-@JsonTypeName(value = "String")
 public class StringDescriptor extends Descriptor<String> {
     @Override
     public JsonNode generateJsonNodeFromJson(JsonNode json) {

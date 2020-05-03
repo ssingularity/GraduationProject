@@ -12,7 +12,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Data
-@JsonTypeName(value = "Object")
 public class ObjectDescriptor extends Descriptor<Object> {
     List<Descriptor> children = new ArrayList<>();
 

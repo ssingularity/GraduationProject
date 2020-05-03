@@ -35,4 +35,9 @@ swagger:
     version: version1.0
     title: ChannelService
     description: ChannelService
-
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 10000
+        readTimeout: 60000

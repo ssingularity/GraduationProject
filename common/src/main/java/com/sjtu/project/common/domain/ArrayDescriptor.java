@@ -14,7 +14,6 @@ import java.util.List;
  * @date 2020-04-11 14:35
  */
 @Data
-@JsonTypeName(value = "Array")
 public class ArrayDescriptor extends Descriptor<List> {
     Descriptor object;
 

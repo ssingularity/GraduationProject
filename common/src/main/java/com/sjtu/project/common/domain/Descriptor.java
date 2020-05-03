@@ -1,5 +1,6 @@
 package com.sjtu.project.common.domain;
 
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.databind.JsonNode;
 import lombok.Data;
@@ -9,6 +10,12 @@ import lombok.NoArgsConstructor;
  * @author thinkpad
  */
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.EXTERNAL_PROPERTY, property = "type")
+@JsonSubTypes({
+        @JsonSubTypes.Type(value = ArrayDescriptor.class, name = "Array"),
+        @JsonSubTypes.Type(value = IntegerDescriptor.class, name = "Integer"),
+        @JsonSubTypes.Type(value = StringDescriptor.class, name = "String"),
+        @JsonSubTypes.Type(value = ObjectDescriptor.class, name = "Object"),
+})
 @Data
 @NoArgsConstructor
 public abstract class Descriptor<T> {

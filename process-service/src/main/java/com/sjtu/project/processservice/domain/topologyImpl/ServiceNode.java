@@ -16,7 +16,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Data
-@JsonTypeName(value = "Service")
 @Slf4j
 public class ServiceNode extends Topology {
     protected FusionRule fusionRule;

@@ -16,9 +16,4 @@ public class WebClientConfig {
     public WebClient.Builder loadBalancedWebClientBuilder() {
         return WebClient.builder();
     }
-
-    @Bean
-    WebClient webClient(WebClient.Builder loadBalancedWebClientBuilder) {
-        return loadBalancedWebClientBuilder.baseUrl("http://channel-service/").build();
-    }
 }

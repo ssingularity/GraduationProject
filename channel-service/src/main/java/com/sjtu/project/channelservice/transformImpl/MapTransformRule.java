@@ -16,7 +16,6 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@JsonTypeName(value = "map")
 public class MapTransformRule implements TransformRule {
     List<PathPair> mapRule = new ArrayList<>();
 

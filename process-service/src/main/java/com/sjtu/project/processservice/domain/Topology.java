@@ -1,13 +1,20 @@
 package com.sjtu.project.processservice.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.sjtu.project.processservice.domain.topologyImpl.DataSourceNode;
+import com.sjtu.project.processservice.domain.topologyImpl.ServiceNode;
 import lombok.Data;
 
 import java.util.HashSet;
 import java.util.Set;
 
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.EXTERNAL_PROPERTY, property = "type")
+@JsonSubTypes({
+        @JsonSubTypes.Type(value = ServiceNode.class, name = "Service"),
+        @JsonSubTypes.Type(value = DataSourceNode.class, name = "DataSource"),
+})
 @Data
 public abstract class Topology {
     protected Set<Topology> inputList = new HashSet<>();

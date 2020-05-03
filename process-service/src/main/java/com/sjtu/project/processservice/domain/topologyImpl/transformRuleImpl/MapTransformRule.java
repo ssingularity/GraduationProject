@@ -1,6 +1,5 @@
 package com.sjtu.project.processservice.domain.topologyImpl.transformRuleImpl;
 
-import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.sjtu.project.processservice.domain.topologyImpl.TransformRule;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -15,7 +14,6 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@JsonTypeName(value = "map")
 public class MapTransformRule implements TransformRule {
     List<PathPair> mapRule = new ArrayList<>();
 }
