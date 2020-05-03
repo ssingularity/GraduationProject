@@ -1,9 +1,8 @@
 package com.sjtu.project.userservice.handler;
 
-import com.google.common.io.CharStreams;
 import com.google.common.net.HttpHeaders;
 import com.sjtu.project.common.response.ResultCode;
-import com.sjtu.project.common.util.JWTUtil;
+import com.sjtu.project.userservice.util.JWTUtil;
 import com.sjtu.project.common.util.JsonUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.Authentication;
@@ -17,7 +16,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 @Component
 @Slf4j

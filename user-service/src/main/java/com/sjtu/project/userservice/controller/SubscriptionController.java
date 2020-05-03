@@ -2,7 +2,7 @@ package com.sjtu.project.userservice.controller;
 
 import com.sjtu.project.common.response.Result;
 import com.sjtu.project.common.util.ResultUtil;
-import com.sjtu.project.common.util.UserUtil;
+import com.sjtu.project.userservice.util.UserUtil;
 import com.sjtu.project.userservice.dao.SubscriptionRepository;
 import com.sjtu.project.userservice.domain.Subscription;
 import com.sjtu.project.userservice.domain.SubscriptionStatus;

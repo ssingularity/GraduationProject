@@ -1,4 +1,4 @@
-package com.sjtu.project.common.util;
+package com.sjtu.project.userservice.util;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

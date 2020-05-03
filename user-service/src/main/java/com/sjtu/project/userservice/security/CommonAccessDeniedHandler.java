@@ -1,4 +1,4 @@
-package com.sjtu.project.common.security;
+package com.sjtu.project.userservice.security;
 
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.web.access.AccessDeniedHandler;

@@ -1,15 +1,12 @@
 package com.sjtu.project.userservice.service.impl;
 
 import com.sjtu.project.common.exception.ObjectNotFoundException;
-import com.sjtu.project.common.response.PageResult;
-import com.sjtu.project.common.util.PageUtil;
-import com.sjtu.project.common.util.UserUtil;
+import com.sjtu.project.userservice.util.UserUtil;
 import com.sjtu.project.userservice.dao.UserRepository;
 import com.sjtu.project.userservice.domain.User;
 import com.sjtu.project.userservice.domain.UserAuthority;
 import com.sjtu.project.userservice.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -22,11 +19,6 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     BCryptPasswordEncoder passwordEncoder;
-
-    @Override
-    public PageResult<User> findAll(PageRequest pageRequest) {
-        return PageUtil.convert2PageResult(userRepository.findAll(pageRequest));
-    }
 
     @Override
     public User modify(User user) {

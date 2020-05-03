@@ -1,6 +1,6 @@
 package com.sjtu.project.datasourceservice.domain;
 
-import com.sjtu.project.common.util.UserUtil;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,11 +22,13 @@ public class DataSourceService {
         dataSourceDao.findAll().forEach(kafkaConsumerSingleton::subscribe);
     }
 
-    public DataSource create(DataSource ds) {
+    public DataSource create(DataSource ds, String username) {
         ds.verifySelf();
         dataSourceDao.save(ds);
         kafkaConsumerSingleton.subscribe(ds);
-        aclService.authorize(UserUtil.getUsername(), ds);
+        if (!StringUtils.isEmpty(username)) {
+            aclService.authorize(username, ds);
+        }
         return ds;
     }
 

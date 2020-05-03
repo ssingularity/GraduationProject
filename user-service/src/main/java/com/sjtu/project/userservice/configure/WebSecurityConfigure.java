@@ -1,6 +1,5 @@
 package com.sjtu.project.userservice.configure;
 
-import com.sjtu.project.common.configure.BasicJWTWebSecurityConfiguration;
 import com.sjtu.project.userservice.handler.UserAuthenticationFailureHandler;
 import com.sjtu.project.userservice.handler.UserAuthenticationSuccessHandler;
 import org.springframework.beans.factory.annotation.Autowired;

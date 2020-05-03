@@ -27,8 +27,9 @@ public class DataSourceController {
     }
 
     @PostMapping("/datasource")
-    public Result<DataSource> addDataSource(@Valid @RequestBody DataSource dataSource) {
-        return ResultUtil.success(dataSourceDao.save(dataSourceService.create(dataSource)));
+    public Result<DataSource> addDataSource(@Valid @RequestBody DataSource dataSource,
+                                            @RequestParam(name = "username", required = false) String username) {
+        return ResultUtil.success(dataSourceDao.save(dataSourceService.create(dataSource, username)));
     }
 
     @PostMapping("/datasource/{id}/channel")

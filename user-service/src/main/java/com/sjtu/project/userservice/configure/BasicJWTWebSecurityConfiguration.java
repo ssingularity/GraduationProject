@@ -1,6 +1,6 @@
-package com.sjtu.project.common.configure;
+package com.sjtu.project.userservice.configure;
 
-import com.sjtu.project.common.security.JWTBasicFilter;
+import com.sjtu.project.userservice.security.JWTBasicFilter;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;

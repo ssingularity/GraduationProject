@@ -2,7 +2,6 @@ package com.sjtu.project.processservice.adapter;
 
 import com.sjtu.project.common.response.Result;
 import com.sjtu.project.common.util.ResultUtil;
-import com.sjtu.project.common.util.UserUtil;
 import com.sjtu.project.processservice.dao.ProcessDao;
 import com.sjtu.project.processservice.domain.Process;
 import com.sjtu.project.processservice.domain.ProcessStatus;
@@ -23,14 +22,13 @@ public class Controller {
 
     @PostMapping("/process")
     public Result<Process> createProcess(@RequestBody Process process) {
-        process.setOwner(UserUtil.getUsername());
         process.setStatus(ProcessStatus.STOPPED);
         return ResultUtil.success(dao.save(process));
     }
 
     @GetMapping("/process/mine")
-    public Result<List<ProcessDTO>> getMyProcess() {
-        return ResultUtil.success(dao.findAllByOwner(UserUtil.getUsername()));
+    public Result<List<ProcessDTO>> getMyProcess(@RequestParam(name = "username") String username) {
+        return ResultUtil.success(dao.findAllByOwner(username));
 
     }
 
