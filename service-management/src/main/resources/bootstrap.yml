@@ -36,3 +36,9 @@ swagger:
     title: ServiceManagement
     description: ServiceManagement
 
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 10000
+        readTimeout: 60000
