@@ -1,6 +1,7 @@
 package com.sjtu.project.channelservice.clientImpl;
 
 import com.sjtu.project.channelservice.domain.DataSourceClient;
+import com.sjtu.project.common.response.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
@@ -17,13 +18,13 @@ public class DataSourceClientImpl implements DataSourceClient {
     WebClient.Builder webClientBuilder;
 
     @Override
-    public Mono<Void> sendMessage(String datasourceId, String message) {
+    public Mono<Result> sendMessage(String datasourceId, String message) {
         return webClientBuilder.baseUrl("http://datasource-service/").build()
                 .post()
                 .uri("/datasource/" + datasourceId + "/message")
                 .contentType(MediaType.APPLICATION_JSON)
                 .syncBody(message)
                 .retrieve()
-                .bodyToMono(Void.class);
+                .bodyToMono(Result.class);
     }
 }

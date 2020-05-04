@@ -44,7 +44,7 @@ public class DataSourceController {
     public Result<String> sendMessage(@PathVariable("id") String datasourceId, @RequestBody String message) {
         DataSource ds = dataSourceDao.queryById(datasourceId);
         ds.sendMessage(message);
-        return ResultUtil.success();
+        return ResultUtil.success(message);
     }
 
     @PostMapping("/datasource/{dsId}/user/{username}")

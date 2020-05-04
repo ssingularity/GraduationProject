@@ -2,6 +2,7 @@ package com.sjtu.project.channelservice.domain;
 
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.sjtu.project.common.domain.Message;
+import com.sjtu.project.common.response.Result;
 import com.sjtu.project.common.util.ContextUtil;
 import com.sjtu.project.common.util.JsonUtil;
 import lombok.Data;
@@ -30,8 +31,7 @@ public class InputChannel {
 
     String targetServiceId;
 
-    public Mono<Void> onMessage(Message message) {
-        log.info("分发来自 {} 的消息 {}", message.getDatasourceId(), message.getContent());
+    public Mono<Result> onMessage(Message message) {
         //TODO 融合
         ObjectNode input = JsonUtil.readTree(message.getContent());
         for (TransformRule transformRule : transformRules) {
@@ -41,7 +41,7 @@ public class InputChannel {
         return doDispatch(JsonUtil.writeValueAsString(input));
     }
 
-    public Mono<Void> doDispatch(String content) {
+    public Mono<Result> doDispatch(String content) {
         ServiceManagement serviceManagement = ContextUtil.ctx.getBean(ServiceManagement.class);
         DataSourceClient dataSourceClient = ContextUtil.ctx.getBean(DataSourceClient.class);
         return serviceManagement.call(targetServiceId, content)

@@ -21,7 +21,7 @@ public class Controller {
     ReactiveChannelDao reactiveChannelDao;
 
     @PostMapping("/inputchannel/{id}/message")
-    public Mono<Void> dispatchMessage(@PathVariable(name = "id") String id, @RequestBody Message message) {
+    public Mono<Result> dispatchMessage(@PathVariable(name = "id") String id, @RequestBody Message message) {
         return reactiveChannelDao.findById(id)
                 .flatMap(inputChannel -> inputChannel.onMessage(message));
     }
