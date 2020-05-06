@@ -11,17 +11,17 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="gateway" />
-        <module name="swagger-spring-boot-autoconfigure" />
+        <module name="service-management" />
         <module name="common" />
         <module name="log-service" />
         <module name="register-server" />
         <module name="swagger-spring-boot-starter" />
-        <module name="service-management" />
         <module name="kafka-auth" />
-        <module name="channel-service" />
+        <module name="swagger-spring-boot-autoconfigure" />
+        <module name="user-service" />
         <module name="config-server" />
         <module name="process-service" />
-        <module name="user-service" />
+        <module name="channel-service" />
         <module name="datasource-service" />
       </profile>
     </annotationProcessing>

@@ -11,6 +11,8 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Repository;
 
+import java.time.Duration;
+
 @Repository
 public class InputChannelDaoImpl implements CustomInputChannelDao {
     @Autowired
@@ -30,7 +32,7 @@ public class InputChannelDaoImpl implements CustomInputChannelDao {
                 throw new ObjectNotFoundException("InputChannel");
             }
             else {
-                redisTemplate.boundValueOps(generateRedisKey(id)).set(JsonUtil.writeValueAsString(inputChannel));
+                redisTemplate.boundValueOps(generateRedisKey(id)).set(JsonUtil.writeValueAsString(inputChannel), Duration.ofMinutes(10));
                 return inputChannel;
             }
         }

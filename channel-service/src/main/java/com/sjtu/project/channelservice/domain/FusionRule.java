@@ -20,11 +20,12 @@ public class FusionRule {
     Set<String> dataSourceIdSet;
 
     public String doFusion(String channelId, Message message) {
+        DataMapStorageService dataMapStorageService = ContextUtil.ctx.getBean(DataMapStorageService.class);
         String content = message.getContent();
         ObjectNode objectNode = JsonUtil.readTree(content);
         String key = objectNode.get(keyName).asText();
-        Map<String, String> map = ContextUtil.ctx.getBean(DataMapStorageService.class)
-                .putAndPopCurrentSrcObjMapIfFull(channelId, message.getDatasourceId(), key, content);
+        dataMapStorageService.putObj(channelId, message.getDatasourceId(), key, content);
+        Map<String, String> map = dataMapStorageService.popCurrentSrcObjMapIfFull(channelId, key);
         if (map != null) {
             ObjectNode res = JsonUtil.createObjectNode();
             res.put(keyName, key);

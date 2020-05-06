@@ -42,6 +42,7 @@ public class Controller {
     @DeleteMapping("/inputchannel/{id}")
     public Result<String> deleteInputChannel(@PathVariable String id) {
         inputChannelDao.deleteById(id);
+        dataMapStorageService.deleteChannel(id);
         return ResultUtil.success();
     }
 }

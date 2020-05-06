@@ -1,6 +1,6 @@
 package com.sjtu.project.processservice.dto;
 
-import com.sjtu.project.processservice.domain.topologyImpl.FusionRule;
+import com.sjtu.project.processservice.domain.topologyImpl.fusionRule.FusionRule;
 import com.sjtu.project.processservice.domain.topologyImpl.TransformRule;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
