@@ -1,5 +1,6 @@
 package com.sjtu.project.channelservice.adapter;
 
+import com.sjtu.project.channelservice.domain.DataMapStorageService;
 import com.sjtu.project.channelservice.domain.InputChannel;
 import com.sjtu.project.channelservice.domain.InputChannelDao;
 import com.sjtu.project.channelservice.domain.ReactiveChannelDao;
@@ -20,6 +21,9 @@ public class Controller {
     @Autowired
     ReactiveChannelDao reactiveChannelDao;
 
+    @Autowired
+    DataMapStorageService dataMapStorageService;
+
     @PostMapping("/inputchannel/{id}/message")
     public Mono<Result> dispatchMessage(@PathVariable(name = "id") String id, @RequestBody Message message) {
         return reactiveChannelDao.findById(id)
@@ -28,7 +32,11 @@ public class Controller {
 
     @PostMapping("/inputchannel")
     public Result<InputChannel> addInputChannel(@RequestBody InputChannel inputChannel) {
-        return ResultUtil.success(inputChannelDao.save(inputChannel));
+        inputChannel = inputChannelDao.save(inputChannel);
+        if (inputChannel.getFusionRule() != null) {
+            dataMapStorageService.initChannel(inputChannel.getId(), inputChannel.getFusionRule().getDataSourceIdSet());
+        }
+        return ResultUtil.success(inputChannel);
     }
 
     @DeleteMapping("/inputchannel/{id}")

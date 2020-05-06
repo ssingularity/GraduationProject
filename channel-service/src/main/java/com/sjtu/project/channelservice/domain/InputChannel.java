@@ -5,6 +5,7 @@ import com.sjtu.project.common.domain.Message;
 import com.sjtu.project.common.response.Result;
 import com.sjtu.project.common.util.ContextUtil;
 import com.sjtu.project.common.util.JsonUtil;
+import com.sjtu.project.common.util.ResultUtil;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.annotation.Id;
@@ -32,13 +33,31 @@ public class InputChannel {
     String targetServiceId;
 
     public Mono<Result> onMessage(Message message) {
-        //TODO 融合
-        ObjectNode input = JsonUtil.readTree(message.getContent());
+        String input = doFusion(message);
+        if (input == null) {
+            return Mono.just(ResultUtil.success());
+        } else {
+            input = doTransform(input);
+            //TODO 背压控制
+            return doDispatch(input);
+        }
+    }
+
+    private String doFusion(Message message) {
+        if (fusionRule == null) {
+            return message.getContent();
+        }
+        else {
+            return fusionRule.doFusion(id, message);
+        }
+    }
+
+    private String doTransform(String content) {
+        ObjectNode input = JsonUtil.readTree(content);
         for (TransformRule transformRule : transformRules) {
             input = transformRule.doTransform(input);
         }
-        //TODO 背压控制
-        return doDispatch(JsonUtil.writeValueAsString(input));
+        return JsonUtil.writeValueAsString(input);
     }
 
     public Mono<Result> doDispatch(String content) {
