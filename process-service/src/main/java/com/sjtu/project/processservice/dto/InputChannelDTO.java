@@ -26,4 +26,6 @@ public class InputChannelDTO {
     FusionRule fusionRule;
 
     String targetServiceId;
+
+    Integer threshold;
 }

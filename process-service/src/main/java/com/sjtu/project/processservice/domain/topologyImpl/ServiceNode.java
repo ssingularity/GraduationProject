@@ -24,6 +24,8 @@ public class ServiceNode extends Topology {
 
     private String targetDataSourceId;
 
+    private Integer threshold;
+
     private String channelId;
 
     private String processId;
@@ -92,6 +94,7 @@ public class ServiceNode extends Topology {
                 .targetDataSourceId(targetDataSourceId)
                 .targetServiceId(id)
                 .transformRules(transformRuleList)
+                .threshold(threshold)
                 .build();
          return ContextUtil.ctx.getBean(ChannelServiceClient.class)
                 .createInputChannel(channelDTO)

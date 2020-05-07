@@ -32,22 +32,23 @@ public class InputChannel {
 
     String targetServiceId;
 
+    Integer threshold = Integer.MAX_VALUE;
+
     public Mono<Result> onMessage(Message message) {
         String input = doFusion(message);
         if (input == null) {
             return Mono.just(ResultUtil.success());
         } else {
             input = doTransform(input);
-            //TODO 背压控制
-            return doDispatch(input);
+            BackPressureService backPressureService = ContextUtil.ctx.getBean(BackPressureService.class);
+            return backPressureService.dispatchContentForChannel(this, input);
         }
     }
 
     private String doFusion(Message message) {
         if (fusionRule == null) {
             return message.getContent();
-        }
-        else {
+        } else {
             return fusionRule.doFusion(id, message);
         }
     }
@@ -60,10 +61,13 @@ public class InputChannel {
         return JsonUtil.writeValueAsString(input);
     }
 
-    public Mono<Result> doDispatch(String content) {
+    public Mono<String> doDispatch(String content) {
         ServiceManagement serviceManagement = ContextUtil.ctx.getBean(ServiceManagement.class);
+        return serviceManagement.call(targetServiceId, content);
+    }
+
+    public Mono<Result> doDispatch2DataSource(String content) {
         DataSourceClient dataSourceClient = ContextUtil.ctx.getBean(DataSourceClient.class);
-        return serviceManagement.call(targetServiceId, content)
-                .flatMap(message -> dataSourceClient.sendMessage(targetDataSourceId, message));
+        return dataSourceClient.sendMessage(targetDataSourceId, content);
     }
 }

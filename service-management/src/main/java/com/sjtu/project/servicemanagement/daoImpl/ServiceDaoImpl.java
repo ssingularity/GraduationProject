@@ -11,6 +11,8 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Repository;
 
+import java.time.Duration;
+
 @Repository
 public class ServiceDaoImpl implements CustomServiceDao {
     @Autowired
@@ -30,7 +32,7 @@ public class ServiceDaoImpl implements CustomServiceDao {
                 throw new ObjectNotFoundException("Service对象未找到");
             }
             else {
-                redisTemplate.boundValueOps(generateRedisKey(id)).set(JsonUtil.writeValueAsString(res));
+                redisTemplate.boundValueOps(generateRedisKey(id)).set(JsonUtil.writeValueAsString(res), Duration.ofMinutes(1));
                 return res;
             }
         }
