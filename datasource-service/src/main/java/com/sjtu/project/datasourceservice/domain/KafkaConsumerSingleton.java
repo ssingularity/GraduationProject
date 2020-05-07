@@ -5,13 +5,14 @@ import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import reactor.core.publisher.Flux;
+import reactor.util.function.Tuples;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import java.util.*;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
 
 /**
  * @Author: ssingualrity
@@ -28,8 +29,6 @@ public class KafkaConsumerSingleton {
     private Set<String> topics = new HashSet<>();
 
     private Map<String, DataSource> topic2DataSource = new HashMap<>();
-
-    private ExecutorService executor = Executors.newCachedThreadPool();
 
     private ExecutorService singleExecutor = Executors.newSingleThreadExecutor();
 
@@ -55,10 +54,10 @@ public class KafkaConsumerSingleton {
                             messageList.add(value);
                             topic2MessageList.put(topic, messageList);
                         }
-                        for (Map.Entry<String, List<String>> entry : topic2MessageList.entrySet()) {
-                            DataSource ds = topic2DataSource.get(entry.getKey());
-                            executor.submit(() -> ds.dispatchMessage(dataSourceListener, entry.getValue()));
-                        }
+                        Flux.fromIterable(topic2MessageList.entrySet())
+                                .map(entry -> Tuples.of(topic2DataSource.get(entry.getKey()), entry.getValue()))
+                                .flatMap(tuple2 -> tuple2.getT1().dispatchMessage(dataSourceListener, tuple2.getT2()))
+                                .subscribe();
                     } else {
                         Thread.sleep(1000);
                     }
@@ -78,16 +77,6 @@ public class KafkaConsumerSingleton {
         }
         if (singleExecutor != null) {
             singleExecutor.shutdownNow();
-        }
-        if (executor != null) {
-            try {
-                executor.shutdown();
-                if (executor != null && !executor.awaitTermination(60, TimeUnit.MILLISECONDS)) {
-                    executor.shutdownNow();
-                }
-            } catch (InterruptedException e) {
-                executor.shutdownNow();
-            }
         }
     }
 

@@ -57,7 +57,7 @@ public class CachedRequestResolveConfig {
                             });
                         }
                     }
-                    Thread.sleep(10 * 60 * 1000) ;
+                    Thread.sleep(5 * 60 * 1000) ;
                 }
             });
         };

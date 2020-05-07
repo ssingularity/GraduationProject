@@ -11,8 +11,10 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+import reactor.core.publisher.SynchronousSink;
 
 import javax.annotation.PostConstruct;
+import java.util.function.BiConsumer;
 
 /**
  * @Author: ssingualrity
@@ -65,14 +67,15 @@ public class BackPressureServiceImpl implements BackPressureService {
         String waitingQueueKey = generateWaitingQueueKey(inputChannel.getId());
         String executingQueueKey = generateExecutingQueueKey(inputChannel.getId());
         return Flux.range(0, num)
-                .map(x -> {
+                .handle((BiConsumer<Integer, SynchronousSink<String>>) (x, sink) -> {
                     String res = redisTemplate.boundListOps(waitingQueueKey).leftPop();
-                    return res == null ? "" : res;
+                    if (!StringUtils.isEmpty(res)) {
+                        sink.next(res);
+                    }
                 })
-                .filter(StringUtils::isNotEmpty)
                 .flatMap(x -> inputChannel.doDispatch(x)
                         .doFirst(() -> redisTemplate.boundListOps(executingQueueKey).rightPush(x))
-                        .doFinally((y) -> redisTemplate.boundListOps(executingQueueKey).leftPop())
+                        .doFinally((type) -> redisTemplate.boundListOps(executingQueueKey).leftPop())
                 )
                 .flatMap(inputChannel::doDispatch2DataSource)
                 .count()

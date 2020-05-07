@@ -12,6 +12,7 @@ import org.apache.kafka.clients.producer.ProducerRecord;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.redis.core.StringRedisTemplate;
+import reactor.core.publisher.Flux;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -55,10 +56,9 @@ public class DataSource {
         return "DataSource:" + id;
     }
 
-    public void dispatchMessage(DataSourceListener listener, List<String> values) {
-        for (String value : values) {
-            listener.onMessage(this, value);
-        }
+    public Flux<Void> dispatchMessage(DataSourceListener listener, List<String> values) {
+        return Flux.fromIterable(values)
+                .flatMap(value -> listener.onMessage(this, value));
     }
 
     public void sendMessage(String data) {

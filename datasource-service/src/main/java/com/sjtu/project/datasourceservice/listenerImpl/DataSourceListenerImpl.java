@@ -1,15 +1,14 @@
 package com.sjtu.project.datasourceservice.listenerImpl;
 
-import com.sjtu.project.datasourceservice.domain.ChannelService;
 import com.sjtu.project.common.domain.Message;
+import com.sjtu.project.datasourceservice.domain.ChannelService;
 import com.sjtu.project.datasourceservice.domain.DataSource;
 import com.sjtu.project.datasourceservice.domain.DataSourceListener;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Component;
-
-import java.util.Set;
+import reactor.core.publisher.Flux;
 
 @Component
 @Slf4j
@@ -21,12 +20,8 @@ public class DataSourceListenerImpl implements DataSourceListener {
     ChannelService channelService;
 
     @Override
-    public void onMessage(DataSource ds, String message) {
-        Set<String> registerChannelIds = ds.registeredChannels();
-        if (registerChannelIds != null) {
-            for (String channelId : registerChannelIds) {
-                channelService.dispatchMessage(channelId, new Message(ds.getId(), message)).subscribe();
-            }
-        }
+    public Flux<Void> onMessage(DataSource ds, String message) {
+        return Flux.fromIterable(ds.registeredChannels())
+                .flatMap(channelId -> channelService.dispatchMessage(channelId, new Message(ds.getId(), message)));
     }
 }
