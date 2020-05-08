@@ -38,7 +38,6 @@ public class DataSource {
     Descriptor schema;
 
     public void verifySelf() {
-        //TODO 检验参数可靠性
     }
 
     public void registerChannel(InputChannelDTO inputChannelDTO) {

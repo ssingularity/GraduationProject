@@ -38,7 +38,6 @@ public class CachedRequestResolveConfig {
         return (args) -> {
             executor.submit(() -> {
                 while (true) {
-                    //TODO 处理缓存的请求
                     for (InputChannel inputChannel: dao.findAll()) {
                         String id = inputChannel.getId();
                         if (backPressureService.needResolveCachedRequest(inputChannel) && !runningThread.contains(id)) {
