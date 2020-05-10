@@ -22,12 +22,12 @@ public class DataSourceService {
         dataSourceDao.findAll().forEach(kafkaConsumerSingleton::subscribe);
     }
 
-    public DataSource create(DataSource ds, String username) {
+    public DataSource create(DataSource ds) {
         ds.verifySelf();
         dataSourceDao.save(ds);
         kafkaConsumerSingleton.subscribe(ds);
-        if (!StringUtils.isEmpty(username)) {
-            aclService.authorize(username, ds);
+        if (!StringUtils.isEmpty(ds.getOwner())) {
+            aclService.authorize(ds.getOwner(), ds);
         }
         return ds;
     }

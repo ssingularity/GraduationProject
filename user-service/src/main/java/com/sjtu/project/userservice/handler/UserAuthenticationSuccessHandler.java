@@ -4,7 +4,6 @@ import com.sjtu.project.common.response.ResultCode;
 import com.sjtu.project.common.util.JsonUtil;
 import com.sjtu.project.userservice.util.JWTUtil;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpHeaders;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
@@ -22,11 +21,12 @@ import java.util.Map;
 public class UserAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
     @Override
     public void onAuthenticationSuccess(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Authentication authentication) throws IOException, ServletException {
-        String token = JWTUtil.generateToken(((UserDetails)authentication.getPrincipal()).getUsername(), authentication.getAuthorities());
-        httpServletResponse.addHeader(HttpHeaders.AUTHORIZATION, token);
-        Map<String, String> res = new HashMap<>();
-        res.put("res", ResultCode.SUCCESS.getMessage());
+        String username = ((UserDetails)authentication.getPrincipal()).getUsername();
+        String token = JWTUtil.generateToken(username, authentication.getAuthorities());
+        Map<String, Object> res = new HashMap<>();
+        res.put("code", ResultCode.SUCCESS.getCode());
         res.put("token", token);
+        res.put("username", username);
         httpServletResponse.getWriter().println(JsonUtil.writeValueAsString(res));
     }
 }

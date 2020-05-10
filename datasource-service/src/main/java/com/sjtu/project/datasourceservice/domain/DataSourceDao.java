@@ -8,4 +8,6 @@ public interface DataSourceDao extends MongoRepository<DataSource, String>, Cust
     List<DataSource> findAllByVisibleIsTrue();
 
     DataSource findOneById(String id);
+
+    boolean existsByTopicOrName(String topic, String Name);
 }

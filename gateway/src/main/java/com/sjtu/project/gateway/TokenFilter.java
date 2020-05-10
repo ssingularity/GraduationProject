@@ -9,6 +9,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.server.reactive.ServerHttpRequest;
+import org.springframework.http.server.reactive.ServerHttpResponse;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
@@ -33,8 +34,10 @@ public class TokenFilter implements GlobalFilter, Ordered {
         else {
             String token = request.getHeaders().getFirst(HttpHeaders.AUTHORIZATION);
             if (StringUtils.isEmpty(token)) {
-                exchange.getResponse().setStatusCode(HttpStatus.UNAUTHORIZED);
-                return exchange.getResponse().setComplete();
+                Result result = new Result();
+                result.setCode(HttpStatus.UNAUTHORIZED.value());
+                ServerHttpResponse response = exchange.getResponse();
+                return response.writeWith(Mono.just(response.bufferFactory().wrap(result.toString().getBytes())));
             }
             else {
                 return chain.filter(exchange);

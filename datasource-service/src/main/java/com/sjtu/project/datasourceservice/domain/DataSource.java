@@ -3,6 +3,8 @@ package com.sjtu.project.datasourceservice.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.sjtu.project.common.domain.Descriptor;
+import com.sjtu.project.common.exception.ServiceException;
+import com.sjtu.project.common.response.ResultCode;
 import com.sjtu.project.common.util.ContextUtil;
 import com.sjtu.project.common.util.JsonUtil;
 import com.sjtu.project.datasourceservice.dto.InputChannelDTO;
@@ -30,6 +32,8 @@ public class DataSource {
     @NotBlank
     String topic;
 
+    String owner;
+
     String description;
 
     boolean visible = true;
@@ -38,6 +42,9 @@ public class DataSource {
     Descriptor schema;
 
     public void verifySelf() {
+        if (ContextUtil.ctx.getBean(DataSourceDao.class).existsByTopicOrName(topic, name)) {
+            throw new ServiceException(ResultCode.DUPLICATED_TOPIC);
+        }
     }
 
     public void registerChannel(InputChannelDTO inputChannelDTO) {
