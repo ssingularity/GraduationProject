@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface PermissionInfoRepository extends MongoRepository<PermissionInfo, String> {
-    PermissionInfo findOneByUserId(String userId);
+    PermissionInfo findOneByUsername(String username);
 }

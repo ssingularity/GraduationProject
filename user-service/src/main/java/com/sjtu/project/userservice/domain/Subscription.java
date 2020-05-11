@@ -23,17 +23,28 @@ import static com.sjtu.project.common.response.ResultCode.SUBSCTIPTION_STATUS_ER
 @Document(collection = "subscription")
 public class Subscription {
     @Id
-    protected String id;
-
-    protected String username;
+    String id;
 
     @NotBlank
-    protected String resourceId;
+    String username;
 
     @NotBlank
-    protected String resourceOwnerId;
+    String resourceId;
 
-    private SubscriptionStatus status = SubscriptionStatus.PENDING;
+    @NotBlank
+    String resourceTopic;
+
+    @NotBlank
+    String resourceName;
+
+    @NotBlank
+    String resourceDescription;
+
+    @NotBlank
+    String resourceOwner;
+
+    @NotBlank
+    SubscriptionStatus status;
 
     void doReject(){
 

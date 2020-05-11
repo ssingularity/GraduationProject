@@ -26,6 +26,11 @@ public class DataSourceController {
         return ResultUtil.success(dataSourceDao.findAllByVisibleIsTrue());
     }
 
+    @GetMapping("/datasource/mine")
+    public Result<List<DataSource>> getAllByUserName(@RequestParam(name = "username") String username) {
+        return ResultUtil.success(dataSourceDao.findAllByVisibleIsTrueAndOwner(username));
+    }
+
     @PostMapping("/datasource")
     public Result<DataSource> addDataSource(@Valid @RequestBody DataSource dataSource) {
         return ResultUtil.success(dataSourceDao.save(dataSourceService.create(dataSource)));

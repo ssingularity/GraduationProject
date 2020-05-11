@@ -24,7 +24,6 @@ public class SubscriptionService {
         if (!res.isPresent()) {
             throw new ObjectNotFoundException("订阅请求");
         }
-
         Subscription subscription = res.get();
         subscription.update(targetStatus);
         subscriptionRepository.save(subscription);

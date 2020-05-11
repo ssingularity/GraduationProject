@@ -15,7 +15,7 @@ public class PermissionInfo {
     @Id
     private String id;
 
-    private String userId;
+    private String username;
 
     private List<String> dataSourceIds = new ArrayList<>();
 
