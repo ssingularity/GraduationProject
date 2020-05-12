@@ -15,6 +15,10 @@ public class ServiceDTO {
 
     String description;
 
+    String ip;
+
+    Integer port;
+
     String path;
 
     HttpMethod method;

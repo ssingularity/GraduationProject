@@ -31,6 +31,11 @@ public class ServiceController {
         return ResultUtil.success(res);
     }
 
+    @GetMapping("/service/{id}")
+    public Result<Service> getOneById(@PathVariable(name = "id") String id) {
+        return ResultUtil.success(serviceDao.queryById(id));
+    }
+
     @PostMapping("/service")
     public Result<Service> addService(@RequestBody Service service) {
         return ResultUtil.success(serviceDao.save(ServiceFactory.createService(service)));

@@ -92,9 +92,9 @@ public class Service {
                 .filter(parameter -> parameter.getIn().equals(ParamIn.PATH))
                 .collect(Collectors.toList());
         for (Parameter parameter : inPathParameters) {
-            Descriptor schema = parameter.getSchema();
-            String value = schema.getValueFromJson(json).toString();
-            res = res.replace("{" + schema.getKeyName() + "}", value);
+            String keyName = parameter.getKeyName();
+            String value = json.get(keyName).toString();
+            res = res.replace("{" + keyName + "}", value);
         }
         return res;
     }
@@ -105,9 +105,9 @@ public class Service {
         parameters.stream()
                 .filter(parameter -> parameter.getIn().equals(ParamIn.QUERY))
                 .forEach(parameter -> {
-                    Descriptor schema = parameter.getSchema();
-                    String value = schema.getValueFromJson(json).toString();
-                    sb.append(schema.getKeyName());
+                    String keyName = parameter.getKeyName();
+                    String value = json.get(keyName).toString();
+                    sb.append(keyName);
                     sb.append("=");
                     sb.append(value);
                     sb.append("&");

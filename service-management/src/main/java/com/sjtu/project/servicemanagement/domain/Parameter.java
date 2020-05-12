@@ -1,12 +1,12 @@
 package com.sjtu.project.servicemanagement.domain;
 
-import com.sjtu.project.common.domain.Descriptor;
 import lombok.Builder;
 import lombok.Data;
 
 @Data
 @Builder
 public class Parameter {
+    private String keyName;
     /**
      * 参数位置
      */
@@ -16,9 +16,4 @@ public class Parameter {
      * 是否必填
      */
     private Boolean required;
-
-    /**
-     * 数据结构
-     */
-    private Descriptor schema;
 }
