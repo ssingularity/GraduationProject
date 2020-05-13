@@ -23,6 +23,8 @@ public abstract class Topology {
 
     protected String name;
 
+    protected int[] value = new int[2];
+
     public abstract void addInput(Topology topology);
 
     @JsonIgnore

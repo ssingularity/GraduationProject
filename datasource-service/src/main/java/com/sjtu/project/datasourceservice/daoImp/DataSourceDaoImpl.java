@@ -9,6 +9,8 @@ import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public class DataSourceDaoImpl implements CustomDataSourceDao {
     @Autowired
@@ -25,5 +27,12 @@ public class DataSourceDaoImpl implements CustomDataSourceDao {
         else {
             return res;
         }
+    }
+
+    @Override
+    public List<DataSource> queryByIdIn(List<String> ids) {
+        Query query = new Query();
+        query.addCriteria(Criteria.where("id").in(ids));
+        return mongoTemplate.find(query, DataSource.class);
     }
 }

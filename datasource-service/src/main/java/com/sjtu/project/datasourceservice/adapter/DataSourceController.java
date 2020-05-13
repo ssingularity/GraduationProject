@@ -2,7 +2,10 @@ package com.sjtu.project.datasourceservice.adapter;
 
 import com.sjtu.project.common.response.Result;
 import com.sjtu.project.common.util.ResultUtil;
-import com.sjtu.project.datasourceservice.domain.*;
+import com.sjtu.project.datasourceservice.domain.AclService;
+import com.sjtu.project.datasourceservice.domain.DataSource;
+import com.sjtu.project.datasourceservice.domain.DataSourceDao;
+import com.sjtu.project.datasourceservice.domain.DataSourceService;
 import com.sjtu.project.datasourceservice.dto.InputChannelDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -24,6 +27,11 @@ public class DataSourceController {
     @GetMapping("/datasource")
     public Result<List<DataSource>> getAll() {
         return ResultUtil.success(dataSourceDao.findAllByVisibleIsTrue());
+    }
+
+    @PostMapping("/datasource/batch")
+    public Result<List<DataSource>> getBatch(@RequestBody List<String> dataSourceIdList) {
+        return ResultUtil.success(dataSourceDao.queryByIdIn(dataSourceIdList));
     }
 
     @GetMapping("/datasource/mine")

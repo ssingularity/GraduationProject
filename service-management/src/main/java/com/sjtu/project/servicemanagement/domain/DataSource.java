@@ -7,6 +7,8 @@ import lombok.Data;
 public class DataSource {
     String id;
 
+    String name;
+
     String topic;
 
     Descriptor schema;
