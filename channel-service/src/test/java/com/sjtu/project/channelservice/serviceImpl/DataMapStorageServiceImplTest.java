@@ -10,7 +10,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.Map;
 
 /**
@@ -25,7 +24,7 @@ public class DataMapStorageServiceImplTest {
 
     @Test
     public void test() {
-        dataMapStorageService.initChannel("a", new HashSet<>(Arrays.asList("a", "b")));
+        dataMapStorageService.initChannel("a", Arrays.asList("a", "b"));
         dataMapStorageService.putObj("a", "a", "a", "test1");
         Map<String, String> res = dataMapStorageService.popCurrentSrcObjMapIfFull("a", "a");
         Assert.assertNull(res);

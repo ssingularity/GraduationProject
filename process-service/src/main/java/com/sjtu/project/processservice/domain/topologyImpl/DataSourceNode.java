@@ -10,11 +10,6 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class DataSourceNode extends Topology {
     @Override
-    public void addInput(Topology topology) {
-        throw new IllegalArgumentException("DataSource为叶节点,不能再有Input");
-    }
-
-    @Override
     protected void selfStop() {
         log.info("停止DataSource节点");
     }

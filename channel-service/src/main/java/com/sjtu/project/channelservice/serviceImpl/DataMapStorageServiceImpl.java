@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.Duration;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -31,7 +32,7 @@ public class DataMapStorageServiceImpl implements DataMapStorageService {
     RedisLock redisLock;
 
     @Override
-    public void initChannel(String channelId, Set<String> dataSourceIdSet) {
+    public void initChannel(String channelId, List<String> dataSourceIdSet) {
         String channelKey = generateDataSourceLidKey(channelId);
         redisTemplate.boundSetOps(channelKey).add(dataSourceIdSet.toArray(new String[0]));
     }

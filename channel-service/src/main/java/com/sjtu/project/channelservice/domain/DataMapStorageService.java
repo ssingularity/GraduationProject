@@ -1,7 +1,7 @@
 package com.sjtu.project.channelservice.domain;
 
+import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 /**
  * DataMapStorageService
@@ -12,7 +12,7 @@ public interface DataMapStorageService {
     /**
      * 为指定channelId和对应dataSourceId集合初始化存储空间
     **/
-     void initChannel(String channelId, Set<String> dataSourceIdSet);
+     void initChannel(String channelId, List<String> dataSourceIdSet);
 
     /**
      * 为指定channelId删除对应的存储空间

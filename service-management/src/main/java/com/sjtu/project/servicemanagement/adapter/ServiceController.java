@@ -2,16 +2,17 @@ package com.sjtu.project.servicemanagement.adapter;
 
 import com.sjtu.project.common.response.Result;
 import com.sjtu.project.common.util.ResultUtil;
-import com.sjtu.project.servicemanagement.domain.*;
+import com.sjtu.project.servicemanagement.domain.ReactiveServiceDao;
+import com.sjtu.project.servicemanagement.domain.Service;
+import com.sjtu.project.servicemanagement.domain.ServiceDao;
+import com.sjtu.project.servicemanagement.domain.ServiceFactory;
 import com.sjtu.project.servicemanagement.dto.DataSourceDTO;
-import com.sjtu.project.servicemanagement.dto.ServiceDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 @Slf4j
@@ -23,12 +24,8 @@ public class ServiceController {
     ReactiveServiceDao reactiveServiceDao;
 
     @GetMapping("/service")
-    public Result<List<ServiceDTO>> getAll() {
-        List<ServiceDTO> res = serviceDao.findAll()
-                .stream()
-                .map(Service::convert2DTO)
-                .collect(Collectors.toList());
-        return ResultUtil.success(res);
+    public Result<List<Service>> getAll() {
+        return ResultUtil.success(serviceDao.findAll());
     }
 
     @GetMapping("/service/{id}")

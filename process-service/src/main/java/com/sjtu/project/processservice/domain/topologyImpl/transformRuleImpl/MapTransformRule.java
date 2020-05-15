@@ -5,9 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * @author thinkpad
  */
@@ -15,5 +12,5 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class MapTransformRule implements TransformRule {
-    List<PathPair> mapRule = new ArrayList<>();
+    PathPair mapRule;
 }

@@ -6,8 +6,8 @@ import com.sjtu.project.common.util.ContextUtil;
 import com.sjtu.project.common.util.JsonUtil;
 import lombok.Data;
 
+import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 @Data
 public class FusionRule {
@@ -17,7 +17,7 @@ public class FusionRule {
 
     String keyName;
 
-    Set<String> dataSourceIdSet;
+    List<String> dataSourceIdSet;
 
     public String doFusion(String channelId, Message message) {
         DataMapStorageService dataMapStorageService = ContextUtil.ctx.getBean(DataMapStorageService.class);

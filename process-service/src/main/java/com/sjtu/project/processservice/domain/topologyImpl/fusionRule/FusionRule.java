@@ -2,7 +2,7 @@ package com.sjtu.project.processservice.domain.topologyImpl.fusionRule;
 
 import lombok.Data;
 
-import java.util.Set;
+import java.util.List;
 
 @Data
 public class FusionRule {
@@ -12,5 +12,5 @@ public class FusionRule {
 
     String keyName;
 
-    Set<String> dataSourceIdSet;
+    List<String> dataSourceIdSet;
 }

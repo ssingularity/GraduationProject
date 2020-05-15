@@ -31,11 +31,6 @@ public class ServiceNode extends Topology {
     private String processId;
 
     @Override
-    public void addInput(Topology topology) {
-        inputList.add(topology);
-    }
-
-    @Override
     @JsonIgnore
     public DataSource getTargetDataSource() {
         Assert.notNull(targetDataSourceId, "流程开始与结束过程中，服务的目标数据源应该在被Get前就创建好");
