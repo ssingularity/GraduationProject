@@ -17,7 +17,6 @@ import java.util.Date;
 @JsonSubTypes({
         @JsonSubTypes.Type(value = DataSourceLog.class, name = "DataSource"),
         @JsonSubTypes.Type(value = ServiceLog.class, name = "Service"),
-        @JsonSubTypes.Type(value = ThresholdLog.class, name = "ThresholdLog"),
 })
 public abstract class Log {
     @Id

@@ -8,5 +8,5 @@ import lombok.Data;
 public class DataSourceLog extends Log{
     private String dataSourceId;
 
-    private Long dataSourceName;
+    private String dataSourceName;
 }

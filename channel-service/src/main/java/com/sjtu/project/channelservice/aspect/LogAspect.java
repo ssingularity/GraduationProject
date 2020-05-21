@@ -48,7 +48,7 @@ public class LogAspect {
         InputChannel inputChannel = (InputChannel) joinPoint.getTarget();
         Object[] args = joinPoint.getArgs();
         String content = (String) args[0];
-        Long executingQueueSize = ContextUtil.ctx.getBean(BackPressureService.class).getExecutingQueueSize(inputChannel.getId());
+        Long executingQueueSize = ContextUtil.ctx.getBean(BackPressureService.class).getExecutingQueueSize(inputChannel.getId()) + 1;
         Long waitingQueueSize = ContextUtil.ctx.getBean(BackPressureService.class).getWaitingQueueSize(inputChannel.getId());
         LogDTO logDTO = LogDTO.builder()
                 .type("Service")

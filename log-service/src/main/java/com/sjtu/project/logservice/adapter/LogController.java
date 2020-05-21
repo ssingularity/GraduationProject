@@ -23,8 +23,9 @@ public class LogController {
     private LogRepository repo;
 
     @PostMapping(value = "/log")
-    public Result<Log> createLog(@RequestBody Log log) {
-        return ResultUtil.success(logService.createLog(log));
+    public Result<String> createLog(@RequestBody Log log) {
+        new Thread(() -> logService.createLog(log)).start();
+        return ResultUtil.success();
     }
 
     @GetMapping(value = "/log")

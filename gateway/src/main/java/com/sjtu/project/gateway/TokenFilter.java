@@ -25,6 +25,8 @@ public class TokenFilter implements GlobalFilter, Ordered {
 
     final static private String REGISTER_PATH = "/user-service/user";
 
+    final static private String WEBSOCKET_PATH = "/websocket";
+
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
         ServerHttpRequest request = exchange.getRequest();
@@ -48,6 +50,7 @@ public class TokenFilter implements GlobalFilter, Ordered {
     private boolean noFilterNeed(ServerHttpRequest request) {
         String path = request.getPath().toString();
         return path.startsWith(LOGIN_PATH) ||
+                path.startsWith(WEBSOCKET_PATH) ||
                 (path.startsWith(REGISTER_PATH) && request.getMethod() == HttpMethod.POST);
     }
 
