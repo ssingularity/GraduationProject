@@ -26,7 +26,15 @@ public class LogDTO {
 
     private String content;
 
-    private String datasourceId;
+    private String dataSourceId;
+
+    private String dataSourceName;
 
     private String serviceId;
+
+    private String serviceName;
+
+    private Long executingQueueSize;
+
+    private Long waitingQueueSize;
 }

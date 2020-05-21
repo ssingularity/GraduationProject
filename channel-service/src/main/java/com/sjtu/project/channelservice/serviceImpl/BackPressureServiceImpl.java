@@ -88,6 +88,20 @@ public class BackPressureServiceImpl implements BackPressureService {
         redisTemplate.delete(generateExecutingQueueKey(channelId));
     }
 
+    @Override
+    public Long getWaitingQueueSize(String channelId) {
+        String waitingQueueKey = generateWaitingQueueKey(channelId);
+        long waitingQueueSize = redisTemplate.boundListOps(waitingQueueKey).size();
+        return waitingQueueSize;
+    }
+
+    @Override
+    public Long getExecutingQueueSize(String channelId) {
+        String executingQueueKey = generateExecutingQueueKey(channelId);
+        long executingQueueSize = redisTemplate.boundListOps(executingQueueKey).size();
+        return executingQueueSize;
+    }
+
     private String generateWaitingQueueKey(String channelId) {
         return WAITING_QUEUE_PREFIX + channelId;
     }

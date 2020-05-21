@@ -1,6 +1,7 @@
 package com.sjtu.project.logservice.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,6 +14,11 @@ import java.util.Date;
 @NoArgsConstructor
 @Document
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.EXTERNAL_PROPERTY, property = "type")
+@JsonSubTypes({
+        @JsonSubTypes.Type(value = DataSourceLog.class, name = "DataSource"),
+        @JsonSubTypes.Type(value = ServiceLog.class, name = "Service"),
+        @JsonSubTypes.Type(value = ThresholdLog.class, name = "ThresholdLog"),
+})
 public abstract class Log {
     @Id
     protected String id;
@@ -23,5 +29,4 @@ public abstract class Log {
     protected String processId;
 
     protected String content;
-
 }

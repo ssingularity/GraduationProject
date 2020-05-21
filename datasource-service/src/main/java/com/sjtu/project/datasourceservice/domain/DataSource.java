@@ -63,8 +63,7 @@ public class DataSource {
     }
 
     public Flux<Void> dispatchMessage(DataSourceListener listener, List<String> values) {
-        return Flux.fromIterable(values)
-                .flatMap(value -> listener.onMessage(this, value));
+        return Flux.fromIterable(values).flatMap(value -> listener.onMessage(this, value));
     }
 
     public void sendMessage(String data) {

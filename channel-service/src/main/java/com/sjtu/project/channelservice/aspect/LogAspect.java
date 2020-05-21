@@ -1,5 +1,6 @@
 package com.sjtu.project.channelservice.aspect;
 
+import com.sjtu.project.channelservice.domain.BackPressureService;
 import com.sjtu.project.channelservice.domain.InputChannel;
 import com.sjtu.project.common.domain.Message;
 import com.sjtu.project.common.util.ContextUtil;
@@ -17,24 +18,29 @@ import java.util.Date;
 @Aspect
 public class LogAspect {
     @Pointcut("execution(public * com.sjtu.project.channelservice.domain.InputChannel.onMessage(..))")
-    public void dataSourceInvoke() {}
+    public void dataSourceInvoke() {
+    }
 
     @Pointcut("execution(public * com.sjtu.project.channelservice.domain.InputChannel.doDispatch(..))")
-    public void serviceInvoke() {}
+    public void serviceInvoke() {
+    }
 
     @Before(value = "dataSourceInvoke()")
     public void dataSourceLog(JoinPoint joinPoint) {
         InputChannel inputChannel = (InputChannel) joinPoint.getTarget();
         Object[] args = joinPoint.getArgs();
         Message message = (Message) args[0];
-        LogDTO logDTO = LogDTO.builder()
-                            .type("DataSource")
-                            .content(message.getContent())
-                            .datasourceId(message.getDatasourceId())
-                            .processId(inputChannel.getProcessId())
-                            .timestamp(new Date())
-                            .build();
-        ContextUtil.ctx.getBean(LogServiceClient.class).createLog(logDTO);
+        if (!message.getDataSourceName().startsWith("Invisible")) {
+            LogDTO logDTO = LogDTO.builder()
+                    .type("DataSource")
+                    .content(message.getContent())
+                    .dataSourceId(message.getDataSourceId())
+                    .dataSourceName(message.getDataSourceName())
+                    .processId(inputChannel.getProcessId())
+                    .timestamp(new Date())
+                    .build();
+            ContextUtil.ctx.getBean(LogServiceClient.class).createLog(logDTO);
+        }
     }
 
     @Before("serviceInvoke()")
@@ -42,10 +48,15 @@ public class LogAspect {
         InputChannel inputChannel = (InputChannel) joinPoint.getTarget();
         Object[] args = joinPoint.getArgs();
         String content = (String) args[0];
+        Long executingQueueSize = ContextUtil.ctx.getBean(BackPressureService.class).getExecutingQueueSize(inputChannel.getId());
+        Long waitingQueueSize = ContextUtil.ctx.getBean(BackPressureService.class).getWaitingQueueSize(inputChannel.getId());
         LogDTO logDTO = LogDTO.builder()
                 .type("Service")
                 .content(content)
                 .serviceId(inputChannel.getTargetServiceId())
+                .serviceName(inputChannel.getTargetServiceName())
+                .executingQueueSize(executingQueueSize > inputChannel.getThreshold() ? inputChannel.getThreshold() : executingQueueSize)
+                .waitingQueueSize(waitingQueueSize)
                 .processId(inputChannel.getProcessId())
                 .timestamp(new Date())
                 .build();

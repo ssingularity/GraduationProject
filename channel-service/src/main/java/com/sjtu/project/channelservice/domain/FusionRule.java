@@ -24,7 +24,7 @@ public class FusionRule {
         String content = message.getContent();
         ObjectNode objectNode = JsonUtil.readTree(content);
         String key = objectNode.get(keyName).asText();
-        dataMapStorageService.putObj(channelId, message.getDatasourceId(), key, content);
+        dataMapStorageService.putObj(channelId, message.getDataSourceId(), key, content);
         Map<String, String> map = dataMapStorageService.popCurrentSrcObjMapIfFull(channelId, key);
         if (map != null) {
             ObjectNode res = JsonUtil.createObjectNode();

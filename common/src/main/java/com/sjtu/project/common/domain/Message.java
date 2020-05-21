@@ -10,7 +10,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Message {
-    String datasourceId;
+    String dataSourceId;
+
+    String dataSourceName;
 
     String content;
 }

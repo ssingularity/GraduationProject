@@ -42,4 +42,18 @@ public interface BackPressureService {
      * @return Mono<Result>
      */
     Mono<Result> doDispatchWithBackPressure(InputChannel inputChannel, int num);
+
+    /**
+     * 获取channel的执行队列
+     * @param channelId channelId
+     * @return Long
+     */
+    Long getExecutingQueueSize(String channelId);
+
+    /**
+     * 获取channel的等待列
+     * @param channelId channelId
+     * @return Long
+     */
+    Long getWaitingQueueSize(String channelId);
 }

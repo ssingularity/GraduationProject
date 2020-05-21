@@ -27,5 +27,7 @@ public class InputChannelDTO {
 
     String targetServiceId;
 
+    String targetServiceName;
+
     Integer threshold;
 }

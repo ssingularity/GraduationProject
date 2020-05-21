@@ -83,15 +83,16 @@ public class ServiceNode extends Topology {
     }
 
     private InputChannelDTO createChannel() {
-         InputChannelDTO channelDTO = InputChannelDTO.builder()
+        InputChannelDTO channelDTO = InputChannelDTO.builder()
                 .fusionRule(fusionRule)
                 .processId(processId)
                 .targetDataSourceId(targetDataSourceId)
                 .targetServiceId(id)
+                .targetServiceName(name)
                 .transformRules(transformRuleList)
                 .threshold(threshold)
                 .build();
-         return ContextUtil.ctx.getBean(ChannelServiceClient.class)
+        return ContextUtil.ctx.getBean(ChannelServiceClient.class)
                 .createInputChannel(channelDTO)
                 .getData();
     }

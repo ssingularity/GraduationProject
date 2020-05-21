@@ -32,6 +32,8 @@ public class InputChannel {
 
     String targetServiceId;
 
+    String targetServiceName;
+
     Integer threshold = Integer.MAX_VALUE;
 
     public Mono<Result> onMessage(Message message) {

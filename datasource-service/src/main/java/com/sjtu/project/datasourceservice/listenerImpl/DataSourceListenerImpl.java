@@ -22,6 +22,6 @@ public class DataSourceListenerImpl implements DataSourceListener {
     @Override
     public Flux<Void> onMessage(DataSource ds, String message) {
         return Flux.fromIterable(ds.registeredChannels())
-                .flatMap(channelId -> channelService.dispatchMessage(channelId, new Message(ds.getId(), message)));
+                .flatMap(channelId -> channelService.dispatchMessage(channelId, new Message(ds.getId(), ds.getName(), message)));
     }
 }
